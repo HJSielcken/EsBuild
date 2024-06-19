@@ -3,7 +3,10 @@ const React = require('react-dom/server')
 
 const component = a.default
 const { props } = component
-const element = component(props)
+const element = component({title: 'Zelda'})
 
-  // console.log(m(m.check))
 console.log(React.renderToStaticMarkup(element))
+
+const json = require('./target/aap.json.template')
+
+console.log(json.default({title: 'zelda'}))
