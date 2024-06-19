@@ -10,36 +10,40 @@ const templateRenderers = {
   html: 'html-react-renderer.js',
 }
 
-const config = {
-  entryPoints: getEntryPoints(templateRenderers),
-  outdir: targetDir,
-  metafile: true,
-  target: 'node20',
-  bundle: true,
-  platform: 'node',
-  loader: {
-    '.js': 'jsx',
-    '.css': 'local-css',
-  },
-  entryNames: '[dir]/[name]',
-  format: 'cjs',
-  inject: ['./externals.js'],
-  plugins: [
-    cssLoaderPlugin(),
-    templateRendererPlugin(),
-  ]
-}
+const config = getBuildConfig()
 
-run()
+watch()
 
+// async function build() {
+//   const r = await esbuild.build(config)
+// }
 
-async function build() {
-  const r = await esbuild.build(config)
-}
-
-async function run() {
+async function watch() {
   const ctx = await esbuild.context(config)
   await ctx.watch()
+}
+
+function getBuildConfig() {
+  const config = {
+    entryPoints: getEntryPoints(templateRenderers),
+    outdir: targetDir,
+    metafile: true,
+    target: 'node20',
+    bundle: true,
+    platform: 'node',
+    loader: {
+      '.js': 'jsx',
+      '.css': 'local-css',
+    },
+    entryNames: '[dir]/[name]',
+    format: 'cjs',
+    inject: ['./externals.js'],
+    plugins: [
+      cssLoaderPlugin(),
+      templateRendererPlugin(),
+    ]
+  }
+  return config
 }
 
 function cssLoaderPlugin() {
