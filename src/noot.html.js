@@ -1,4 +1,4 @@
-import { content } from './aap.css'
+import { content, content_2 } from './aap.css'
 import { stylesheet } from '@kaliber/build/stylesheet'
 
 export default (<html>
@@ -7,7 +7,7 @@ export default (<html>
     {stylesheet}
   </head>
   <body>
-    <div className={content}>mies</div>
+    <div className={cx(content, content_2)}>mies</div>
   </body>
 </html>
 )

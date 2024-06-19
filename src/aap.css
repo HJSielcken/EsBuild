@@ -1,4 +1,7 @@
 .content {
-  text-decoration: underline;
   background: red;
+}
+
+.content_2 {
+  text-decoration: underline;
 }

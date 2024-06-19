@@ -1,31 +1,34 @@
 const esbuild = require('esbuild')
+const importFresh = require('import-fresh')
 const fs = require('fs')
 const path = require('path')
+
 const pwd = process.cwd()
 const srcDir = path.resolve(pwd, 'src')
 const targetDir = path.resolve(pwd, 'target')
-const importFresh = require('import-fresh')
 
 const templateRenderers = {
   json: 'json-renderer.js',
   html: 'html-react-renderer.js',
 }
 
-const config = getBuildConfig()
 
 watch()
 
 async function build() {
+  const config = getBuildConfig()
   const r = await esbuild.build(config)
 }
 
 async function watch() {
+  const config = getBuildConfig()
   const ctx = await esbuild.context(config)
+
   await ctx.watch()
 }
 
 function getBuildConfig() {
-  const config = {
+  return {
     entryPoints: getEntryPoints(templateRenderers),
     outdir: targetDir,
     metafile: true,
@@ -44,7 +47,6 @@ function getBuildConfig() {
       templateRendererPlugin(),
     ]
   }
-  return config
 }
 
 function cssLoaderPlugin() {
@@ -111,7 +113,7 @@ function getEntryPoints(templateRenderers) {
   const entries = fs.readdirSync(srcDir)
   const extensions = Object.keys(templateRenderers).join('|')
   const filteredEntries = entries.filter(x => new RegExp(`[${extensions}].js$`).test(x)).map(x => path.resolve(srcDir, x))
-  
+
   return filteredEntries
 }
 

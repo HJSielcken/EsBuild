@@ -1,7 +1,7 @@
 {
   "inputs": {
     "src/aap.css": {
-      "bytes": 62,
+      "bytes": 78,
       "imports": []
     },
     "node_modules/react/cjs/react.production.min.js": {
@@ -48,7 +48,7 @@
       "format": "cjs"
     },
     "externals.js": {
-      "bytes": 113,
+      "bytes": 183,
       "imports": [
         {
           "path": "node_modules/react/index.js",
@@ -69,7 +69,7 @@
       "format": "esm"
     },
     "css-loader-plugin:@kaliber/build/stylesheet": {
-      "bytes": 334,
+      "bytes": 336,
       "imports": [
         {
           "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
@@ -112,7 +112,7 @@
       "format": "esm"
     },
     "src/noot.html.js": {
-      "bytes": 243,
+      "bytes": 269,
       "imports": [
         {
           "path": "src/aap.css",
@@ -176,19 +176,19 @@
           "bytesInOutput": 29
         },
         "css-loader-plugin:@kaliber/build/stylesheet": {
-          "bytesInOutput": 388
+          "bytesInOutput": 389
         }
       },
-      "bytes": 90703
+      "bytes": 90704
     },
     "target/aap.html.css": {
       "imports": [],
       "inputs": {
         "src/aap.css": {
-          "bytesInOutput": 66
+          "bytesInOutput": 85
         }
       },
-      "bytes": 84
+      "bytes": 103
     },
     "target/aap.json.js": {
       "imports": [],
@@ -235,28 +235,28 @@
           "bytesInOutput": 311
         },
         "externals.js": {
-          "bytesInOutput": 144
+          "bytesInOutput": 210
         },
         "src/noot.html.js": {
-          "bytesInOutput": 489
+          "bytesInOutput": 504
         },
         "src/aap.css": {
-          "bytesInOutput": 30
+          "bytesInOutput": 64
         },
         "css-loader-plugin:@kaliber/build/stylesheet": {
-          "bytesInOutput": 388
+          "bytesInOutput": 389
         }
       },
-      "bytes": 90706
+      "bytes": 90822
     },
     "target/noot.html.css": {
       "imports": [],
       "inputs": {
         "src/aap.css": {
-          "bytesInOutput": 67
+          "bytesInOutput": 87
         }
       },
-      "bytes": 85
+      "bytes": 105
     },
     "target/noot.json.js": {
       "imports": [],

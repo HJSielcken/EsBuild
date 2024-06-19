@@ -2216,7 +2216,7 @@ var content = "aap_content";
 
 // css-loader-plugin:@kaliber/build/stylesheet
 init_externals();
-var stylesheet = /* @__PURE__ */ React.createElement("link", { rel: "stylesheet", href: getCssBundle("src/aap.html.js") });
+var stylesheet = /* @__PURE__ */ React.createElement("link", { rel: "stylesheet", href: getCssBundle("src/noot.html.js") });
 function getCssBundle(entrypoint) {
   const metafile = JSON.parse(fs.readFileSync("./metafile.json"));
   const output = Object.values(metafile.outputs).find((x) => x.entryPoint === entrypoint);

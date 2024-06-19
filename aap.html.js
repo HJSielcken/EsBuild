@@ -1,3 +1,4 @@
+
 const renderer = require('./html-react-renderer.js')
 const source = require('./target/aap.html.js')
 Object.assign(render, source)
