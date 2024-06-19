@@ -4,6 +4,7 @@ const path = require('path')
 const pwd = process.cwd()
 const srcDir = path.resolve(pwd, 'src')
 const targetDir = path.resolve(pwd, 'target')
+const importFresh = require('import-fresh')
 
 const templateRenderers = {
   json: 'json-renderer.js',
@@ -14,9 +15,9 @@ const config = getBuildConfig()
 
 watch()
 
-// async function build() {
-//   const r = await esbuild.build(config)
-// }
+async function build() {
+  const r = await esbuild.build(config)
+}
 
 async function watch() {
   const ctx = await esbuild.context(config)
@@ -70,7 +71,6 @@ function cssLoaderPlugin() {
 }
 
 function templateRendererPlugin() {
-  const importFresh = require('import-fresh')
   return {
     name: 'template-renderer-plugin',
     setup(build) {
@@ -111,11 +111,13 @@ function getEntryPoints(templateRenderers) {
   const entries = fs.readdirSync(srcDir)
   const extensions = Object.keys(templateRenderers).join('|')
   const filteredEntries = entries.filter(x => new RegExp(`[${extensions}].js$`).test(x)).map(x => path.resolve(srcDir, x))
+  
   return filteredEntries
 }
 
 function createDynamicTemplate(sourceLocation, rendererLocation) {
-  return `|const renderer = require('./${rendererLocation}')
+  return `
+     |const renderer = require('./${rendererLocation}')
      |const source = require('./target/${sourceLocation}')
      |Object.assign(render, source)
      |
@@ -130,6 +132,7 @@ function createDynamicTemplate(sourceLocation, rendererLocation) {
 function createStyleSheet(entryPoint) {
   return `
   |export const stylesheet = <link rel="stylesheet" href={getCssBundle("${entryPoint.replace(pwd, '').slice(1)}")} />
+  |
   |function getCssBundle(entrypoint) {
   |  const metafile = JSON.parse(fs.readFileSync('./metafile.json'))
   |  const output = Object.values(metafile.outputs).find(x => x.entryPoint === entrypoint)
