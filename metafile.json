@@ -69,7 +69,7 @@
       "format": "esm"
     },
     "css-loader-plugin:@kaliber/build/stylesheet": {
-      "bytes": 343,
+      "bytes": 334,
       "imports": [
         {
           "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
@@ -101,7 +101,7 @@
       "format": "esm"
     },
     "src/aap.json.js": {
-      "bytes": 84,
+      "bytes": 85,
       "imports": [
         {
           "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
@@ -133,7 +133,7 @@
       "format": "esm"
     },
     "src/noot.json.js": {
-      "bytes": 62,
+      "bytes": 76,
       "imports": [
         {
           "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
@@ -145,7 +145,7 @@
     }
   },
   "outputs": {
-    "target/aap.html.template.js": {
+    "target/aap.html.js": {
       "imports": [
         {
           "path": "fs",
@@ -155,7 +155,7 @@
       ],
       "exports": [],
       "entryPoint": "src/aap.html.js",
-      "cssBundle": "target/aap.html.template.css",
+      "cssBundle": "target/aap.html.css",
       "inputs": {
         "node_modules/react/cjs/react.production.min.js": {
           "bytesInOutput": 9673
@@ -176,12 +176,12 @@
           "bytesInOutput": 29
         },
         "css-loader-plugin:@kaliber/build/stylesheet": {
-          "bytesInOutput": 396
+          "bytesInOutput": 388
         }
       },
-      "bytes": 90711
+      "bytes": 90703
     },
-    "target/aap.html.template.css": {
+    "target/aap.html.css": {
       "imports": [],
       "inputs": {
         "src/aap.css": {
@@ -190,7 +190,7 @@
       },
       "bytes": 84
     },
-    "target/aap.json.template.js": {
+    "target/aap.json.js": {
       "imports": [],
       "exports": [],
       "entryPoint": "src/aap.json.js",
@@ -208,12 +208,12 @@
           "bytesInOutput": 107
         },
         "src/aap.json.js": {
-          "bytesInOutput": 235
+          "bytesInOutput": 236
         }
       },
-      "bytes": 89911
+      "bytes": 89912
     },
-    "target/noot.html.template.js": {
+    "target/noot.html.js": {
       "imports": [
         {
           "path": "fs",
@@ -223,7 +223,7 @@
       ],
       "exports": [],
       "entryPoint": "src/noot.html.js",
-      "cssBundle": "target/noot.html.template.css",
+      "cssBundle": "target/noot.html.css",
       "inputs": {
         "node_modules/react/cjs/react.production.min.js": {
           "bytesInOutput": 9673
@@ -244,12 +244,12 @@
           "bytesInOutput": 30
         },
         "css-loader-plugin:@kaliber/build/stylesheet": {
-          "bytesInOutput": 396
+          "bytesInOutput": 388
         }
       },
-      "bytes": 90714
+      "bytes": 90706
     },
-    "target/noot.html.template.css": {
+    "target/noot.html.css": {
       "imports": [],
       "inputs": {
         "src/aap.css": {
@@ -258,7 +258,7 @@
       },
       "bytes": 85
     },
-    "target/noot.json.template.js": {
+    "target/noot.json.js": {
       "imports": [],
       "exports": [],
       "entryPoint": "src/noot.json.js",
@@ -276,10 +276,10 @@
           "bytesInOutput": 107
         },
         "src/noot.json.js": {
-          "bytesInOutput": 234
+          "bytesInOutput": 227
         }
       },
-      "bytes": 89911
+      "bytes": 89904
     }
   }
 }

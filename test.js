@@ -1,4 +1,4 @@
-const a = require('./target/aap.html.template')
+const a = require('./target/aap.html.js')
 const React = require('react-dom/server')
 
 const component = a.default
@@ -7,6 +7,6 @@ const element = component({title: 'Zelda'})
 
 console.log(React.renderToStaticMarkup(element))
 
-// const json = require('./target/aap.json.template')
+const json = require('./target/aap.json.js')
 
-// console.log(json.default({title: 'zelda'}))
+console.log(json.default({title: 'zelda'}))

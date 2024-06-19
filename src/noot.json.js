@@ -1,5 +1,6 @@
 const mies = 'wim'
 export default ({
-  aap: 'noot',
-  mies
-})
+  aap: 'noasdost',
+  mies: 'ass'
+}) 
+  

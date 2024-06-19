@@ -1,5 +1,5 @@
 const mies = 'wim'
 export default ({ title }) => ({
-  aap: 'noot',
+  aap: 'noost',
   mies: title
 })
