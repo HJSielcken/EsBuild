@@ -18,15 +18,43 @@ async function build() {
     outdir: targetDir,
     metafile: true,
     target: 'node20',
+    bundle: true,
+    platform: 'node',
     loader: {
-      '.js': 'jsx'
+      '.js': 'jsx',
+      '.css': 'local-css',
     },
     entryNames: '[dir]/[name].template',
     format: 'cjs',
+    inject: ['./react.js'],
     plugins: [
-      templateRendererPlugin()
+      cssLoaderPlugin(),
+      templateRendererPlugin(),
     ]
   })
+}
+
+function cssLoaderPlugin() {
+  return {
+    name: 'css-loader-plugin',
+    setup(build) {
+      build.onResolve({ filter: /^\@kaliber\/build\/stylesheet$/ }, args => {
+        return {
+          path: args.path,
+          namespace: 'css-loader-plugin',
+          pluginData: {
+            importer: args.importer
+          }
+        }
+      })
+      build.onLoad({ filter: /^\@kaliber\/build\/stylesheet$/, namespace: 'css-loader-plugin' }, args => {
+        return {
+          loader: 'jsx',
+          contents: createStyleSheet(args.pluginData.importer)
+        }
+      })
+    }
+  }
 }
 
 function templateRendererPlugin() {
@@ -34,21 +62,22 @@ function templateRendererPlugin() {
     name: 'template-renderer-plugin',
     setup(build) {
       build.onEnd(({ metafile }) => {
+        fs.writeFileSync('./metafile.json', JSON.stringify(metafile, null, 2))
         const { outputs } = metafile
-        
-        Object.keys(outputs).forEach(filePath => {
-          const { rendererFilename, filename} = getFileAndRendererInfo(filePath)
-          
+
+        console.log(JSON.stringify(outputs, null, 2))
+        Object.keys(outputs).filter(x => x.endsWith('js')).forEach(filePath => {
+          const { rendererFilename, filename } = getFileAndRendererInfo(filePath)
           const module = require(path.resolve(targetDir, filename))
 
           if (typeof module.default === 'function') {
             const dynamicTemplate = createDynamicTemplate(filename, rendererFilename)
-            const newFilename = filename.replace('template.','')
+            const newFilename = filename.replace('template.', '')
             fs.writeFileSync(newFilename, dynamicTemplate)
           } else {
             const renderer = require(path.resolve(pwd, rendererFilename))
             const content = renderer(module.default)
-            fs.writeFileSync(path.resolve(targetDir, filename.replace('.template.js','')), content)
+            fs.writeFileSync(path.resolve(targetDir, filename.replace('.template.js', '')), content)
             fs.unlinkSync(path.resolve(targetDir, filename))
           }
         })
@@ -59,7 +88,7 @@ function templateRendererPlugin() {
 
 function getFileAndRendererInfo(filePath) {
   const extension = filePath.split('.').toReversed()[2]
-  const filename = filePath.replace('target/','')
+  const filename = filePath.replace('target/', '')
   const rendererFilename = templateRenderers[extension]
   return { rendererFilename, filename }
 }
@@ -82,4 +111,16 @@ function createDynamicTemplate(sourceLocation, rendererLocation) {
      |  return renderer(source.default(props))
      |}
      |`.replace(/^[ \t]*\|/gm, '')
+}
+
+function createStyleSheet(entryPoint) {
+  return `
+  |export const stylesheet = <link rel="stylesheet" href={getCssBundle("${entryPoint.replace(pwd, '')}")} />
+  |function getCssBundle(entrypoint) {
+  |  const metafile = JSON.parse(fs.readFileSync('./metafile.json'))
+  |  const output = Object.values(metafile.outputs).find(x => "/"+x.entryPoint === entrypoint)
+  |  
+  |  return output.cssBundle.replace('target','.')
+  |}
+  `.replace(/^[ \t]*\|/gm, '')
 }

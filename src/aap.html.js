@@ -1,9 +1,15 @@
-import React from 'react'
+import { content } from './aap.css'
+import { stylesheet } from '@kaliber/build/stylesheet'
 
-export default function Index({title}) {
-  return  (<html><head><title>{title}</title></head><body>mies</body></html>)
-}
-
-Index.props = {
-  title: 'dolfijnen title',
+export default function Index({ title }) {
+  return (<html>
+    <head>
+      <title>{title}</title>
+      {stylesheet}
+    </head>
+    <body>
+      <div className={content}>mies</div>
+    </body>
+  </html>
+  )
 }
