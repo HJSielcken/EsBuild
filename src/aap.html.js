@@ -1,11 +1,9 @@
-import * as React from 'react'
+import React from 'react'
 
-export default function a({title}) {
+export default function Index({title}) {
   return  (<html><head><title>{title}</title></head><body>mies</body></html>)
 }
 
-a.check = {
-  a: true,
-  b: 'dolfijn',
+Index.props = {
   title: 'dolfijnen title',
 }

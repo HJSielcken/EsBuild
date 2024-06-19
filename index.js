@@ -5,51 +5,75 @@ const pwd = process.cwd()
 const srcDir = path.resolve(pwd, 'src')
 const targetDir = path.resolve(pwd, 'target')
 
-const entries = fs.readdirSync(srcDir)
-
 const templateRenderers = {
   json: 'json-renderer.js',
   html: 'html-react-renderer.js',
 }
 
-Object.entries(templateRenderers).map((
-  [ext, render]) => {
-  const filteredEntries = entries.filter(x => new RegExp(`${ext}.js`).test(x))
-  filteredEntries.map(x => {
-    const fileLocation = path.resolve(srcDir, x)
-    const rendererLocation = path.resolve(pwd, render)
+build()
 
-    const renderer = require(rendererLocation)
-
-    const fileContent = fs.readFileSync(fileLocation).toString()
-    const { code } = esbuild.transformSync(fileContent, { loader: 'jsx', platform: 'node', format: 'cjs' })
-
-    const transformedFilename = `${x.split('.')[0]}.${ext}.rendered.js`
-    const transformedFileLocation = path.resolve(srcDir, transformedFilename)
-
-    fs.writeFileSync(transformedFileLocation, code)
-    const result = require(transformedFileLocation)
-
-    if (typeof result.default === 'function') {
-      const dynamicTemplate = createDynamicTemplate(transformedFileLocation, rendererLocation)
-
-      const random = Math.floor(Math.random() * 1000)
-      fs.writeFileSync(`${random}.js`, dynamicTemplate)
-
-      const test = require(`./${random}`)
-      console.log(test({ title: 'zeemeeuw' }))
-
-      fs.unlinkSync(`./${random}.js`)
-    } else {
-      console.log(renderer(result.default))
-    }
-    fs.unlinkSync(transformedFileLocation)
+async function build() {
+  const r = await esbuild.build({
+    entryPoints: getEntryPoints(templateRenderers),
+    outdir: targetDir,
+    metafile: true,
+    target: 'node20',
+    loader: {
+      '.js': 'jsx'
+    },
+    entryNames: '[dir]/[name].template',
+    format: 'cjs',
+    plugins: [
+      templateRendererPlugin()
+    ]
   })
-})
+}
+
+function templateRendererPlugin() {
+  return {
+    name: 'template-renderer-plugin',
+    setup(build) {
+      build.onEnd(({ metafile }) => {
+        const { outputs } = metafile
+        
+        Object.keys(outputs).forEach(filePath => {
+          const { rendererFilename, filename} = getFileAndRendererInfo(filePath)
+          
+          const module = require(path.resolve(targetDir, filename))
+
+          if (typeof module.default === 'function') {
+            const dynamicTemplate = createDynamicTemplate(filename, rendererFilename)
+            const newFilename = filename.replace('template.','')
+            fs.writeFileSync(newFilename, dynamicTemplate)
+          } else {
+            const renderer = require(path.resolve(pwd, rendererFilename))
+            const content = renderer(module.default)
+            fs.writeFileSync(path.resolve(targetDir, filename.replace('.template.js','')), content)
+            fs.unlinkSync(path.resolve(targetDir, filename))
+          }
+        })
+      })
+    }
+  }
+}
+
+function getFileAndRendererInfo(filePath) {
+  const extension = filePath.split('.').toReversed()[2]
+  const filename = filePath.replace('target/','')
+  const rendererFilename = templateRenderers[extension]
+  return { rendererFilename, filename }
+}
+
+function getEntryPoints(templateRenderers) {
+  const entries = fs.readdirSync(srcDir)
+  const extensions = Object.keys(templateRenderers).join('|')
+  const filteredEntries = entries.filter(x => new RegExp(`[${extensions}].js$`).test(x)).map(x => path.resolve(srcDir, x))
+  return filteredEntries
+}
 
 function createDynamicTemplate(sourceLocation, rendererLocation) {
-  return `|const renderer = require('${rendererLocation}')
-     |const source = require('${sourceLocation}')
+  return `|const renderer = require('./${rendererLocation}')
+     |const source = require('./target/${sourceLocation}')
      |Object.assign(render, source)
      |
      |module.exports = render
