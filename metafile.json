@@ -1,14 +1,14 @@
 {
   "inputs": {
     "src/aap.css": {
-      "bytes": 63,
+      "bytes": 62,
       "imports": []
     },
     "node_modules/react/cjs/react.production.min.js": {
       "bytes": 6930,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/react.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
           "kind": "import-statement",
           "external": true
         }
@@ -19,7 +19,7 @@
       "bytes": 87593,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/react.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
           "kind": "import-statement",
           "external": true
         }
@@ -30,7 +30,7 @@
       "bytes": 190,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/react.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
           "kind": "import-statement",
           "external": true
         },
@@ -47,8 +47,8 @@
       ],
       "format": "cjs"
     },
-    "react.js": {
-      "bytes": 112,
+    "externals.js": {
+      "bytes": 113,
       "imports": [
         {
           "path": "node_modules/react/index.js",
@@ -69,10 +69,10 @@
       "format": "esm"
     },
     "css-loader-plugin:@kaliber/build/stylesheet": {
-      "bytes": 342,
+      "bytes": 343,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/react.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
           "kind": "import-statement",
           "external": true
         }
@@ -93,7 +93,7 @@
           "original": "@kaliber/build/stylesheet"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/react.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
           "kind": "import-statement",
           "external": true
         }
@@ -104,7 +104,7 @@
       "bytes": 84,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/react.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
           "kind": "import-statement",
           "external": true
         }
@@ -125,7 +125,7 @@
           "original": "@kaliber/build/stylesheet"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/react.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
           "kind": "import-statement",
           "external": true
         }
@@ -136,7 +136,7 @@
       "bytes": 62,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/react.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
           "kind": "import-statement",
           "external": true
         }
@@ -158,37 +158,37 @@
       "cssBundle": "target/aap.html.template.css",
       "inputs": {
         "node_modules/react/cjs/react.production.min.js": {
-          "bytesInOutput": 9669
+          "bytesInOutput": 9673
         },
         "node_modules/react/cjs/react.development.js": {
-          "bytesInOutput": 77142
+          "bytesInOutput": 77146
         },
         "node_modules/react/index.js": {
-          "bytesInOutput": 307
+          "bytesInOutput": 311
         },
-        "react.js": {
-          "bytesInOutput": 136
+        "externals.js": {
+          "bytesInOutput": 144
         },
         "src/aap.html.js": {
-          "bytesInOutput": 485
+          "bytesInOutput": 489
         },
         "src/aap.css": {
           "bytesInOutput": 29
         },
         "css-loader-plugin:@kaliber/build/stylesheet": {
-          "bytesInOutput": 391
+          "bytesInOutput": 396
         }
       },
-      "bytes": 90678
+      "bytes": 90711
     },
     "target/aap.html.template.css": {
       "imports": [],
       "inputs": {
         "src/aap.css": {
-          "bytesInOutput": 67
+          "bytesInOutput": 66
         }
       },
-      "bytes": 85
+      "bytes": 84
     },
     "target/aap.json.template.js": {
       "imports": [],
@@ -196,22 +196,22 @@
       "entryPoint": "src/aap.json.js",
       "inputs": {
         "node_modules/react/cjs/react.production.min.js": {
-          "bytesInOutput": 9669
+          "bytesInOutput": 9673
         },
         "node_modules/react/cjs/react.development.js": {
-          "bytesInOutput": 77142
+          "bytesInOutput": 77146
         },
         "node_modules/react/index.js": {
-          "bytesInOutput": 307
+          "bytesInOutput": 311
         },
-        "react.js": {
-          "bytesInOutput": 99
+        "externals.js": {
+          "bytesInOutput": 107
         },
         "src/aap.json.js": {
-          "bytesInOutput": 231
+          "bytesInOutput": 235
         }
       },
-      "bytes": 89883
+      "bytes": 89911
     },
     "target/noot.html.template.js": {
       "imports": [
@@ -226,37 +226,37 @@
       "cssBundle": "target/noot.html.template.css",
       "inputs": {
         "node_modules/react/cjs/react.production.min.js": {
-          "bytesInOutput": 9669
+          "bytesInOutput": 9673
         },
         "node_modules/react/cjs/react.development.js": {
-          "bytesInOutput": 77142
+          "bytesInOutput": 77146
         },
         "node_modules/react/index.js": {
-          "bytesInOutput": 307
+          "bytesInOutput": 311
         },
-        "react.js": {
-          "bytesInOutput": 136
+        "externals.js": {
+          "bytesInOutput": 144
         },
         "src/noot.html.js": {
-          "bytesInOutput": 485
+          "bytesInOutput": 489
         },
         "src/aap.css": {
           "bytesInOutput": 30
         },
         "css-loader-plugin:@kaliber/build/stylesheet": {
-          "bytesInOutput": 391
+          "bytesInOutput": 396
         }
       },
-      "bytes": 90681
+      "bytes": 90714
     },
     "target/noot.html.template.css": {
       "imports": [],
       "inputs": {
         "src/aap.css": {
-          "bytesInOutput": 68
+          "bytesInOutput": 67
         }
       },
-      "bytes": 86
+      "bytes": 85
     },
     "target/noot.json.template.js": {
       "imports": [],
@@ -264,22 +264,22 @@
       "entryPoint": "src/noot.json.js",
       "inputs": {
         "node_modules/react/cjs/react.production.min.js": {
-          "bytesInOutput": 9669
+          "bytesInOutput": 9673
         },
         "node_modules/react/cjs/react.development.js": {
-          "bytesInOutput": 77142
+          "bytesInOutput": 77146
         },
         "node_modules/react/index.js": {
-          "bytesInOutput": 307
+          "bytesInOutput": 311
         },
-        "react.js": {
-          "bytesInOutput": 99
+        "externals.js": {
+          "bytesInOutput": 107
         },
         "src/noot.json.js": {
-          "bytesInOutput": 230
+          "bytesInOutput": 234
         }
       },
-      "bytes": 89883
+      "bytes": 89911
     }
   }
 }

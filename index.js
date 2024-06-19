@@ -26,7 +26,7 @@ async function build() {
     },
     entryNames: '[dir]/[name].template',
     format: 'cjs',
-    inject: ['./react.js'],
+    inject: ['./externals.js'],
     plugins: [
       cssLoaderPlugin(),
       templateRendererPlugin(),
@@ -65,7 +65,7 @@ function templateRendererPlugin() {
         fs.writeFileSync('./metafile.json', JSON.stringify(metafile, null, 2))
         const { outputs } = metafile
 
-        console.log(JSON.stringify(outputs, null, 2))
+        // console.log(JSON.stringify(outputs, null, 2))
         Object.keys(outputs).filter(x => x.endsWith('js')).forEach(filePath => {
           const { rendererFilename, filename } = getFileAndRendererInfo(filePath)
           const module = require(path.resolve(targetDir, filename))
@@ -73,10 +73,12 @@ function templateRendererPlugin() {
           if (typeof module.default === 'function') {
             const dynamicTemplate = createDynamicTemplate(filename, rendererFilename)
             const newFilename = filename.replace('template.', '')
+            console.log({newFilename})
             fs.writeFileSync(newFilename, dynamicTemplate)
           } else {
             const renderer = require(path.resolve(pwd, rendererFilename))
             const content = renderer(module.default)
+            console.log({filename})
             fs.writeFileSync(path.resolve(targetDir, filename.replace('.template.js', '')), content)
             fs.unlinkSync(path.resolve(targetDir, filename))
           }

@@ -36,7 +36,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 var require_react_production_min = __commonJS({
   "node_modules/react/cjs/react.production.min.js"(exports2) {
     "use strict";
-    init_react();
+    init_externals();
     var l = Symbol.for("react.element");
     var n = Symbol.for("react.portal");
     var p = Symbol.for("react.fragment");
@@ -310,7 +310,7 @@ var require_react_production_min = __commonJS({
 var require_react_development = __commonJS({
   "node_modules/react/cjs/react.development.js"(exports2, module2) {
     "use strict";
-    init_react();
+    init_externals();
     if (process.env.NODE_ENV !== "production") {
       (function() {
         "use strict";
@@ -2185,7 +2185,7 @@ var require_react_development = __commonJS({
 var require_react = __commonJS({
   "node_modules/react/index.js"(exports2, module2) {
     "use strict";
-    init_react();
+    init_externals();
     if (process.env.NODE_ENV === "production") {
       module2.exports = require_react_production_min();
     } else {
@@ -2194,10 +2194,10 @@ var require_react = __commonJS({
   }
 });
 
-// react.js
+// externals.js
 var React, fs;
-var init_react = __esm({
-  "react.js"() {
+var init_externals = __esm({
+  "externals.js"() {
     React = __toESM(require_react());
     fs = __toESM(require("fs"));
   }
@@ -2209,14 +2209,14 @@ __export(aap_html_exports, {
   default: () => Index
 });
 module.exports = __toCommonJS(aap_html_exports);
-init_react();
+init_externals();
 
 // src/aap.css
 var content = "aap_content";
 
 // css-loader-plugin:@kaliber/build/stylesheet
-init_react();
-var stylesheet = /* @__PURE__ */ React.createElement("link", { rel: "stylesheet", href: getCssBundle("/src/aap.html.js") });
+init_externals();
+var stylesheet = /* @__PURE__ */ React.createElement("link", { rel: "stylesheet", href: getCssBundle("/src/noot.html.js") });
 function getCssBundle(entrypoint) {
   const metafile = JSON.parse(fs.readFileSync("./metafile.json"));
   const output = Object.values(metafile.outputs).find((x) => "/" + x.entryPoint === entrypoint);
