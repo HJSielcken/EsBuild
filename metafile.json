@@ -1,9 +1,5 @@
 {
   "inputs": {
-    "src/aap.css": {
-      "bytes": 78,
-      "imports": []
-    },
     "node_modules/react/cjs/react.production.min.js": {
       "bytes": 6930,
       "imports": [
@@ -68,8 +64,55 @@
       ],
       "format": "esm"
     },
+    "src/Mies.js": {
+      "bytes": 71,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "src/Mies.universal.js?universal": {
+      "bytes": 109,
+      "imports": [
+        {
+          "path": "src/Mies.js",
+          "kind": "import-statement",
+          "original": "./Mies"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "src/Mies.universal.js": {
+      "bytes": 305,
+      "imports": [
+        {
+          "path": "src/Mies.universal.js?universal",
+          "kind": "import-statement",
+          "original": "/home/harmen/Documents/JavaScript/esbuild/src/Mies.universal.js?universal"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "src/aap.css": {
+      "bytes": 78,
+      "imports": []
+    },
     "css-loader-plugin:@kaliber/build/stylesheet": {
-      "bytes": 336,
+      "bytes": 335,
       "imports": [
         {
           "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
@@ -80,7 +123,7 @@
       "format": "esm"
     },
     "src/aap.html.js": {
-      "bytes": 304,
+      "bytes": 435,
       "imports": [
         {
           "path": "src/aap.css",
@@ -93,48 +136,15 @@
           "original": "@kaliber/build/stylesheet"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
+          "path": "src/Mies.js",
           "kind": "import-statement",
-          "external": true
-        }
-      ],
-      "format": "esm"
-    },
-    "src/aap.json.js": {
-      "bytes": 85,
-      "imports": [
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
-          "kind": "import-statement",
-          "external": true
-        }
-      ],
-      "format": "esm"
-    },
-    "src/noot.html.js": {
-      "bytes": 269,
-      "imports": [
-        {
-          "path": "src/aap.css",
-          "kind": "import-statement",
-          "original": "./aap.css"
+          "original": "./Mies"
         },
         {
-          "path": "css-loader-plugin:@kaliber/build/stylesheet",
+          "path": "src/Mies.universal.js",
           "kind": "import-statement",
-          "original": "@kaliber/build/stylesheet"
+          "original": "./Mies.universal"
         },
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
-          "kind": "import-statement",
-          "external": true
-        }
-      ],
-      "format": "esm"
-    },
-    "src/noot.json.js": {
-      "bytes": 76,
-      "imports": [
         {
           "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
           "kind": "import-statement",
@@ -145,6 +155,58 @@
     }
   },
   "outputs": {
+    "target/Mies.js": {
+      "imports": [],
+      "exports": [],
+      "entryPoint": "src/Mies.js",
+      "inputs": {
+        "node_modules/react/cjs/react.production.min.js": {
+          "bytesInOutput": 9673
+        },
+        "node_modules/react/cjs/react.development.js": {
+          "bytesInOutput": 77146
+        },
+        "node_modules/react/index.js": {
+          "bytesInOutput": 311
+        },
+        "externals.js": {
+          "bytesInOutput": 107
+        },
+        "src/Mies.js": {
+          "bytesInOutput": 283
+        }
+      },
+      "bytes": 90053
+    },
+    "target/Mies.universal.js": {
+      "imports": [],
+      "exports": [],
+      "entryPoint": "src/Mies.universal.js",
+      "inputs": {
+        "node_modules/react/cjs/react.production.min.js": {
+          "bytesInOutput": 9673
+        },
+        "node_modules/react/cjs/react.development.js": {
+          "bytesInOutput": 77146
+        },
+        "node_modules/react/index.js": {
+          "bytesInOutput": 311
+        },
+        "externals.js": {
+          "bytesInOutput": 107
+        },
+        "src/Mies.universal.js": {
+          "bytesInOutput": 445
+        },
+        "src/Mies.universal.js?universal": {
+          "bytesInOutput": 118
+        },
+        "src/Mies.js": {
+          "bytesInOutput": 167
+        }
+      },
+      "bytes": 90526
+    },
     "target/aap.html.js": {
       "imports": [
         {
@@ -170,16 +232,25 @@
           "bytesInOutput": 144
         },
         "src/aap.html.js": {
-          "bytesInOutput": 489
+          "bytesInOutput": 629
         },
         "src/aap.css": {
           "bytesInOutput": 29
         },
         "css-loader-plugin:@kaliber/build/stylesheet": {
-          "bytesInOutput": 389
+          "bytesInOutput": 388
+        },
+        "src/Mies.js": {
+          "bytesInOutput": 167
+        },
+        "src/Mies.universal.js": {
+          "bytesInOutput": 285
+        },
+        "src/Mies.universal.js?universal": {
+          "bytesInOutput": 118
         }
       },
-      "bytes": 90704
+      "bytes": 91517
     },
     "target/aap.html.css": {
       "imports": [],
@@ -189,97 +260,6 @@
         }
       },
       "bytes": 103
-    },
-    "target/aap.json.js": {
-      "imports": [],
-      "exports": [],
-      "entryPoint": "src/aap.json.js",
-      "inputs": {
-        "node_modules/react/cjs/react.production.min.js": {
-          "bytesInOutput": 9673
-        },
-        "node_modules/react/cjs/react.development.js": {
-          "bytesInOutput": 77146
-        },
-        "node_modules/react/index.js": {
-          "bytesInOutput": 311
-        },
-        "externals.js": {
-          "bytesInOutput": 107
-        },
-        "src/aap.json.js": {
-          "bytesInOutput": 236
-        }
-      },
-      "bytes": 89912
-    },
-    "target/noot.html.js": {
-      "imports": [
-        {
-          "path": "fs",
-          "kind": "require-call",
-          "external": true
-        }
-      ],
-      "exports": [],
-      "entryPoint": "src/noot.html.js",
-      "cssBundle": "target/noot.html.css",
-      "inputs": {
-        "node_modules/react/cjs/react.production.min.js": {
-          "bytesInOutput": 9673
-        },
-        "node_modules/react/cjs/react.development.js": {
-          "bytesInOutput": 77146
-        },
-        "node_modules/react/index.js": {
-          "bytesInOutput": 311
-        },
-        "externals.js": {
-          "bytesInOutput": 210
-        },
-        "src/noot.html.js": {
-          "bytesInOutput": 504
-        },
-        "src/aap.css": {
-          "bytesInOutput": 64
-        },
-        "css-loader-plugin:@kaliber/build/stylesheet": {
-          "bytesInOutput": 389
-        }
-      },
-      "bytes": 90822
-    },
-    "target/noot.html.css": {
-      "imports": [],
-      "inputs": {
-        "src/aap.css": {
-          "bytesInOutput": 87
-        }
-      },
-      "bytes": 105
-    },
-    "target/noot.json.js": {
-      "imports": [],
-      "exports": [],
-      "entryPoint": "src/noot.json.js",
-      "inputs": {
-        "node_modules/react/cjs/react.production.min.js": {
-          "bytesInOutput": 9673
-        },
-        "node_modules/react/cjs/react.development.js": {
-          "bytesInOutput": 77146
-        },
-        "node_modules/react/index.js": {
-          "bytesInOutput": 311
-        },
-        "externals.js": {
-          "bytesInOutput": 107
-        },
-        "src/noot.json.js": {
-          "bytesInOutput": 227
-        }
-      },
-      "bytes": 89904
     }
   }
 }

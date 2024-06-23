@@ -2202,16 +2202,19 @@ var init_externals = __esm({
   }
 });
 
-// src/aap.json.js
-var aap_json_exports = {};
-__export(aap_json_exports, {
-  default: () => aap_json_default
+// src/Mies.js
+var Mies_exports = {};
+__export(Mies_exports, {
+  Mies: () => Mies
 });
-module.exports = __toCommonJS(aap_json_exports);
+module.exports = __toCommonJS(Mies_exports);
 init_externals();
-var aap_json_default = ({ title }) => ({
-  aap: "noost",
-  mies: title
+function Mies({ text }) {
+  return /* @__PURE__ */ React.createElement("b", null, "WimZus", /* @__PURE__ */ React.createElement("u", null, text));
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (module.exports = {
+  Mies
 });
 /*! Bundled license information:
 

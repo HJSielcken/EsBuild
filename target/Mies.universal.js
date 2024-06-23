@@ -2195,33 +2195,23 @@ var require_react = __commonJS({
 });
 
 // externals.js
-var React, fs;
+var React;
 var init_externals = __esm({
   "externals.js"() {
     React = __toESM(require_react());
-    fs = __toESM(require("fs"));
   }
 });
 
-// src/aap.html.js
-var aap_html_exports = {};
-__export(aap_html_exports, {
-  default: () => Index
+// src/Mies.universal.js
+var Mies_universal_exports = {};
+__export(Mies_universal_exports, {
+  default: () => ServerComponent
 });
-module.exports = __toCommonJS(aap_html_exports);
+module.exports = __toCommonJS(Mies_universal_exports);
 init_externals();
 
-// src/aap.css
-var content = "aap_content";
-
-// css-loader-plugin:@kaliber/build/stylesheet
+// src/Mies.universal.js?universal
 init_externals();
-var stylesheet = /* @__PURE__ */ React.createElement("link", { rel: "stylesheet", href: getCssBundle("src/aap.html.js") });
-function getCssBundle(entrypoint) {
-  const metafile = JSON.parse(fs.readFileSync("./metafile.json"));
-  const output = Object.values(metafile.outputs).find((x) => x.entryPoint === entrypoint);
-  return output.cssBundle.replace("target", ".");
-}
 
 // src/Mies.js
 init_externals();
@@ -2229,11 +2219,7 @@ function Mies({ text }) {
   return /* @__PURE__ */ React.createElement("b", null, "WimZus", /* @__PURE__ */ React.createElement("u", null, text));
 }
 
-// src/Mies.universal.js
-init_externals();
-
 // src/Mies.universal.js?universal
-init_externals();
 function MiesApp({ text }) {
   return /* @__PURE__ */ React.createElement(Mies, { ...{ text } });
 }
@@ -2241,11 +2227,6 @@ function MiesApp({ text }) {
 // src/Mies.universal.js
 function ServerComponent(props) {
   return /* @__PURE__ */ React.createElement("div", { "data-kaliber-component": JSON.stringify(props), "data-kaliber-component-id": "fae6900e25efd5d327e5287a3139589c" }, /* @__PURE__ */ React.createElement(MiesApp, { ...props }));
-}
-
-// src/aap.html.js
-function Index({ title }) {
-  return /* @__PURE__ */ React.createElement("html", null, /* @__PURE__ */ React.createElement("head", null, /* @__PURE__ */ React.createElement("title", null, title), stylesheet), /* @__PURE__ */ React.createElement("body", null, /* @__PURE__ */ React.createElement("div", { className: content }, "mies"), /* @__PURE__ */ React.createElement(Mies, { text: "Jet" }), /* @__PURE__ */ React.createElement(ServerComponent, { text: "TeunVuurGijs" })));
 }
 /*! Bundled license information:
 

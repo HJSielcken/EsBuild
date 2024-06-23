@@ -7,6 +7,6 @@ const element = component({title: 'Zelda'})
 
 console.log(React.renderToStaticMarkup(element))
 
-const json = require('./target/aap.json.js')
+// const json = require('./target/aap.json.js')
 
-console.log(json.default({title: 'zelda'}))
+// console.log(json.default({title: 'zelda'}))

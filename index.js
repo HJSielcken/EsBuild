@@ -2,6 +2,7 @@ const esbuild = require('esbuild')
 const importFresh = require('import-fresh')
 const fs = require('fs')
 const path = require('path')
+const crypto = require('crypto')
 
 const pwd = process.cwd()
 const srcDir = path.resolve(pwd, 'src')
@@ -13,7 +14,8 @@ const templateRenderers = {
 }
 
 
-watch()
+// watch()
+build()
 
 async function build() {
   const config = getBuildConfig()
@@ -45,7 +47,40 @@ function getBuildConfig() {
     plugins: [
       cssLoaderPlugin(),
       templateRendererPlugin(),
+      universalLoaderPlugin()
     ]
+  }
+}
+
+function universalLoaderPlugin() {
+  return {
+    name: 'universal-loader-plugin',
+    setup({ onLoad }) {
+      onLoad({ filter: /\.universal.js/ }, async (args) => {
+
+        if(args.suffix==='?universal') return
+        const newFile = serverSnippet({
+          path: args.path,
+        })  
+        
+
+        return {
+          contents: newFile,
+          loader: 'jsx',
+        }
+      })
+    }
+  }
+
+  function serverSnippet({ path }) {
+    const md5 = crypto.createHash('md5').update(path).digest('hex')
+    return `|import Component from '${path}?universal'
+            |export default function ServerComponent(props) {
+            |return (
+            |<div data-kaliber-component={JSON.stringify(props)} data-kaliber-component-id='${md5}'>
+            |  <Component {...props}/>
+            |</div>)
+            |}`.split(/^[ \t]*\|/m).join('')
   }
 }
 
@@ -80,7 +115,7 @@ function templateRendererPlugin() {
         fs.writeFileSync('./metafile.json', JSON.stringify(metafile, null, 2))
         const { outputs } = metafile
 
-        Object.keys(outputs).filter(x => x.endsWith('js')).forEach(filePath => {
+        Object.keys(outputs).filter(x => x.endsWith('html.js')).forEach(filePath => {
           const { rendererFilename, filename } = getFileAndRendererInfo(filePath)
           const module = importFresh(path.resolve(targetDir, filename))
 
