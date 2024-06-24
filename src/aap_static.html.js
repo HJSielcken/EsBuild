@@ -4,10 +4,9 @@ import { Mies } from './Mies'
 import { stylesheet } from '@kaliber/build/stylesheet'
 import { content } from './aap.css'
 
-export default function Index({ title }) {
-  return (<html>
+export default (<html>
     <head>
-      <title>{title}</title>
+      <title>Title</title>
       {stylesheet}
     </head>
     <body>
@@ -17,4 +16,3 @@ export default function Index({ title }) {
     </body>
   </html>
   )
-}

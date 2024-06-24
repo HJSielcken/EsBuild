@@ -1,6 +1,7 @@
 
 const renderer = require('./html-react-renderer.js')
 const source = require('./target/aap.html.js')
+const React = require('react)
 Object.assign(render, source)
 
 module.exports = render
