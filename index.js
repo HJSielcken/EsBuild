@@ -10,12 +10,12 @@ const srcDir = path.resolve(pwd, 'src')
 const targetDir = path.resolve(pwd, 'target')
 
 const templateRenderers = {
-  // json: 'json-renderer.js',
+  json: 'json-renderer.js',
   html: 'html-react-renderer.js',
 }
 
-build()
-// watch()
+// build()
+watch()
 
 async function build() {
   await buildClient()
@@ -193,16 +193,15 @@ function templateRendererPlugin() {
       build.onEnd(({ metafile }) => {
         const { outputs } = metafile
 
-        Object.keys(outputs).filter(x => x.endsWith('html.js')).forEach(filePath => {
-          console.log(filePath)
-
+        Object.keys(outputs).filter(x => x.endsWith('html.js') || x.endsWith('json.js')).forEach(filePath => {
           const { rendererFilename, filename } = getFileAndRendererInfo(filePath)
           const module = importFresh(path.resolve(targetDir, filename))
 
           if (typeof module.default === 'function') {
-            const dynamicTemplate = createDynamicTemplate(filename, rendererFilename)
-            const newFilename = filename
-            fs.writeFileSync(newFilename, dynamicTemplate)
+            const newFilename = filename.replace('.html.js', '.html.template.js')
+            const dynamicTemplate = createDynamicTemplate(newFilename, rendererFilename)
+            fs.renameSync(path.resolve(process.cwd(), 'target', filename), path.resolve(process.cwd(), 'target', newFilename))
+            fs.writeFileSync(path.resolve(process.cwd(), 'target', filename), dynamicTemplate)
           } else {
             const renderer = importFresh(path.resolve(pwd, rendererFilename))
             const content = renderer(module.default)
@@ -210,8 +209,7 @@ function templateRendererPlugin() {
             fs.unlinkSync(path.resolve(targetDir, filename))
           }
         })
-
-        console.log('Finished')
+        console.log('Finished building')
       })
     }
   }
@@ -232,19 +230,30 @@ function getEntryPoints(templateRenderers) {
   return filteredEntries
 }
 
+function gatherEntries(templateRenderers) {
+  const walkSync = require('walk-sync')
+  const extensions = Object.keys(templateRenderers)
+  const template = extensions.join('|')
+  const globs = [`**/*.@(${template}).js`, '**/*.entry.js', '**/*.entry.css']
+  return walkSync(srcDir, { globs }).reduce(
+    (result, entry) => ([...result, entry]),
+    []
+  )
+}
+
 function createDynamicTemplate(sourceLocation, rendererLocation) {
   return `
-     |const renderer = require('./${rendererLocation}')
-     |const source = require('./target/${sourceLocation}')
-     |const React = require('react)
-     |Object.assign(render, source)
-     |
-     |module.exports = render
-     |
-     |function render(props) {
-     |  return renderer(source.default(props))
-     |}
-     |`.replace(/^[ \t]*\|/gm, '')
+    |const source = require('./${sourceLocation}')
+    |const renderer = require('../${rendererLocation}')
+    |const React = require('react')
+    |Object.assign(render, source)
+    |
+    |module.exports = render
+    |
+    |function render(props) {
+    |  return renderer(source.default(props))
+    |}
+    |`.replace(/^[ \t]*\|/gm, '')
 }
 
 function createStyleSheet(entryPoint) {
@@ -255,7 +264,7 @@ function createStyleSheet(entryPoint) {
   |function getCssBundle(entrypoint) {
   |  const metafile = JSON.parse(fs.readFileSync('./server-metafile.json'))
   |  const output = Object.values(metafile.outputs).find(x => x.entryPoint === entrypoint)
-  |  return output.cssBundle.replace('target','.')
+  |  return output.cssBundle.replace('target','')
   |}
   `.replace(/^[ \t]*\|/gm, '')
 }
@@ -294,7 +303,7 @@ function createScriptTags(entryPoint) {
   |  
   |  const browserEntries = Object.entries(browserMetafile.outputs)
   |  return universalInputs.map(x => {
-  |     return browserEntries.find(([k, v]) => v.entryPoint === x)[0].replace('target', '.')
+  |     return browserEntries.find(([k, v]) => v.entryPoint === x)[0].replace('target', '')
   |  })
   |}
   `.replace(/^[ \t]*\|/gm, '')
