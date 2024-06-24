@@ -197,6 +197,1167 @@
         }
       ],
       "format": "esm"
+    },
+    "node_modules/@tanstack/query-core/build/modern/subscribable.js": {
+      "bytes": 522,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/query-core/build/modern/utils.js": {
+      "bytes": 6141,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/query-core/build/modern/focusManager.js": {
+      "bytes": 1596,
+      "imports": [
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/subscribable.js",
+          "kind": "import-statement",
+          "original": "./subscribable.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/utils.js",
+          "kind": "import-statement",
+          "original": "./utils.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/query-core/build/modern/onlineManager.js": {
+      "bytes": 1483,
+      "imports": [
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/subscribable.js",
+          "kind": "import-statement",
+          "original": "./subscribable.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/utils.js",
+          "kind": "import-statement",
+          "original": "./utils.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/query-core/build/modern/retryer.js": {
+      "bytes": 3683,
+      "imports": [
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/focusManager.js",
+          "kind": "import-statement",
+          "original": "./focusManager.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/onlineManager.js",
+          "kind": "import-statement",
+          "original": "./onlineManager.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/utils.js",
+          "kind": "import-statement",
+          "original": "./utils.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/query-core/build/modern/notifyManager.js": {
+      "bytes": 1534,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/query-core/build/modern/removable.js": {
+      "bytes": 686,
+      "imports": [
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/utils.js",
+          "kind": "import-statement",
+          "original": "./utils.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/query-core/build/modern/query.js": {
+      "bytes": 10971,
+      "imports": [
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/utils.js",
+          "kind": "import-statement",
+          "original": "./utils.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/notifyManager.js",
+          "kind": "import-statement",
+          "original": "./notifyManager.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/retryer.js",
+          "kind": "import-statement",
+          "original": "./retryer.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/removable.js",
+          "kind": "import-statement",
+          "original": "./removable.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/query-core/build/modern/queryCache.js": {
+      "bytes": 2421,
+      "imports": [
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/utils.js",
+          "kind": "import-statement",
+          "original": "./utils.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/query.js",
+          "kind": "import-statement",
+          "original": "./query.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/notifyManager.js",
+          "kind": "import-statement",
+          "original": "./notifyManager.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/subscribable.js",
+          "kind": "import-statement",
+          "original": "./subscribable.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/query-core/build/modern/mutation.js": {
+      "bytes": 6178,
+      "imports": [
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/notifyManager.js",
+          "kind": "import-statement",
+          "original": "./notifyManager.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/removable.js",
+          "kind": "import-statement",
+          "original": "./removable.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/retryer.js",
+          "kind": "import-statement",
+          "original": "./retryer.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/query-core/build/modern/mutationCache.js": {
+      "bytes": 2850,
+      "imports": [
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/notifyManager.js",
+          "kind": "import-statement",
+          "original": "./notifyManager.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/mutation.js",
+          "kind": "import-statement",
+          "original": "./mutation.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/utils.js",
+          "kind": "import-statement",
+          "original": "./utils.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/subscribable.js",
+          "kind": "import-statement",
+          "original": "./subscribable.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/query-core/build/modern/infiniteQueryBehavior.js": {
+      "bytes": 3979,
+      "imports": [
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/utils.js",
+          "kind": "import-statement",
+          "original": "./utils.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/query-core/build/modern/queryClient.js": {
+      "bytes": 9120,
+      "imports": [
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/utils.js",
+          "kind": "import-statement",
+          "original": "./utils.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/queryCache.js",
+          "kind": "import-statement",
+          "original": "./queryCache.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/mutationCache.js",
+          "kind": "import-statement",
+          "original": "./mutationCache.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/focusManager.js",
+          "kind": "import-statement",
+          "original": "./focusManager.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/onlineManager.js",
+          "kind": "import-statement",
+          "original": "./onlineManager.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/notifyManager.js",
+          "kind": "import-statement",
+          "original": "./notifyManager.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/infiniteQueryBehavior.js",
+          "kind": "import-statement",
+          "original": "./infiniteQueryBehavior.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/query-core/build/modern/queryObserver.js": {
+      "bytes": 14704,
+      "imports": [
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/utils.js",
+          "kind": "import-statement",
+          "original": "./utils.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/notifyManager.js",
+          "kind": "import-statement",
+          "original": "./notifyManager.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/focusManager.js",
+          "kind": "import-statement",
+          "original": "./focusManager.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/subscribable.js",
+          "kind": "import-statement",
+          "original": "./subscribable.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/query.js",
+          "kind": "import-statement",
+          "original": "./query.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/query-core/build/modern/queriesObserver.js": {
+      "bytes": 5859,
+      "imports": [
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/notifyManager.js",
+          "kind": "import-statement",
+          "original": "./notifyManager.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/queryObserver.js",
+          "kind": "import-statement",
+          "original": "./queryObserver.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/subscribable.js",
+          "kind": "import-statement",
+          "original": "./subscribable.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/utils.js",
+          "kind": "import-statement",
+          "original": "./utils.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/query-core/build/modern/infiniteQueryObserver.js": {
+      "bytes": 2314,
+      "imports": [
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/queryObserver.js",
+          "kind": "import-statement",
+          "original": "./queryObserver.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/infiniteQueryBehavior.js",
+          "kind": "import-statement",
+          "original": "./infiniteQueryBehavior.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/query-core/build/modern/mutationObserver.js": {
+      "bytes": 3237,
+      "imports": [
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/mutation.js",
+          "kind": "import-statement",
+          "original": "./mutation.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/notifyManager.js",
+          "kind": "import-statement",
+          "original": "./notifyManager.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/subscribable.js",
+          "kind": "import-statement",
+          "original": "./subscribable.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/utils.js",
+          "kind": "import-statement",
+          "original": "./utils.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/query-core/build/modern/hydration.js": {
+      "bytes": 3453,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/query-core/build/modern/types.js": {
+      "bytes": 33,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/query-core/build/modern/index.js": {
+      "bytes": 1432,
+      "imports": [
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/retryer.js",
+          "kind": "import-statement",
+          "original": "./retryer.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/queryCache.js",
+          "kind": "import-statement",
+          "original": "./queryCache.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/queryClient.js",
+          "kind": "import-statement",
+          "original": "./queryClient.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/queryObserver.js",
+          "kind": "import-statement",
+          "original": "./queryObserver.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/queriesObserver.js",
+          "kind": "import-statement",
+          "original": "./queriesObserver.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/infiniteQueryObserver.js",
+          "kind": "import-statement",
+          "original": "./infiniteQueryObserver.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/mutationCache.js",
+          "kind": "import-statement",
+          "original": "./mutationCache.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/mutationObserver.js",
+          "kind": "import-statement",
+          "original": "./mutationObserver.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/notifyManager.js",
+          "kind": "import-statement",
+          "original": "./notifyManager.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/focusManager.js",
+          "kind": "import-statement",
+          "original": "./focusManager.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/onlineManager.js",
+          "kind": "import-statement",
+          "original": "./onlineManager.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/utils.js",
+          "kind": "import-statement",
+          "original": "./utils.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/retryer.js",
+          "kind": "import-statement",
+          "original": "./retryer.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/hydration.js",
+          "kind": "import-statement",
+          "original": "./hydration.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/types.js",
+          "kind": "import-statement",
+          "original": "./types.js"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/query.js",
+          "kind": "import-statement",
+          "original": "./query.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/react-query/build/modern/types.js": {
+      "bytes": 33,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/react/cjs/react-jsx-runtime.development.js": {
+      "bytes": 42700,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node_modules/react/index.js",
+          "kind": "require-call",
+          "original": "react"
+        }
+      ],
+      "format": "cjs"
+    },
+    "node_modules/react/jsx-runtime.js": {
+      "bytes": 214,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node_modules/react/cjs/react-jsx-runtime.development.js",
+          "kind": "require-call",
+          "original": "./cjs/react-jsx-runtime.development.js"
+        }
+      ],
+      "format": "cjs"
+    },
+    "node_modules/@tanstack/react-query/build/modern/QueryClientProvider.js": {
+      "bytes": 823,
+      "imports": [
+        {
+          "path": "node_modules/react/index.js",
+          "kind": "import-statement",
+          "original": "react"
+        },
+        {
+          "path": "node_modules/react/jsx-runtime.js",
+          "kind": "import-statement",
+          "original": "react/jsx-runtime"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/react-query/build/modern/isRestoring.js": {
+      "bytes": 333,
+      "imports": [
+        {
+          "path": "node_modules/react/index.js",
+          "kind": "import-statement",
+          "original": "react"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/react-query/build/modern/QueryErrorResetBoundary.js": {
+      "bytes": 884,
+      "imports": [
+        {
+          "path": "node_modules/react/index.js",
+          "kind": "import-statement",
+          "original": "react"
+        },
+        {
+          "path": "node_modules/react/jsx-runtime.js",
+          "kind": "import-statement",
+          "original": "react/jsx-runtime"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/react-query/build/modern/utils.js": {
+      "bytes": 261,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/react-query/build/modern/errorBoundaryUtils.js": {
+      "bytes": 860,
+      "imports": [
+        {
+          "path": "node_modules/react/index.js",
+          "kind": "import-statement",
+          "original": "react"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/utils.js",
+          "kind": "import-statement",
+          "original": "./utils.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/react-query/build/modern/suspense.js": {
+      "bytes": 787,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/react-query/build/modern/useQueries.js": {
+      "bytes": 3287,
+      "imports": [
+        {
+          "path": "node_modules/react/index.js",
+          "kind": "import-statement",
+          "original": "react"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/index.js",
+          "kind": "import-statement",
+          "original": "@tanstack/query-core"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/QueryClientProvider.js",
+          "kind": "import-statement",
+          "original": "./QueryClientProvider.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/isRestoring.js",
+          "kind": "import-statement",
+          "original": "./isRestoring.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/QueryErrorResetBoundary.js",
+          "kind": "import-statement",
+          "original": "./QueryErrorResetBoundary.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/errorBoundaryUtils.js",
+          "kind": "import-statement",
+          "original": "./errorBoundaryUtils.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/suspense.js",
+          "kind": "import-statement",
+          "original": "./suspense.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/react-query/build/modern/useBaseQuery.js": {
+      "bytes": 2650,
+      "imports": [
+        {
+          "path": "node_modules/react/index.js",
+          "kind": "import-statement",
+          "original": "react"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/index.js",
+          "kind": "import-statement",
+          "original": "@tanstack/query-core"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/QueryErrorResetBoundary.js",
+          "kind": "import-statement",
+          "original": "./QueryErrorResetBoundary.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/QueryClientProvider.js",
+          "kind": "import-statement",
+          "original": "./QueryClientProvider.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/isRestoring.js",
+          "kind": "import-statement",
+          "original": "./isRestoring.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/errorBoundaryUtils.js",
+          "kind": "import-statement",
+          "original": "./errorBoundaryUtils.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/suspense.js",
+          "kind": "import-statement",
+          "original": "./suspense.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/react-query/build/modern/useQuery.js": {
+      "bytes": 301,
+      "imports": [
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/index.js",
+          "kind": "import-statement",
+          "original": "@tanstack/query-core"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/useBaseQuery.js",
+          "kind": "import-statement",
+          "original": "./useBaseQuery.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/react-query/build/modern/useSuspenseQuery.js": {
+      "bytes": 713,
+      "imports": [
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/index.js",
+          "kind": "import-statement",
+          "original": "@tanstack/query-core"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/useBaseQuery.js",
+          "kind": "import-statement",
+          "original": "./useBaseQuery.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/suspense.js",
+          "kind": "import-statement",
+          "original": "./suspense.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/react-query/build/modern/useSuspenseInfiniteQuery.js": {
+      "bytes": 551,
+      "imports": [
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/index.js",
+          "kind": "import-statement",
+          "original": "@tanstack/query-core"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/useBaseQuery.js",
+          "kind": "import-statement",
+          "original": "./useBaseQuery.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/suspense.js",
+          "kind": "import-statement",
+          "original": "./suspense.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/react-query/build/modern/useSuspenseQueries.js": {
+      "bytes": 548,
+      "imports": [
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/useQueries.js",
+          "kind": "import-statement",
+          "original": "./useQueries.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/suspense.js",
+          "kind": "import-statement",
+          "original": "./suspense.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/react-query/build/modern/queryOptions.js": {
+      "bytes": 143,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/react-query/build/modern/infiniteQueryOptions.js": {
+      "bytes": 175,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/react-query/build/modern/HydrationBoundary.js": {
+      "bytes": 2007,
+      "imports": [
+        {
+          "path": "node_modules/react/index.js",
+          "kind": "import-statement",
+          "original": "react"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/index.js",
+          "kind": "import-statement",
+          "original": "@tanstack/query-core"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/QueryClientProvider.js",
+          "kind": "import-statement",
+          "original": "./QueryClientProvider.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/react-query/build/modern/useIsFetching.js": {
+      "bytes": 647,
+      "imports": [
+        {
+          "path": "node_modules/react/index.js",
+          "kind": "import-statement",
+          "original": "react"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/index.js",
+          "kind": "import-statement",
+          "original": "@tanstack/query-core"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/QueryClientProvider.js",
+          "kind": "import-statement",
+          "original": "./QueryClientProvider.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/react-query/build/modern/useMutationState.js": {
+      "bytes": 1529,
+      "imports": [
+        {
+          "path": "node_modules/react/index.js",
+          "kind": "import-statement",
+          "original": "react"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/index.js",
+          "kind": "import-statement",
+          "original": "@tanstack/query-core"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/QueryClientProvider.js",
+          "kind": "import-statement",
+          "original": "./QueryClientProvider.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/react-query/build/modern/useMutation.js": {
+      "bytes": 1203,
+      "imports": [
+        {
+          "path": "node_modules/react/index.js",
+          "kind": "import-statement",
+          "original": "react"
+        },
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/index.js",
+          "kind": "import-statement",
+          "original": "@tanstack/query-core"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/QueryClientProvider.js",
+          "kind": "import-statement",
+          "original": "./QueryClientProvider.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/utils.js",
+          "kind": "import-statement",
+          "original": "./utils.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/react-query/build/modern/useInfiniteQuery.js": {
+      "bytes": 365,
+      "imports": [
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/index.js",
+          "kind": "import-statement",
+          "original": "@tanstack/query-core"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/useBaseQuery.js",
+          "kind": "import-statement",
+          "original": "./useBaseQuery.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@tanstack/react-query/build/modern/index.js": {
+      "bytes": 1504,
+      "imports": [
+        {
+          "path": "node_modules/@tanstack/query-core/build/modern/index.js",
+          "kind": "import-statement",
+          "original": "@tanstack/query-core"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/types.js",
+          "kind": "import-statement",
+          "original": "./types.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/useQueries.js",
+          "kind": "import-statement",
+          "original": "./useQueries.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/useQuery.js",
+          "kind": "import-statement",
+          "original": "./useQuery.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/useSuspenseQuery.js",
+          "kind": "import-statement",
+          "original": "./useSuspenseQuery.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/useSuspenseInfiniteQuery.js",
+          "kind": "import-statement",
+          "original": "./useSuspenseInfiniteQuery.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/useSuspenseQueries.js",
+          "kind": "import-statement",
+          "original": "./useSuspenseQueries.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/queryOptions.js",
+          "kind": "import-statement",
+          "original": "./queryOptions.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/infiniteQueryOptions.js",
+          "kind": "import-statement",
+          "original": "./infiniteQueryOptions.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/QueryClientProvider.js",
+          "kind": "import-statement",
+          "original": "./QueryClientProvider.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/HydrationBoundary.js",
+          "kind": "import-statement",
+          "original": "./HydrationBoundary.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/QueryErrorResetBoundary.js",
+          "kind": "import-statement",
+          "original": "./QueryErrorResetBoundary.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/useIsFetching.js",
+          "kind": "import-statement",
+          "original": "./useIsFetching.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/useMutationState.js",
+          "kind": "import-statement",
+          "original": "./useMutationState.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/useMutation.js",
+          "kind": "import-statement",
+          "original": "./useMutation.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/useInfiniteQuery.js",
+          "kind": "import-statement",
+          "original": "./useInfiniteQuery.js"
+        },
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/isRestoring.js",
+          "kind": "import-statement",
+          "original": "./isRestoring.js"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "src/Query.js": {
+      "bytes": 321,
+      "imports": [
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/index.js",
+          "kind": "import-statement",
+          "original": "@tanstack/react-query"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "src/Query.universal.js?universal": {
+      "bytes": 279,
+      "imports": [
+        {
+          "path": "node_modules/@tanstack/react-query/build/modern/index.js",
+          "kind": "import-statement",
+          "original": "@tanstack/react-query"
+        },
+        {
+          "path": "src/Query.js",
+          "kind": "import-statement",
+          "original": "./Query"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "src/Query.universal.js": {
+      "bytes": 421,
+      "imports": [
+        {
+          "path": "src/Query.universal.js?universal",
+          "kind": "import-statement",
+          "original": "/home/harmen/Documents/JavaScript/esbuild/src/Query.universal.js?universal"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
     }
   },
   "outputs": {
@@ -206,40 +1367,40 @@
       "entryPoint": "src/Jet.universal.js",
       "inputs": {
         "node_modules/react/cjs/react.development.js": {
-          "bytesInOutput": 80826
+          "bytesInOutput": 77080
         },
         "node_modules/react/index.js": {
-          "bytesInOutput": 279
+          "bytesInOutput": 257
         },
         "node_modules/scheduler/cjs/scheduler.development.js": {
-          "bytesInOutput": 17818
+          "bytesInOutput": 16920
         },
         "node_modules/scheduler/index.js": {
-          "bytesInOutput": 291
+          "bytesInOutput": 269
         },
         "node_modules/react-dom/cjs/react-dom.development.js": {
-          "bytesInOutput": 951466
+          "bytesInOutput": 909256
         },
         "node_modules/react-dom/index.js": {
-          "bytesInOutput": 311
+          "bytesInOutput": 287
         },
         "node_modules/react-dom/client.js": {
-          "bytesInOutput": 868
+          "bytesInOutput": 808
         },
         "externals-browser.js": {
-          "bytesInOutput": 189
+          "bytesInOutput": 175
         },
         "src/Jet.universal.js": {
-          "bytesInOutput": 358
+          "bytesInOutput": 342
         },
         "src/Jet.universal.js?universal": {
-          "bytesInOutput": 133
+          "bytesInOutput": 125
         },
         "src/Mies.js": {
-          "bytesInOutput": 467
+          "bytesInOutput": 439
         }
       },
-      "bytes": 1056363
+      "bytes": 1009218
     },
     "target/Mies.universal-browser.js": {
       "imports": [],
@@ -247,40 +1408,159 @@
       "entryPoint": "src/Mies.universal.js",
       "inputs": {
         "node_modules/react/cjs/react.development.js": {
-          "bytesInOutput": 80826
+          "bytesInOutput": 77080
         },
         "node_modules/react/index.js": {
-          "bytesInOutput": 279
+          "bytesInOutput": 257
         },
         "node_modules/scheduler/cjs/scheduler.development.js": {
-          "bytesInOutput": 17818
+          "bytesInOutput": 16920
         },
         "node_modules/scheduler/index.js": {
-          "bytesInOutput": 291
+          "bytesInOutput": 269
         },
         "node_modules/react-dom/cjs/react-dom.development.js": {
-          "bytesInOutput": 951466
+          "bytesInOutput": 909256
         },
         "node_modules/react-dom/index.js": {
-          "bytesInOutput": 311
+          "bytesInOutput": 287
         },
         "node_modules/react-dom/client.js": {
-          "bytesInOutput": 868
+          "bytesInOutput": 808
         },
         "externals-browser.js": {
-          "bytesInOutput": 189
+          "bytesInOutput": 175
         },
         "src/Mies.universal.js": {
-          "bytesInOutput": 359
+          "bytesInOutput": 343
         },
         "src/Mies.universal.js?universal": {
-          "bytesInOutput": 134
+          "bytesInOutput": 126
         },
         "src/Mies.js": {
-          "bytesInOutput": 467
+          "bytesInOutput": 439
         }
       },
-      "bytes": 1056369
+      "bytes": 1009224
+    },
+    "target/Query.universal-browser.js": {
+      "imports": [],
+      "exports": [],
+      "entryPoint": "src/Query.universal.js",
+      "inputs": {
+        "node_modules/react/cjs/react.development.js": {
+          "bytesInOutput": 77092
+        },
+        "node_modules/react/index.js": {
+          "bytesInOutput": 257
+        },
+        "node_modules/scheduler/cjs/scheduler.development.js": {
+          "bytesInOutput": 16920
+        },
+        "node_modules/scheduler/index.js": {
+          "bytesInOutput": 269
+        },
+        "node_modules/react-dom/cjs/react-dom.development.js": {
+          "bytesInOutput": 909260
+        },
+        "node_modules/react-dom/index.js": {
+          "bytesInOutput": 287
+        },
+        "node_modules/react-dom/client.js": {
+          "bytesInOutput": 808
+        },
+        "externals-browser.js": {
+          "bytesInOutput": 175
+        },
+        "node_modules/react/cjs/react-jsx-runtime.development.js": {
+          "bytesInOutput": 36473
+        },
+        "node_modules/react/jsx-runtime.js": {
+          "bytesInOutput": 281
+        },
+        "src/Query.universal.js": {
+          "bytesInOutput": 344
+        },
+        "src/Query.universal.js?universal": {
+          "bytesInOutput": 219
+        },
+        "node_modules/@tanstack/react-query/build/modern/index.js": {
+          "bytesInOutput": 26
+        },
+        "node_modules/@tanstack/query-core/build/modern/index.js": {
+          "bytesInOutput": 26
+        },
+        "node_modules/@tanstack/query-core/build/modern/retryer.js": {
+          "bytesInOutput": 3430
+        },
+        "node_modules/@tanstack/query-core/build/modern/focusManager.js": {
+          "bytesInOutput": 1427
+        },
+        "node_modules/@tanstack/query-core/build/modern/subscribable.js": {
+          "bytesInOutput": 458
+        },
+        "node_modules/@tanstack/query-core/build/modern/utils.js": {
+          "bytesInOutput": 5649
+        },
+        "node_modules/@tanstack/query-core/build/modern/onlineManager.js": {
+          "bytesInOutput": 1310
+        },
+        "node_modules/@tanstack/query-core/build/modern/queryCache.js": {
+          "bytesInOutput": 2164
+        },
+        "node_modules/@tanstack/query-core/build/modern/query.js": {
+          "bytesInOutput": 10599
+        },
+        "node_modules/@tanstack/query-core/build/modern/notifyManager.js": {
+          "bytesInOutput": 1444
+        },
+        "node_modules/@tanstack/query-core/build/modern/removable.js": {
+          "bytesInOutput": 576
+        },
+        "node_modules/@tanstack/query-core/build/modern/queryClient.js": {
+          "bytesInOutput": 8594
+        },
+        "node_modules/@tanstack/query-core/build/modern/mutationCache.js": {
+          "bytesInOutput": 2591
+        },
+        "node_modules/@tanstack/query-core/build/modern/mutation.js": {
+          "bytesInOutput": 5967
+        },
+        "node_modules/@tanstack/query-core/build/modern/infiniteQueryBehavior.js": {
+          "bytesInOutput": 3505
+        },
+        "node_modules/@tanstack/query-core/build/modern/queryObserver.js": {
+          "bytesInOutput": 14303
+        },
+        "node_modules/@tanstack/react-query/build/modern/QueryClientProvider.js": {
+          "bytesInOutput": 754
+        },
+        "node_modules/@tanstack/react-query/build/modern/isRestoring.js": {
+          "bytesInOutput": 243
+        },
+        "node_modules/@tanstack/react-query/build/modern/QueryErrorResetBoundary.js": {
+          "bytesInOutput": 510
+        },
+        "node_modules/@tanstack/react-query/build/modern/errorBoundaryUtils.js": {
+          "bytesInOutput": 669
+        },
+        "node_modules/@tanstack/react-query/build/modern/utils.js": {
+          "bytesInOutput": 179
+        },
+        "node_modules/@tanstack/react-query/build/modern/suspense.js": {
+          "bytesInOutput": 486
+        },
+        "node_modules/@tanstack/react-query/build/modern/useQuery.js": {
+          "bytesInOutput": 130
+        },
+        "node_modules/@tanstack/react-query/build/modern/useBaseQuery.js": {
+          "bytesInOutput": 2114
+        },
+        "src/Query.js": {
+          "bytesInOutput": 376
+        }
+      },
+      "bytes": 1115712
     }
   }
 }

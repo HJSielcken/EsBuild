@@ -48,7 +48,7 @@ function getClientBuildConfig() {
     outdir: targetDir,
     metafile: true,
     bundle: true,
-    // format: 'esm',
+    format: 'esm',
     platform: 'browser',
     // splitting: false,
     loader: {
@@ -161,15 +161,11 @@ function universalServerLoaderPlugin() {
             |export default function ServerComponent(props) {
             |const content = renderToString(<Component {...props} />)
             |return (
-            |<>
             |<div data-kaliber-component={JSON.stringify(props)} data-kaliber-component-id='${md5}' dangerouslySetInnerHTML={{ __html: content }} />
-            |</>
             |)
             |}`.split(/^[ \t]*\|/m).join('')
   }
 }
-// |<script src="${scriptname}"></script>
-
 
 function cssLoaderPlugin() {
   return {
@@ -290,7 +286,7 @@ function javascriptLoaderPlugin() {
 
 function createScriptTags(entryPoint) {
   return `
-  |export const javascript = determineScripts('${entryPoint.replace(pwd, '').slice(1)}').map((x,idx)=><script key={idx} src={x} defer></script>)
+  |export const javascript = determineScripts('${entryPoint.replace(pwd, '').slice(1)}').map((x,idx)=><script key={idx} src={x} type="module" defer></script>)
   |
   |function determineScripts(entryPoint) {
   |  const metafile = JSON.parse(fs.readFileSync('./server-metafile.json'))
