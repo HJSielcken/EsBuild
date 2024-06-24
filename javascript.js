@@ -1,0 +1,13 @@
+const fs = require('fs')
+
+const browser = JSON.parse(fs.readFileSync('./browser-metafile.json'))
+const server = JSON.parse(fs.readFileSync('./server-metafile.json'))
+
+const entryPoint = 'src/aap_static.html.js'
+const { inputs } = Object.values(server.outputs).find(x => x.entryPoint === entryPoint)
+
+const universalInputs = Object.keys(inputs).filter(x => x.endsWith('.universal.js'))
+
+console.log(universalInputs.map(x => x.replace('src', '').replace('universal', 'universal-browser')))
+
+func

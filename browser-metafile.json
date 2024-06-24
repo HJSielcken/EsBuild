@@ -1,0 +1,286 @@
+{
+  "inputs": {
+    "node_modules/react/cjs/react.development.js": {
+      "bytes": 87593,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "cjs"
+    },
+    "node_modules/react/index.js": {
+      "bytes": 190,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node_modules/react/cjs/react.development.js",
+          "kind": "require-call",
+          "original": "./cjs/react.development.js"
+        }
+      ],
+      "format": "cjs"
+    },
+    "node_modules/scheduler/cjs/scheduler.development.js": {
+      "bytes": 17497,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "cjs"
+    },
+    "node_modules/scheduler/index.js": {
+      "bytes": 198,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node_modules/scheduler/cjs/scheduler.development.js",
+          "kind": "require-call",
+          "original": "./cjs/scheduler.development.js"
+        }
+      ],
+      "format": "cjs"
+    },
+    "node_modules/react-dom/cjs/react-dom.development.js": {
+      "bytes": 1029622,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node_modules/react/index.js",
+          "kind": "require-call",
+          "original": "react"
+        },
+        {
+          "path": "node_modules/scheduler/index.js",
+          "kind": "require-call",
+          "original": "scheduler"
+        }
+      ],
+      "format": "cjs"
+    },
+    "node_modules/react-dom/index.js": {
+      "bytes": 1363,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node_modules/react-dom/cjs/react-dom.development.js",
+          "kind": "require-call",
+          "original": "./cjs/react-dom.development.js"
+        }
+      ],
+      "format": "cjs"
+    },
+    "node_modules/react-dom/client.js": {
+      "bytes": 619,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node_modules/react-dom/index.js",
+          "kind": "require-call",
+          "original": "react-dom"
+        }
+      ],
+      "format": "cjs"
+    },
+    "externals-browser.js": {
+      "bytes": 175,
+      "imports": [
+        {
+          "path": "node_modules/react/index.js",
+          "kind": "import-statement",
+          "original": "react"
+        },
+        {
+          "path": "node_modules/react-dom/client.js",
+          "kind": "import-statement",
+          "original": "react-dom/client"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/Mies.js": {
+      "bytes": 286,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "src/Jet.universal.js?universal": {
+      "bytes": 108,
+      "imports": [
+        {
+          "path": "src/Mies.js",
+          "kind": "import-statement",
+          "original": "./Mies"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "src/Jet.universal.js": {
+      "bytes": 419,
+      "imports": [
+        {
+          "path": "src/Jet.universal.js?universal",
+          "kind": "import-statement",
+          "original": "/home/harmen/Documents/JavaScript/esbuild/src/Jet.universal.js?universal"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "src/Mies.universal.js?universal": {
+      "bytes": 109,
+      "imports": [
+        {
+          "path": "src/Mies.js",
+          "kind": "import-statement",
+          "original": "./Mies"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "src/Mies.universal.js": {
+      "bytes": 420,
+      "imports": [
+        {
+          "path": "src/Mies.universal.js?universal",
+          "kind": "import-statement",
+          "original": "/home/harmen/Documents/JavaScript/esbuild/src/Mies.universal.js?universal"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    }
+  },
+  "outputs": {
+    "target/Jet.universal-browser.js": {
+      "imports": [],
+      "exports": [],
+      "entryPoint": "src/Jet.universal.js",
+      "inputs": {
+        "node_modules/react/cjs/react.development.js": {
+          "bytesInOutput": 80826
+        },
+        "node_modules/react/index.js": {
+          "bytesInOutput": 279
+        },
+        "node_modules/scheduler/cjs/scheduler.development.js": {
+          "bytesInOutput": 17818
+        },
+        "node_modules/scheduler/index.js": {
+          "bytesInOutput": 291
+        },
+        "node_modules/react-dom/cjs/react-dom.development.js": {
+          "bytesInOutput": 951466
+        },
+        "node_modules/react-dom/index.js": {
+          "bytesInOutput": 311
+        },
+        "node_modules/react-dom/client.js": {
+          "bytesInOutput": 868
+        },
+        "externals-browser.js": {
+          "bytesInOutput": 189
+        },
+        "src/Jet.universal.js": {
+          "bytesInOutput": 358
+        },
+        "src/Jet.universal.js?universal": {
+          "bytesInOutput": 133
+        },
+        "src/Mies.js": {
+          "bytesInOutput": 467
+        }
+      },
+      "bytes": 1056363
+    },
+    "target/Mies.universal-browser.js": {
+      "imports": [],
+      "exports": [],
+      "entryPoint": "src/Mies.universal.js",
+      "inputs": {
+        "node_modules/react/cjs/react.development.js": {
+          "bytesInOutput": 80826
+        },
+        "node_modules/react/index.js": {
+          "bytesInOutput": 279
+        },
+        "node_modules/scheduler/cjs/scheduler.development.js": {
+          "bytesInOutput": 17818
+        },
+        "node_modules/scheduler/index.js": {
+          "bytesInOutput": 291
+        },
+        "node_modules/react-dom/cjs/react-dom.development.js": {
+          "bytesInOutput": 951466
+        },
+        "node_modules/react-dom/index.js": {
+          "bytesInOutput": 311
+        },
+        "node_modules/react-dom/client.js": {
+          "bytesInOutput": 868
+        },
+        "externals-browser.js": {
+          "bytesInOutput": 189
+        },
+        "src/Mies.universal.js": {
+          "bytesInOutput": 359
+        },
+        "src/Mies.universal.js?universal": {
+          "bytesInOutput": 134
+        },
+        "src/Mies.js": {
+          "bytesInOutput": 467
+        }
+      },
+      "bytes": 1056369
+    }
+  }
+}

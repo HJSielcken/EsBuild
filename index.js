@@ -14,8 +14,8 @@ const templateRenderers = {
   html: 'html-react-renderer.js',
 }
 
-// build()
-watch()
+build()
+// watch()
 
 async function build() {
   await buildClient()
@@ -48,7 +48,9 @@ function getClientBuildConfig() {
     outdir: targetDir,
     metafile: true,
     bundle: true,
+    // format: 'esm',
     platform: 'browser',
+    // splitting: false,
     loader: {
       '.js': 'jsx',
       '.css': 'local-css',
@@ -56,8 +58,22 @@ function getClientBuildConfig() {
     entryNames: '[dir]/[name]-browser',
     inject: ['./externals-browser.js'],
     plugins: [
-      universalClientLoaderPlugin()
+      universalClientLoaderPlugin(),
+      writeMetaFilePlugin('browser-metafile.json'),
     ]
+  }
+}
+
+function writeMetaFilePlugin(filename) {
+  return {
+    name: 'write-metafile-plugin',
+    setup({ onEnd }) {
+      onEnd(({ metafile }) => {
+        // console.log(metafile)
+        fs.writeFileSync(`./${filename}`, JSON.stringify(metafile, null, 2))
+      }
+      )
+    }
   }
 }
 
@@ -77,7 +93,9 @@ function getServerBuildConfig() {
     inject: ['./externals.js'],
     plugins: [
       cssLoaderPlugin(),
+      javascriptLoaderPlugin(),
       universalServerLoaderPlugin(),
+      writeMetaFilePlugin('server-metafile.json'),
       templateRendererPlugin(),
       nodeExternalsPlugin()
     ]
@@ -145,12 +163,12 @@ function universalServerLoaderPlugin() {
             |return (
             |<>
             |<div data-kaliber-component={JSON.stringify(props)} data-kaliber-component-id='${md5}' dangerouslySetInnerHTML={{ __html: content }} />
-            |<script src="${scriptname}"></script>
             |</>
             |)
             |}`.split(/^[ \t]*\|/m).join('')
   }
 }
+// |<script src="${scriptname}"></script>
 
 
 function cssLoaderPlugin() {
@@ -182,8 +200,11 @@ function templateRendererPlugin() {
         const { outputs } = metafile
 
         Object.keys(outputs).filter(x => x.endsWith('html.js')).forEach(filePath => {
+          console.log(filePath)
+
           const { rendererFilename, filename } = getFileAndRendererInfo(filePath)
           const module = importFresh(path.resolve(targetDir, filename))
+          console.log(filePath)
 
           if (typeof module.default === 'function') {
             const dynamicTemplate = createDynamicTemplate(filename, rendererFilename)
@@ -242,6 +263,40 @@ function createStyleSheet(entryPoint) {
   |  const metafile = JSON.parse(fs.readFileSync('./metafile.json'))
   |  const output = Object.values(metafile.outputs).find(x => x.entryPoint === entrypoint)
   |  return output.cssBundle.replace('target','.')
+  |}
+  `.replace(/^[ \t]*\|/gm, '')
+}
+
+
+function javascriptLoaderPlugin() {
+  return {
+    name: 'javascript-loader-plugin',
+    setup(build) {
+      build.onResolve({ filter: /^\@kaliber\/build\/javascript$/ }, args => {
+        return {
+          path: args.path,
+          namespace: args.importer,
+        }
+      })
+      build.onLoad({ filter: /^\@kaliber\/build\/javascript$/ }, args => {
+        return {
+          loader: 'jsx',
+          contents: createScriptTags(args.namespace)
+        }
+      })
+    }
+  }
+}
+
+function createScriptTags(entryPoint) {
+  return `
+  |export const javascript = determineScripts('${entryPoint.replace(pwd, '').slice(1)}').map((x,idx)=><script key={idx} src={x} defer></script>)
+  |
+  |function determineScripts(entryPoint) {
+  |  const metafile = JSON.parse(fs.readFileSync('./server-metafile.json'))
+  |  const { inputs } = Object.values(metafile.outputs).find(x => x.entryPoint === entryPoint)
+  |  return Object.keys(inputs).filter(x => x.endsWith('.universal.js'))
+  |         .map(x => x.replace('src', '.').replace('universal', 'universal-browser'))
   |}
   `.replace(/^[ \t]*\|/gm, '')
 }

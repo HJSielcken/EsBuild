@@ -23542,10 +23542,10 @@
     }
   });
 
-  // src/Mies.universal.js
+  // src/Jet.universal.js
   init_externals_browser();
 
-  // src/Mies.universal.js?universal
+  // src/Jet.universal.js?universal
   init_externals_browser();
 
   // src/Mies.js
@@ -23564,17 +23564,17 @@
     );
   }
 
-  // src/Mies.universal.js?universal
-  function MiesApp({ text }) {
+  // src/Jet.universal.js?universal
+  function JetApp({ text }) {
     return /* @__PURE__ */ React.createElement(Mies, { ...{ text } });
   }
 
-  // src/Mies.universal.js
+  // src/Jet.universal.js
   var { hydrateRoot } = ReactDOM;
-  var nodes = Array.from(document.querySelectorAll('*[data-kaliber-component-id="fae6900e25efd5d327e5287a3139589c"]'));
+  var nodes = Array.from(document.querySelectorAll('*[data-kaliber-component-id="ea7d5cf23fc8a56b6c17a9b5dc570986"]'));
   nodes.map((x) => {
     const props = JSON.parse(x.dataset.kaliberComponent);
-    const newElement = React.createElement(MiesApp, props);
+    const newElement = React.createElement(JetApp, props);
     hydrateRoot(x, newElement);
   });
 })();

@@ -61,7 +61,7 @@ function MiesApp({ text }) {
 var import_server = require("react-dom/server");
 function ServerComponent(props) {
   const content2 = (0, import_server.renderToString)(/* @__PURE__ */ React.createElement(MiesApp, { ...props }));
-  return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("div", { "data-kaliber-component": JSON.stringify(props), "data-kaliber-component-id": "fae6900e25efd5d327e5287a3139589c", dangerouslySetInnerHTML: { __html: content2 } }), /* @__PURE__ */ React.createElement("script", { src: "Mies.universal-browser.js" }));
+  return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("div", { "data-kaliber-component": JSON.stringify(props), "data-kaliber-component-id": "fae6900e25efd5d327e5287a3139589c", dangerouslySetInnerHTML: { __html: content2 } }));
 }
 
 // /home/harmen/Documents/JavaScript/esbuild/src/aap.html.js:@kaliber/build/stylesheet
