@@ -50,7 +50,7 @@ function getClientBuildConfig() {
     bundle: true,
     format: 'esm',
     platform: 'browser',
-    // splitting: false,
+    splitting: true,
     loader: {
       '.js': 'jsx',
       '.css': 'local-css',

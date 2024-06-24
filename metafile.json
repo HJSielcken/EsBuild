@@ -115,19 +115,8 @@
       ],
       "format": "esm"
     },
-    "src/aap.json.js": {
-      "bytes": 85,
-      "imports": [
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
-          "kind": "import-statement",
-          "external": true
-        }
-      ],
-      "format": "esm"
-    },
     "src/Query.js": {
-      "bytes": 321,
+      "bytes": 476,
       "imports": [
         {
           "path": "@tanstack/react-query",
@@ -288,17 +277,6 @@
         }
       ],
       "format": "esm"
-    },
-    "src/noot.json.js": {
-      "bytes": 76,
-      "imports": [
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
-          "kind": "import-statement",
-          "external": true
-        }
-      ],
-      "format": "esm"
     }
   },
   "outputs": {
@@ -356,26 +334,6 @@
         }
       },
       "bytes": 103
-    },
-    "target/aap.json.js": {
-      "imports": [
-        {
-          "path": "react",
-          "kind": "require-call",
-          "external": true
-        }
-      ],
-      "exports": [],
-      "entryPoint": "src/aap.json.js",
-      "inputs": {
-        "src/aap.json.js": {
-          "bytesInOutput": 218
-        },
-        "externals.js": {
-          "bytesInOutput": 39
-        }
-      },
-      "bytes": 1696
     },
     "target/aap_static.html.js": {
       "imports": [
@@ -438,7 +396,7 @@
           "bytesInOutput": 292
         },
         "src/Query.js": {
-          "bytesInOutput": 432
+          "bytesInOutput": 662
         },
         "src/Query.universal.js": {
           "bytesInOutput": 421
@@ -459,7 +417,7 @@
           "bytesInOutput": 30
         }
       },
-      "bytes": 6310
+      "bytes": 6540
     },
     "target/aap_static.html.css": {
       "imports": [],
@@ -469,26 +427,6 @@
         }
       },
       "bytes": 105
-    },
-    "target/noot.json.js": {
-      "imports": [
-        {
-          "path": "react",
-          "kind": "require-call",
-          "external": true
-        }
-      ],
-      "exports": [],
-      "entryPoint": "src/noot.json.js",
-      "inputs": {
-        "src/noot.json.js": {
-          "bytesInOutput": 209
-        },
-        "externals.js": {
-          "bytesInOutput": 39
-        }
-      },
-      "bytes": 1689
     }
   }
 }

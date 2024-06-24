@@ -1,12 +1,16 @@
 import { useQuery } from '@tanstack/react-query'
 
 export function Query() {
+  const [item, setItem] = React.useState(0)
   const { data } = useQuery({
-      queryKey: ['nl'],
-      queryFn: async () => fetch('https://jsonplaceholder.typicode.com/todos/1').then(x=>x.json()),
-      initialData: {}
-    }
+    queryKey: [item],
+    queryFn: async () => fetch(`https://jsonplaceholder.typicode.com/todos/${item}`).then(x => x.json()),
+    initialData: {}
+  }
   )
 
-  return <code><pre>{JSON.stringify(data)}</pre></code>
+  return (<div>
+    <code><pre>{JSON.stringify(data, null, 2)}</pre></code>
+    <button onClick={() => setItem(x => x + 1)}>Fetch new data ({item})</button>
+  </div>)
 }

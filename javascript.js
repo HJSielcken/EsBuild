@@ -8,6 +8,5 @@ const { inputs } = Object.values(server.outputs).find(x => x.entryPoint === entr
 
 const universalInputs = Object.keys(inputs).filter(x => x.endsWith('.universal.js'))
 
-console.log(universalInputs.map(x => x.replace('src', '').replace('universal', 'universal-browser')))
-
-func
+console.log(universalInputs)
+// console.log(universalInputs.map(x => x.replace('src', '').replace('universal', 'universal-browser')))

@@ -1307,7 +1307,7 @@
       "format": "esm"
     },
     "src/Query.js": {
-      "bytes": 321,
+      "bytes": 476,
       "imports": [
         {
           "path": "node_modules/@tanstack/react-query/build/modern/index.js",
@@ -1362,116 +1362,78 @@
   },
   "outputs": {
     "target/Jet.universal-browser.js": {
-      "imports": [],
+      "imports": [
+        {
+          "path": "target/chunk-5ZHWS2K7.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "target/chunk-OCDOOBES.js",
+          "kind": "import-statement"
+        }
+      ],
       "exports": [],
       "entryPoint": "src/Jet.universal.js",
       "inputs": {
-        "node_modules/react/cjs/react.development.js": {
-          "bytesInOutput": 77080
-        },
-        "node_modules/react/index.js": {
-          "bytesInOutput": 257
-        },
-        "node_modules/scheduler/cjs/scheduler.development.js": {
-          "bytesInOutput": 16920
-        },
-        "node_modules/scheduler/index.js": {
-          "bytesInOutput": 269
-        },
-        "node_modules/react-dom/cjs/react-dom.development.js": {
-          "bytesInOutput": 909256
-        },
-        "node_modules/react-dom/index.js": {
-          "bytesInOutput": 287
-        },
-        "node_modules/react-dom/client.js": {
-          "bytesInOutput": 808
-        },
-        "externals-browser.js": {
-          "bytesInOutput": 175
-        },
         "src/Jet.universal.js": {
           "bytesInOutput": 342
         },
         "src/Jet.universal.js?universal": {
           "bytesInOutput": 125
-        },
-        "src/Mies.js": {
-          "bytesInOutput": 439
         }
       },
-      "bytes": 1009218
+      "bytes": 683
     },
     "target/Mies.universal-browser.js": {
-      "imports": [],
+      "imports": [
+        {
+          "path": "target/chunk-5ZHWS2K7.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "target/chunk-OCDOOBES.js",
+          "kind": "import-statement"
+        }
+      ],
       "exports": [],
       "entryPoint": "src/Mies.universal.js",
       "inputs": {
-        "node_modules/react/cjs/react.development.js": {
-          "bytesInOutput": 77080
-        },
-        "node_modules/react/index.js": {
-          "bytesInOutput": 257
-        },
-        "node_modules/scheduler/cjs/scheduler.development.js": {
-          "bytesInOutput": 16920
-        },
-        "node_modules/scheduler/index.js": {
-          "bytesInOutput": 269
-        },
-        "node_modules/react-dom/cjs/react-dom.development.js": {
-          "bytesInOutput": 909256
-        },
-        "node_modules/react-dom/index.js": {
-          "bytesInOutput": 287
-        },
-        "node_modules/react-dom/client.js": {
-          "bytesInOutput": 808
-        },
-        "externals-browser.js": {
-          "bytesInOutput": 175
-        },
         "src/Mies.universal.js": {
           "bytesInOutput": 343
         },
         "src/Mies.universal.js?universal": {
           "bytesInOutput": 126
-        },
+        }
+      },
+      "bytes": 688
+    },
+    "target/chunk-5ZHWS2K7.js": {
+      "imports": [
+        {
+          "path": "target/chunk-OCDOOBES.js",
+          "kind": "import-statement"
+        }
+      ],
+      "exports": [
+        "Mies"
+      ],
+      "inputs": {
         "src/Mies.js": {
           "bytesInOutput": 439
         }
       },
-      "bytes": 1009224
+      "bytes": 548
     },
     "target/Query.universal-browser.js": {
-      "imports": [],
+      "imports": [
+        {
+          "path": "target/chunk-OCDOOBES.js",
+          "kind": "import-statement"
+        }
+      ],
       "exports": [],
       "entryPoint": "src/Query.universal.js",
       "inputs": {
-        "node_modules/react/cjs/react.development.js": {
-          "bytesInOutput": 77092
-        },
-        "node_modules/react/index.js": {
-          "bytesInOutput": 257
-        },
-        "node_modules/scheduler/cjs/scheduler.development.js": {
-          "bytesInOutput": 16920
-        },
-        "node_modules/scheduler/index.js": {
-          "bytesInOutput": 269
-        },
-        "node_modules/react-dom/cjs/react-dom.development.js": {
-          "bytesInOutput": 909260
-        },
-        "node_modules/react-dom/index.js": {
-          "bytesInOutput": 287
-        },
-        "node_modules/react-dom/client.js": {
-          "bytesInOutput": 808
-        },
-        "externals-browser.js": {
-          "bytesInOutput": 175
-        },
         "node_modules/react/cjs/react-jsx-runtime.development.js": {
           "bytesInOutput": 36473
         },
@@ -1557,10 +1519,48 @@
           "bytesInOutput": 2114
         },
         "src/Query.js": {
-          "bytesInOutput": 376
+          "bytesInOutput": 606
         }
       },
-      "bytes": 1115712
+      "bytes": 107913
+    },
+    "target/chunk-OCDOOBES.js": {
+      "imports": [],
+      "exports": [
+        "React",
+        "ReactDOM",
+        "__commonJS",
+        "__toESM",
+        "init_externals_browser",
+        "require_react"
+      ],
+      "inputs": {
+        "node_modules/react/cjs/react.development.js": {
+          "bytesInOutput": 77080
+        },
+        "node_modules/react/index.js": {
+          "bytesInOutput": 257
+        },
+        "node_modules/scheduler/cjs/scheduler.development.js": {
+          "bytesInOutput": 16920
+        },
+        "node_modules/scheduler/index.js": {
+          "bytesInOutput": 269
+        },
+        "node_modules/react-dom/cjs/react-dom.development.js": {
+          "bytesInOutput": 909254
+        },
+        "node_modules/react-dom/index.js": {
+          "bytesInOutput": 287
+        },
+        "node_modules/react-dom/client.js": {
+          "bytesInOutput": 808
+        },
+        "externals-browser.js": {
+          "bytesInOutput": 175
+        }
+      },
+      "bytes": 1008275
     }
   }
 }
