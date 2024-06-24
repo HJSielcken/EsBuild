@@ -14,12 +14,12 @@ const templateRenderers = {
   html: 'html-react-renderer.js',
 }
 
-// build()
-watch()
+build()
+// watch()
 
 async function build() {
-  await buildClient()
-  await buildServer()
+  await buildClient().then(_ => buildServer()).catch(x => console.log('x')).finally(x => { console.log('Finished'); process.exit('1') })
+
 }
 
 async function buildServer() {
@@ -56,8 +56,9 @@ function getClientBuildConfig() {
       '.css': 'local-css',
     },
     entryNames: '[dir]/[name]-[hash]',
-    inject: ['./externals-browser.js'],
+    inject: ['./injects-browser.js'],
     plugins: [
+      kaliberConfigLoaderPlugin(),
       universalClientLoaderPlugin(),
       writeMetaFilePlugin('browser-metafile.json'),
     ]
@@ -68,7 +69,8 @@ function writeMetaFilePlugin(filename) {
   return {
     name: 'write-metafile-plugin',
     setup({ onEnd }) {
-      onEnd(({ metafile }) => {
+      onEnd(({ metafile, errors }) => {
+        if(errors.length) return
         fs.writeFileSync(`./${filename}`, JSON.stringify(metafile, null, 2))
       }
       )
@@ -89,7 +91,7 @@ function getServerBuildConfig() {
     },
     entryNames: '[dir]/[name]',
     format: 'cjs',
-    inject: ['./externals.js'],
+    inject: ['./injects-server.js'],
     plugins: [
       cssLoaderPlugin(),
       javascriptLoaderPlugin(),
@@ -190,7 +192,8 @@ function templateRendererPlugin() {
   return {
     name: 'template-renderer-plugin',
     setup(build) {
-      build.onEnd(({ metafile }) => {
+      build.onEnd(({ metafile, errors }) => {
+        if(errors.length) return
         const { outputs } = metafile
 
         Object.keys(outputs).filter(x => x.endsWith('html.js') || x.endsWith('json.js')).forEach(filePath => {
@@ -307,4 +310,15 @@ function createScriptTags(entryPoint) {
   |  })
   |}
   `.replace(/^[ \t]*\|/gm, '')
+}
+
+function kaliberConfigLoaderPlugin() {
+  return {
+    name: 'kaliber-config-loader',
+    setup({ onResolve }) {
+      onResolve({ filter: /^@kaliber\/config/ }, (args) => {
+        throw Error('Do not load kaliber config')
+      })
+    },
+  }
 }

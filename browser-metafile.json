@@ -4,7 +4,7 @@
       "bytes": 87593,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -15,7 +15,7 @@
       "bytes": 190,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         },
@@ -31,7 +31,7 @@
       "bytes": 17497,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -42,7 +42,7 @@
       "bytes": 198,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         },
@@ -58,7 +58,7 @@
       "bytes": 1029622,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         },
@@ -79,7 +79,7 @@
       "bytes": 1363,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         },
@@ -95,7 +95,7 @@
       "bytes": 619,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         },
@@ -107,7 +107,7 @@
       ],
       "format": "cjs"
     },
-    "externals-browser.js": {
+    "injects-browser.js": {
       "bytes": 175,
       "imports": [
         {
@@ -127,7 +127,7 @@
       "bytes": 286,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -143,7 +143,7 @@
           "original": "./Mies"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -159,7 +159,7 @@
           "original": "/home/harmen/Documents/JavaScript/esbuild/src/Jet.universal.js?universal"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -175,7 +175,7 @@
           "original": "./Mies"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -191,7 +191,7 @@
           "original": "/home/harmen/Documents/JavaScript/esbuild/src/Mies.universal.js?universal"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -202,7 +202,7 @@
       "bytes": 522,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -213,7 +213,7 @@
       "bytes": 6141,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -234,7 +234,7 @@
           "original": "./utils.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -255,7 +255,7 @@
           "original": "./utils.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -281,7 +281,7 @@
           "original": "./utils.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -292,7 +292,7 @@
       "bytes": 1534,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -308,7 +308,7 @@
           "original": "./utils.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -339,7 +339,7 @@
           "original": "./removable.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -370,7 +370,7 @@
           "original": "./subscribable.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -396,7 +396,7 @@
           "original": "./retryer.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -427,7 +427,7 @@
           "original": "./subscribable.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -443,7 +443,7 @@
           "original": "./utils.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -489,7 +489,7 @@
           "original": "./infiniteQueryBehavior.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -525,7 +525,7 @@
           "original": "./query.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -556,7 +556,7 @@
           "original": "./utils.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -577,7 +577,7 @@
           "original": "./infiniteQueryBehavior.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -608,7 +608,7 @@
           "original": "./utils.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -619,7 +619,7 @@
       "bytes": 3453,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -630,7 +630,7 @@
       "bytes": 33,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -721,7 +721,7 @@
           "original": "./query.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -732,7 +732,7 @@
       "bytes": 33,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -743,7 +743,7 @@
       "bytes": 42700,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         },
@@ -759,7 +759,7 @@
       "bytes": 214,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         },
@@ -785,7 +785,7 @@
           "original": "react/jsx-runtime"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -801,7 +801,7 @@
           "original": "react"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -822,7 +822,7 @@
           "original": "react/jsx-runtime"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -833,7 +833,7 @@
       "bytes": 261,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -854,7 +854,7 @@
           "original": "./utils.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -865,7 +865,7 @@
       "bytes": 787,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -911,7 +911,7 @@
           "original": "./suspense.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -957,7 +957,7 @@
           "original": "./suspense.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -978,7 +978,7 @@
           "original": "./useBaseQuery.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -1004,7 +1004,7 @@
           "original": "./suspense.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -1030,7 +1030,7 @@
           "original": "./suspense.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -1051,7 +1051,7 @@
           "original": "./suspense.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -1062,7 +1062,7 @@
       "bytes": 143,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -1073,7 +1073,7 @@
       "bytes": 175,
       "imports": [
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -1099,7 +1099,7 @@
           "original": "./QueryClientProvider.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -1125,7 +1125,7 @@
           "original": "./QueryClientProvider.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -1151,7 +1151,7 @@
           "original": "./QueryClientProvider.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -1182,7 +1182,7 @@
           "original": "./utils.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -1203,7 +1203,7 @@
           "original": "./useBaseQuery.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -1299,7 +1299,7 @@
           "original": "./isRestoring.js"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -1315,7 +1315,7 @@
           "original": "@tanstack/react-query"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -1336,7 +1336,7 @@
           "original": "./Query"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -1352,7 +1352,7 @@
           "original": "/home/harmen/Documents/JavaScript/esbuild/src/Query.universal.js?universal"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals-browser.js",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
           "external": true
         }
@@ -1361,14 +1361,14 @@
     }
   },
   "outputs": {
-    "target/Jet.universal-QO4DUXG3.js": {
+    "target/Jet.universal-75FV3CSA.js": {
       "imports": [
         {
-          "path": "target/chunk-5ZHWS2K7.js",
+          "path": "target/chunk-JQOOZFES.js",
           "kind": "import-statement"
         },
         {
-          "path": "target/chunk-OCDOOBES.js",
+          "path": "target/chunk-VAHC3BMG.js",
           "kind": "import-statement"
         }
       ],
@@ -1376,22 +1376,22 @@
       "entryPoint": "src/Jet.universal.js",
       "inputs": {
         "src/Jet.universal.js": {
-          "bytesInOutput": 342
+          "bytesInOutput": 340
         },
         "src/Jet.universal.js?universal": {
-          "bytesInOutput": 125
+          "bytesInOutput": 123
         }
       },
-      "bytes": 683
+      "bytes": 677
     },
-    "target/Mies.universal-HGCEEPTX.js": {
+    "target/Mies.universal-XOD25MH2.js": {
       "imports": [
         {
-          "path": "target/chunk-5ZHWS2K7.js",
+          "path": "target/chunk-JQOOZFES.js",
           "kind": "import-statement"
         },
         {
-          "path": "target/chunk-OCDOOBES.js",
+          "path": "target/chunk-VAHC3BMG.js",
           "kind": "import-statement"
         }
       ],
@@ -1399,18 +1399,18 @@
       "entryPoint": "src/Mies.universal.js",
       "inputs": {
         "src/Mies.universal.js": {
-          "bytesInOutput": 343
+          "bytesInOutput": 341
         },
         "src/Mies.universal.js?universal": {
-          "bytesInOutput": 126
+          "bytesInOutput": 124
         }
       },
-      "bytes": 688
+      "bytes": 682
     },
-    "target/chunk-5ZHWS2K7.js": {
+    "target/chunk-JQOOZFES.js": {
       "imports": [
         {
-          "path": "target/chunk-OCDOOBES.js",
+          "path": "target/chunk-VAHC3BMG.js",
           "kind": "import-statement"
         }
       ],
@@ -1419,15 +1419,15 @@
       ],
       "inputs": {
         "src/Mies.js": {
-          "bytesInOutput": 439
+          "bytesInOutput": 437
         }
       },
-      "bytes": 548
+      "bytes": 544
     },
-    "target/Query.universal-MI3KPNGZ.js": {
+    "target/Query.universal-HOTBMEQ7.js": {
       "imports": [
         {
-          "path": "target/chunk-OCDOOBES.js",
+          "path": "target/chunk-VAHC3BMG.js",
           "kind": "import-statement"
         }
       ],
@@ -1435,132 +1435,132 @@
       "entryPoint": "src/Query.universal.js",
       "inputs": {
         "node_modules/react/cjs/react-jsx-runtime.development.js": {
-          "bytesInOutput": 36473
+          "bytesInOutput": 36471
         },
         "node_modules/react/jsx-runtime.js": {
-          "bytesInOutput": 281
+          "bytesInOutput": 279
         },
         "src/Query.universal.js": {
-          "bytesInOutput": 344
+          "bytesInOutput": 342
         },
         "src/Query.universal.js?universal": {
-          "bytesInOutput": 219
+          "bytesInOutput": 217
         },
         "node_modules/@tanstack/react-query/build/modern/index.js": {
-          "bytesInOutput": 26
+          "bytesInOutput": 24
         },
         "node_modules/@tanstack/query-core/build/modern/index.js": {
-          "bytesInOutput": 26
+          "bytesInOutput": 24
         },
         "node_modules/@tanstack/query-core/build/modern/retryer.js": {
-          "bytesInOutput": 3430
+          "bytesInOutput": 3428
         },
         "node_modules/@tanstack/query-core/build/modern/focusManager.js": {
-          "bytesInOutput": 1427
+          "bytesInOutput": 1425
         },
         "node_modules/@tanstack/query-core/build/modern/subscribable.js": {
-          "bytesInOutput": 458
+          "bytesInOutput": 456
         },
         "node_modules/@tanstack/query-core/build/modern/utils.js": {
-          "bytesInOutput": 5649
+          "bytesInOutput": 5647
         },
         "node_modules/@tanstack/query-core/build/modern/onlineManager.js": {
-          "bytesInOutput": 1310
+          "bytesInOutput": 1308
         },
         "node_modules/@tanstack/query-core/build/modern/queryCache.js": {
-          "bytesInOutput": 2164
+          "bytesInOutput": 2162
         },
         "node_modules/@tanstack/query-core/build/modern/query.js": {
-          "bytesInOutput": 10599
+          "bytesInOutput": 10597
         },
         "node_modules/@tanstack/query-core/build/modern/notifyManager.js": {
-          "bytesInOutput": 1444
+          "bytesInOutput": 1442
         },
         "node_modules/@tanstack/query-core/build/modern/removable.js": {
-          "bytesInOutput": 576
+          "bytesInOutput": 574
         },
         "node_modules/@tanstack/query-core/build/modern/queryClient.js": {
-          "bytesInOutput": 8594
+          "bytesInOutput": 8592
         },
         "node_modules/@tanstack/query-core/build/modern/mutationCache.js": {
-          "bytesInOutput": 2591
+          "bytesInOutput": 2589
         },
         "node_modules/@tanstack/query-core/build/modern/mutation.js": {
-          "bytesInOutput": 5967
+          "bytesInOutput": 5965
         },
         "node_modules/@tanstack/query-core/build/modern/infiniteQueryBehavior.js": {
-          "bytesInOutput": 3505
+          "bytesInOutput": 3503
         },
         "node_modules/@tanstack/query-core/build/modern/queryObserver.js": {
-          "bytesInOutput": 14303
+          "bytesInOutput": 14301
         },
         "node_modules/@tanstack/react-query/build/modern/QueryClientProvider.js": {
-          "bytesInOutput": 754
+          "bytesInOutput": 752
         },
         "node_modules/@tanstack/react-query/build/modern/isRestoring.js": {
-          "bytesInOutput": 243
+          "bytesInOutput": 241
         },
         "node_modules/@tanstack/react-query/build/modern/QueryErrorResetBoundary.js": {
-          "bytesInOutput": 510
+          "bytesInOutput": 508
         },
         "node_modules/@tanstack/react-query/build/modern/errorBoundaryUtils.js": {
-          "bytesInOutput": 669
+          "bytesInOutput": 667
         },
         "node_modules/@tanstack/react-query/build/modern/utils.js": {
-          "bytesInOutput": 179
+          "bytesInOutput": 177
         },
         "node_modules/@tanstack/react-query/build/modern/suspense.js": {
-          "bytesInOutput": 486
+          "bytesInOutput": 484
         },
         "node_modules/@tanstack/react-query/build/modern/useQuery.js": {
-          "bytesInOutput": 130
+          "bytesInOutput": 128
         },
         "node_modules/@tanstack/react-query/build/modern/useBaseQuery.js": {
-          "bytesInOutput": 2114
+          "bytesInOutput": 2112
         },
         "src/Query.js": {
-          "bytesInOutput": 634
+          "bytesInOutput": 632
         }
       },
-      "bytes": 107941
+      "bytes": 107881
     },
-    "target/chunk-OCDOOBES.js": {
+    "target/chunk-VAHC3BMG.js": {
       "imports": [],
       "exports": [
         "React",
         "ReactDOM",
         "__commonJS",
         "__toESM",
-        "init_externals_browser",
+        "init_injects_browser",
         "require_react"
       ],
       "inputs": {
         "node_modules/react/cjs/react.development.js": {
-          "bytesInOutput": 77080
+          "bytesInOutput": 77078
         },
         "node_modules/react/index.js": {
-          "bytesInOutput": 257
+          "bytesInOutput": 255
         },
         "node_modules/scheduler/cjs/scheduler.development.js": {
-          "bytesInOutput": 16920
+          "bytesInOutput": 16918
         },
         "node_modules/scheduler/index.js": {
-          "bytesInOutput": 269
+          "bytesInOutput": 267
         },
         "node_modules/react-dom/cjs/react-dom.development.js": {
-          "bytesInOutput": 909254
+          "bytesInOutput": 909252
         },
         "node_modules/react-dom/index.js": {
-          "bytesInOutput": 287
+          "bytesInOutput": 285
         },
         "node_modules/react-dom/client.js": {
-          "bytesInOutput": 808
+          "bytesInOutput": 806
         },
-        "externals-browser.js": {
-          "bytesInOutput": 175
+        "injects-browser.js": {
+          "bytesInOutput": 171
         }
       },
-      "bytes": 1008275
+      "bytes": 1008253
     }
   }
 }

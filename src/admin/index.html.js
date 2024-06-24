@@ -10,12 +10,11 @@ import { content } from './aap.css'
 
 Index.routes = {
   match() {
-    return { data: { title: 'sssaap' }, status: 200 }
+    return { data: { title: 'aap' }, status: 200 }
   }
 }
 
 export default function Index({ data }) {
-  console.log(data)
   const { title } = data
   return (<html>
     <head>
