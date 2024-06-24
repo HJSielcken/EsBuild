@@ -138,7 +138,7 @@
       "format": "esm"
     },
     "src/aap_static.html.js": {
-      "bytes": 395,
+      "bytes": 398,
       "imports": [
         {
           "path": "src/Mies.universal.js",
@@ -279,7 +279,7 @@
       "cssBundle": "target/aap_static.html.css",
       "inputs": {
         "src/aap_static.html.js": {
-          "bytesInOutput": 643
+          "bytesInOutput": 646
         },
         "externals.js": {
           "bytesInOutput": 72
@@ -300,7 +300,7 @@
           "bytesInOutput": 30
         }
       },
-      "bytes": 3838
+      "bytes": 3841
     },
     "target/aap_static.html.css": {
       "imports": [],

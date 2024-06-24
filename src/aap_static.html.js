@@ -11,7 +11,7 @@ export default (<html>
     </head>
     <body>
       <div className={content}>mies</div>
-      <Mies text='Jet'/>
+      <Mies text='Jetasd'/>
       <MiesApp text='TeunVuurGijs'/>
     </body>
   </html>

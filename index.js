@@ -14,7 +14,8 @@ const templateRenderers = {
   html: 'html-react-renderer.js',
 }
 
-build()
+// build()
+watch()
 
 async function build() {
   await buildClient()
@@ -32,10 +33,13 @@ async function buildClient() {
 }
 
 async function watch() {
-  const config = getBuildConfig()
-  const ctx = await esbuild.context(config)
+  const clientConfig = getClientBuildConfig()
+  const serverConfig = getServerBuildConfig()
+  const clientContext = await esbuild.context(clientConfig)
+  const serverContext = await esbuild.context(serverConfig)
 
-  await ctx.watch()
+  await clientContext.watch()
+  await serverContext.watch()
 }
 
 function getClientBuildConfig() {
