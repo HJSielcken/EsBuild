@@ -148,8 +148,6 @@ function serveIndexWithRouting(req, res, file) {
   const envRequire = isProduction ? require : require('import-fresh')
   const routeTemplate = envRequire(file)
 
-  console.log({ isProduction })
-
   const routes = routeTemplate.default.routes
   const location = parsePath(req.url)
 
