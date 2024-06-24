@@ -10,7 +10,7 @@ const srcDir = path.resolve(pwd, 'src')
 const targetDir = path.resolve(pwd, 'target')
 
 const templateRenderers = {
-  json: 'json-renderer.js',
+  // json: 'json-renderer.js',
   html: 'html-react-renderer.js',
 }
 
@@ -55,7 +55,7 @@ function getClientBuildConfig() {
       '.js': 'jsx',
       '.css': 'local-css',
     },
-    entryNames: '[dir]/[name]-browser',
+    entryNames: '[dir]/[name]-[hash]',
     inject: ['./externals-browser.js'],
     plugins: [
       universalClientLoaderPlugin(),
@@ -69,7 +69,6 @@ function writeMetaFilePlugin(filename) {
     name: 'write-metafile-plugin',
     setup({ onEnd }) {
       onEnd(({ metafile }) => {
-        // console.log(metafile)
         fs.writeFileSync(`./${filename}`, JSON.stringify(metafile, null, 2))
       }
       )
@@ -192,7 +191,6 @@ function templateRendererPlugin() {
     name: 'template-renderer-plugin',
     setup(build) {
       build.onEnd(({ metafile }) => {
-        fs.writeFileSync('./metafile.json', JSON.stringify(metafile, null, 2))
         const { outputs } = metafile
 
         Object.keys(outputs).filter(x => x.endsWith('html.js')).forEach(filePath => {
@@ -200,7 +198,6 @@ function templateRendererPlugin() {
 
           const { rendererFilename, filename } = getFileAndRendererInfo(filePath)
           const module = importFresh(path.resolve(targetDir, filename))
-          console.log(filePath)
 
           if (typeof module.default === 'function') {
             const dynamicTemplate = createDynamicTemplate(filename, rendererFilename)
@@ -256,7 +253,7 @@ function createStyleSheet(entryPoint) {
   |export const stylesheet = <link rel="stylesheet" href={getCssBundle("${stylesheet}")} />
   |
   |function getCssBundle(entrypoint) {
-  |  const metafile = JSON.parse(fs.readFileSync('./metafile.json'))
+  |  const metafile = JSON.parse(fs.readFileSync('./server-metafile.json'))
   |  const output = Object.values(metafile.outputs).find(x => x.entryPoint === entrypoint)
   |  return output.cssBundle.replace('target','.')
   |}
@@ -289,10 +286,16 @@ function createScriptTags(entryPoint) {
   |export const javascript = determineScripts('${entryPoint.replace(pwd, '').slice(1)}').map((x,idx)=><script key={idx} src={x} type="module" defer></script>)
   |
   |function determineScripts(entryPoint) {
-  |  const metafile = JSON.parse(fs.readFileSync('./server-metafile.json'))
-  |  const { inputs } = Object.values(metafile.outputs).find(x => x.entryPoint === entryPoint)
-  |  return Object.keys(inputs).filter(x => x.endsWith('.universal.js'))
-  |         .map(x => x.replace('src', '.').replace('universal', 'universal-browser'))
+  |  const serverMetafile = JSON.parse(fs.readFileSync('./server-metafile.json'))
+  |  const browserMetafile = JSON.parse(fs.readFileSync('./browser-metafile.json'))
+  |
+  |  const { inputs } = Object.values(serverMetafile.outputs).find(x => x.entryPoint === entryPoint)
+  |  const universalInputs = Object.keys(inputs).filter(x => x.endsWith('.universal.js'))
+  |  
+  |  const browserEntries = Object.entries(browserMetafile.outputs)
+  |  return universalInputs.map(x => {
+  |     return browserEntries.find(([k, v]) => v.entryPoint === x)[0].replace('target', '.')
+  |  })
   |}
   `.replace(/^[ \t]*\|/gm, '')
 }

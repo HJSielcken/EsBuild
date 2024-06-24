@@ -10,3 +10,11 @@ const universalInputs = Object.keys(inputs).filter(x => x.endsWith('.universal.j
 
 console.log(universalInputs)
 // console.log(universalInputs.map(x => x.replace('src', '').replace('universal', 'universal-browser')))
+const a = Object.entries(browser.outputs)
+
+console.log(
+  universalInputs.map(x => {
+    const entries = Object.entries(browser.outputs)
+    return entries.find(([k, v]) => v.entryPoint === x)[0].replace('target', '.')
+  })
+)

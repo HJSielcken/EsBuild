@@ -70,7 +70,7 @@
       "format": "esm"
     },
     "/home/harmen/Documents/JavaScript/esbuild/src/aap.html.js:@kaliber/build/stylesheet": {
-      "bytes": 335,
+      "bytes": 342,
       "imports": [
         {
           "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
@@ -116,7 +116,7 @@
       "format": "esm"
     },
     "src/Query.js": {
-      "bytes": 476,
+      "bytes": 502,
       "imports": [
         {
           "path": "@tanstack/react-query",
@@ -211,7 +211,7 @@
       "format": "esm"
     },
     "/home/harmen/Documents/JavaScript/esbuild/src/aap_static.html.js:@kaliber/build/stylesheet": {
-      "bytes": 342,
+      "bytes": 349,
       "imports": [
         {
           "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
@@ -222,7 +222,7 @@
       "format": "esm"
     },
     "/home/harmen/Documents/JavaScript/esbuild/src/aap_static.html.js:@kaliber/build/javascript": {
-      "bytes": 504,
+      "bytes": 730,
       "imports": [
         {
           "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
@@ -318,13 +318,13 @@
           "bytesInOutput": 417
         },
         "/home/harmen/Documents/JavaScript/esbuild/src/aap.html.js:@kaliber/build/stylesheet": {
-          "bytesInOutput": 370
+          "bytesInOutput": 377
         },
         "src/aap.css": {
           "bytesInOutput": 29
         }
       },
-      "bytes": 3633
+      "bytes": 3640
     },
     "target/aap.html.css": {
       "imports": [],
@@ -396,7 +396,7 @@
           "bytesInOutput": 292
         },
         "src/Query.js": {
-          "bytesInOutput": 662
+          "bytesInOutput": 690
         },
         "src/Query.universal.js": {
           "bytesInOutput": 421
@@ -408,16 +408,16 @@
           "bytesInOutput": 419
         },
         "/home/harmen/Documents/JavaScript/esbuild/src/aap_static.html.js:@kaliber/build/stylesheet": {
-          "bytesInOutput": 377
+          "bytesInOutput": 384
         },
         "/home/harmen/Documents/JavaScript/esbuild/src/aap_static.html.js:@kaliber/build/javascript": {
-          "bytesInOutput": 535
+          "bytesInOutput": 770
         },
         "src/aap.css": {
           "bytesInOutput": 30
         }
       },
-      "bytes": 6540
+      "bytes": 6810
     },
     "target/aap_static.html.css": {
       "imports": [],

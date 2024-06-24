@@ -69,110 +69,6 @@
       ],
       "format": "esm"
     },
-    "/home/harmen/Documents/JavaScript/esbuild/src/aap.html.js:@kaliber/build/stylesheet": {
-      "bytes": 335,
-      "imports": [
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
-          "kind": "import-statement",
-          "external": true
-        }
-      ],
-      "format": "esm"
-    },
-    "src/aap.css": {
-      "bytes": 78,
-      "imports": []
-    },
-    "src/aap.html.js": {
-      "bytes": 436,
-      "imports": [
-        {
-          "path": "src/Mies.universal.js",
-          "kind": "import-statement",
-          "original": "./Mies.universal"
-        },
-        {
-          "path": "src/Mies.js",
-          "kind": "import-statement",
-          "original": "./Mies"
-        },
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/src/aap.html.js:@kaliber/build/stylesheet",
-          "kind": "import-statement",
-          "original": "@kaliber/build/stylesheet"
-        },
-        {
-          "path": "src/aap.css",
-          "kind": "import-statement",
-          "original": "./aap.css"
-        },
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
-          "kind": "import-statement",
-          "external": true
-        }
-      ],
-      "format": "esm"
-    },
-    "src/Query.js": {
-      "bytes": 476,
-      "imports": [
-        {
-          "path": "@tanstack/react-query",
-          "kind": "import-statement",
-          "external": true
-        },
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
-          "kind": "import-statement",
-          "external": true
-        }
-      ],
-      "format": "esm"
-    },
-    "src/Query.universal.js?universal": {
-      "bytes": 279,
-      "imports": [
-        {
-          "path": "@tanstack/react-query",
-          "kind": "import-statement",
-          "external": true
-        },
-        {
-          "path": "src/Query.js",
-          "kind": "import-statement",
-          "original": "./Query"
-        },
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
-          "kind": "import-statement",
-          "external": true
-        }
-      ],
-      "format": "esm"
-    },
-    "src/Query.universal.js": {
-      "bytes": 430,
-      "imports": [
-        {
-          "path": "src/Query.universal.js?universal",
-          "kind": "import-statement",
-          "original": "/home/harmen/Documents/JavaScript/esbuild/src/Query.universal.js?universal"
-        },
-        {
-          "path": "react-dom/server",
-          "kind": "import-statement",
-          "external": true
-        },
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
-          "kind": "import-statement",
-          "external": true
-        }
-      ],
-      "format": "esm"
-    },
     "src/Jet.universal.js?universal": {
       "bytes": 108,
       "imports": [
@@ -222,7 +118,7 @@
       "format": "esm"
     },
     "/home/harmen/Documents/JavaScript/esbuild/src/aap_static.html.js:@kaliber/build/javascript": {
-      "bytes": 504,
+      "bytes": 730,
       "imports": [
         {
           "path": "/home/harmen/Documents/JavaScript/esbuild/externals.js",
@@ -232,18 +128,17 @@
       ],
       "format": "esm"
     },
+    "src/aap.css": {
+      "bytes": 78,
+      "imports": []
+    },
     "src/aap_static.html.js": {
-      "bytes": 569,
+      "bytes": 580,
       "imports": [
         {
           "path": "src/Mies.universal.js",
           "kind": "import-statement",
           "original": "./Mies.universal"
-        },
-        {
-          "path": "src/Query.universal.js",
-          "kind": "import-statement",
-          "original": "./Query.universal"
         },
         {
           "path": "src/Jet.universal.js",
@@ -280,61 +175,6 @@
     }
   },
   "outputs": {
-    "target/aap.html.js": {
-      "imports": [
-        {
-          "path": "react",
-          "kind": "require-call",
-          "external": true
-        },
-        {
-          "path": "fs",
-          "kind": "require-call",
-          "external": true
-        },
-        {
-          "path": "react-dom/server",
-          "kind": "require-call",
-          "external": true
-        }
-      ],
-      "exports": [],
-      "entryPoint": "src/aap.html.js",
-      "cssBundle": "target/aap.html.css",
-      "inputs": {
-        "src/aap.html.js": {
-          "bytesInOutput": 611
-        },
-        "externals.js": {
-          "bytesInOutput": 72
-        },
-        "src/Mies.js": {
-          "bytesInOutput": 413
-        },
-        "src/Mies.universal.js?universal": {
-          "bytesInOutput": 100
-        },
-        "src/Mies.universal.js": {
-          "bytesInOutput": 417
-        },
-        "/home/harmen/Documents/JavaScript/esbuild/src/aap.html.js:@kaliber/build/stylesheet": {
-          "bytesInOutput": 370
-        },
-        "src/aap.css": {
-          "bytesInOutput": 29
-        }
-      },
-      "bytes": 3633
-    },
-    "target/aap.html.css": {
-      "imports": [],
-      "inputs": {
-        "src/aap.css": {
-          "bytesInOutput": 85
-        }
-      },
-      "bytes": 103
-    },
     "target/aap_static.html.js": {
       "imports": [
         {
@@ -344,21 +184,6 @@
         },
         {
           "path": "fs",
-          "kind": "require-call",
-          "external": true
-        },
-        {
-          "path": "react-dom/server",
-          "kind": "require-call",
-          "external": true
-        },
-        {
-          "path": "@tanstack/react-query",
-          "kind": "require-call",
-          "external": true
-        },
-        {
-          "path": "@tanstack/react-query",
           "kind": "require-call",
           "external": true
         },
@@ -378,7 +203,7 @@
       "cssBundle": "target/aap_static.html.css",
       "inputs": {
         "src/aap_static.html.js": {
-          "bytesInOutput": 788
+          "bytesInOutput": 727
         },
         "externals.js": {
           "bytesInOutput": 72
@@ -392,15 +217,6 @@
         "src/Mies.universal.js": {
           "bytesInOutput": 417
         },
-        "src/Query.universal.js?universal": {
-          "bytesInOutput": 292
-        },
-        "src/Query.js": {
-          "bytesInOutput": 662
-        },
-        "src/Query.universal.js": {
-          "bytesInOutput": 421
-        },
         "src/Jet.universal.js?universal": {
           "bytesInOutput": 99
         },
@@ -411,22 +227,22 @@
           "bytesInOutput": 377
         },
         "/home/harmen/Documents/JavaScript/esbuild/src/aap_static.html.js:@kaliber/build/javascript": {
-          "bytesInOutput": 535
+          "bytesInOutput": 770
         },
         "src/aap.css": {
-          "bytesInOutput": 30
+          "bytesInOutput": 29
         }
       },
-      "bytes": 6540
+      "bytes": 5220
     },
     "target/aap_static.html.css": {
       "imports": [],
       "inputs": {
         "src/aap.css": {
-          "bytesInOutput": 87
+          "bytesInOutput": 85
         }
       },
-      "bytes": 105
+      "bytes": 103
     }
   }
 }

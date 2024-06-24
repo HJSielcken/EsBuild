@@ -67,7 +67,7 @@ function ServerComponent(props) {
 // /home/harmen/Documents/JavaScript/esbuild/src/aap.html.js:@kaliber/build/stylesheet
 var stylesheet = /* @__PURE__ */ React.createElement("link", { rel: "stylesheet", href: getCssBundle("src/aap.html.js") });
 function getCssBundle(entrypoint) {
-  const metafile = JSON.parse(fs.readFileSync("./metafile.json"));
+  const metafile = JSON.parse(fs.readFileSync("./server-metafile.json"));
   const output = Object.values(metafile.outputs).find((x) => x.entryPoint === entrypoint);
   return output.cssBundle.replace("target", ".");
 }

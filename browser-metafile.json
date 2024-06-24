@@ -1307,7 +1307,7 @@
       "format": "esm"
     },
     "src/Query.js": {
-      "bytes": 476,
+      "bytes": 502,
       "imports": [
         {
           "path": "node_modules/@tanstack/react-query/build/modern/index.js",
@@ -1361,7 +1361,7 @@
     }
   },
   "outputs": {
-    "target/Jet.universal-browser.js": {
+    "target/Jet.universal-QO4DUXG3.js": {
       "imports": [
         {
           "path": "target/chunk-5ZHWS2K7.js",
@@ -1384,7 +1384,7 @@
       },
       "bytes": 683
     },
-    "target/Mies.universal-browser.js": {
+    "target/Mies.universal-HGCEEPTX.js": {
       "imports": [
         {
           "path": "target/chunk-5ZHWS2K7.js",
@@ -1424,7 +1424,7 @@
       },
       "bytes": 548
     },
-    "target/Query.universal-browser.js": {
+    "target/Query.universal-MI3KPNGZ.js": {
       "imports": [
         {
           "path": "target/chunk-OCDOOBES.js",
@@ -1519,10 +1519,10 @@
           "bytesInOutput": 2114
         },
         "src/Query.js": {
-          "bytesInOutput": 606
+          "bytesInOutput": 634
         }
       },
-      "bytes": 107913
+      "bytes": 107941
     },
     "target/chunk-OCDOOBES.js": {
       "imports": [],
