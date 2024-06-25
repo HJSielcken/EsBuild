@@ -1358,6 +1358,10 @@
         }
       ],
       "format": "esm"
+    },
+    "src/size.entry.css": {
+      "bytes": 107,
+      "imports": []
     }
   },
   "outputs": {
@@ -1561,6 +1565,16 @@
         }
       },
       "bytes": 1008253
+    },
+    "target/size.entry-YO2RDOLU.css": {
+      "imports": [],
+      "entryPoint": "src/size.entry.css",
+      "inputs": {
+        "src/size.entry.css": {
+          "bytesInOutput": 107
+        }
+      },
+      "bytes": 132
     }
   }
 }

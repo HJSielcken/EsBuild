@@ -1,0 +1,36 @@
+{
+  "typeAcquisition": {
+    "enable": true
+  },
+  "include": [
+    "./src/**/*",
+    "./types.ts",
+    "./types/**/*",
+    "mlp/mlp-pages/JobAreaPage.js",
+    "mlp/mlp-pages/JobDetail.js",
+    "mlp/mlp-pages/JobsListAndFilter.js",
+    "mlp/mlp-pages/JobsListAndFilterApp.universal.js",
+    "mlp/mlp-pages/JobsOverview.js",
+    "./node_modules/@kaliber/**/*"
+  ],
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+    "allowSyntheticDefaultImports": true,
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+    "jsx": "react",
+    "baseUrl": ".",
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "paths": {
+      "/*": [
+        "src/*"
+      ]
+    }
+  }
+}

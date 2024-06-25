@@ -1,11 +1,11 @@
-import QueryApp from '../Query.universal'
-import { Mies } from '../Mies'
-import JetApp from '../Jet.universal'
+import QueryApp from '/Query.universal'
+import { Mies } from '/Mies'
+import JetApp from '/Jet.universal'
 
 import { stylesheet } from '@kaliber/build/stylesheet'
 import { javascript } from '@kaliber/build/javascript'
 
-import { content } from './aap.css'
+import { content } from './aaps.css'
 
 export default (<html>
   <head>

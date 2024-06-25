@@ -202,7 +202,7 @@
       "imports": []
     },
     "src/aap_static.html.js": {
-      "bytes": 640,
+      "bytes": 568,
       "imports": [
         {
           "path": "src/Mies.universal.js",
@@ -222,7 +222,7 @@
         {
           "path": "src/Mies.js",
           "kind": "import-statement",
-          "original": "./Mies"
+          "original": "/Mies"
         },
         {
           "path": "/home/harmen/Documents/JavaScript/esbuild/src/aap_static.html.js:@kaliber/build/stylesheet",
@@ -243,17 +243,12 @@
           "path": "/home/harmen/Documents/JavaScript/esbuild/injects-server.js",
           "kind": "import-statement",
           "external": true
-        },
-        {
-          "path": "@kaliber/config",
-          "kind": "require-call",
-          "external": true
         }
       ],
       "format": "esm"
     },
-    "/home/harmen/Documents/JavaScript/esbuild/src/admin/aap_static.html.js:@kaliber/build/stylesheet": {
-      "bytes": 353,
+    "/home/harmen/Documents/JavaScript/esbuild/src/admin/noot_static.html.js:@kaliber/build/stylesheet": {
+      "bytes": 354,
       "imports": [
         {
           "path": "/home/harmen/Documents/JavaScript/esbuild/injects-server.js",
@@ -263,8 +258,8 @@
       ],
       "format": "esm"
     },
-    "/home/harmen/Documents/JavaScript/esbuild/src/admin/aap_static.html.js:@kaliber/build/javascript": {
-      "bytes": 735,
+    "/home/harmen/Documents/JavaScript/esbuild/src/admin/noot_static.html.js:@kaliber/build/javascript": {
+      "bytes": 736,
       "imports": [
         {
           "path": "/home/harmen/Documents/JavaScript/esbuild/injects-server.js",
@@ -274,42 +269,42 @@
       ],
       "format": "esm"
     },
-    "src/admin/aap.css": {
-      "bytes": 78,
+    "src/admin/aaps.css": {
+      "bytes": 79,
       "imports": []
     },
-    "src/admin/aap_static.html.js": {
-      "bytes": 497,
+    "src/admin/noot_static.html.js": {
+      "bytes": 492,
       "imports": [
         {
           "path": "src/Query.universal.js",
           "kind": "import-statement",
-          "original": "../Query.universal"
+          "original": "/Query.universal"
         },
         {
           "path": "src/Mies.js",
           "kind": "import-statement",
-          "original": "../Mies"
+          "original": "/Mies"
         },
         {
           "path": "src/Jet.universal.js",
           "kind": "import-statement",
-          "original": "../Jet.universal"
+          "original": "/Jet.universal"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/src/admin/aap_static.html.js:@kaliber/build/stylesheet",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/src/admin/noot_static.html.js:@kaliber/build/stylesheet",
           "kind": "import-statement",
           "original": "@kaliber/build/stylesheet"
         },
         {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/src/admin/aap_static.html.js:@kaliber/build/javascript",
+          "path": "/home/harmen/Documents/JavaScript/esbuild/src/admin/noot_static.html.js:@kaliber/build/javascript",
           "kind": "import-statement",
           "original": "@kaliber/build/javascript"
         },
         {
-          "path": "src/admin/aap.css",
+          "path": "src/admin/aaps.css",
           "kind": "import-statement",
-          "original": "./aap.css"
+          "original": "./aaps.css"
         },
         {
           "path": "/home/harmen/Documents/JavaScript/esbuild/injects-server.js",
@@ -342,7 +337,7 @@
       "format": "esm"
     },
     "src/index.html.js": {
-      "bytes": 786,
+      "bytes": 749,
       "imports": [
         {
           "path": "src/Mies.universal.js",
@@ -363,11 +358,6 @@
           "path": "src/Mies.js",
           "kind": "import-statement",
           "original": "./Mies"
-        },
-        {
-          "path": "@kaliber/config",
-          "kind": "import-statement",
-          "external": true
         },
         {
           "path": "/home/harmen/Documents/JavaScript/esbuild/src/index.html.js:@kaliber/build/stylesheet",
@@ -402,6 +392,10 @@
         }
       ],
       "format": "esm"
+    },
+    "src/size.entry.css": {
+      "bytes": 107,
+      "imports": []
     }
   },
   "outputs": {
@@ -461,11 +455,6 @@
           "path": "react-dom/server",
           "kind": "require-call",
           "external": true
-        },
-        {
-          "path": "@kaliber/config",
-          "kind": "require-call",
-          "external": true
         }
       ],
       "exports": [],
@@ -473,7 +462,7 @@
       "cssBundle": "target/aap_static.html.css",
       "inputs": {
         "src/aap_static.html.js": {
-          "bytesInOutput": 853
+          "bytesInOutput": 788
         },
         "injects-server.js": {
           "bytesInOutput": 72
@@ -512,7 +501,7 @@
           "bytesInOutput": 29
         }
       },
-      "bytes": 6877
+      "bytes": 6812
     },
     "target/aap_static.html.css": {
       "imports": [],
@@ -523,7 +512,7 @@
       },
       "bytes": 103
     },
-    "target/admin/aap_static.html.js": {
+    "target/admin/noot_static.html.js": {
       "imports": [
         {
           "path": "react",
@@ -557,11 +546,11 @@
         }
       ],
       "exports": [],
-      "entryPoint": "src/admin/aap_static.html.js",
-      "cssBundle": "target/admin/aap_static.html.css",
+      "entryPoint": "src/admin/noot_static.html.js",
+      "cssBundle": "target/admin/noot_static.html.css",
       "inputs": {
-        "src/admin/aap_static.html.js": {
-          "bytesInOutput": 707
+        "src/admin/noot_static.html.js": {
+          "bytesInOutput": 712
         },
         "injects-server.js": {
           "bytesInOutput": 72
@@ -584,26 +573,26 @@
         "src/Jet.universal.js": {
           "bytesInOutput": 419
         },
-        "/home/harmen/Documents/JavaScript/esbuild/src/admin/aap_static.html.js:@kaliber/build/stylesheet": {
-          "bytesInOutput": 389
+        "/home/harmen/Documents/JavaScript/esbuild/src/admin/noot_static.html.js:@kaliber/build/stylesheet": {
+          "bytesInOutput": 390
         },
-        "/home/harmen/Documents/JavaScript/esbuild/src/admin/aap_static.html.js:@kaliber/build/javascript": {
-          "bytesInOutput": 775
+        "/home/harmen/Documents/JavaScript/esbuild/src/admin/noot_static.html.js:@kaliber/build/javascript": {
+          "bytesInOutput": 776
         },
-        "src/admin/aap.css": {
+        "src/admin/aaps.css": {
           "bytesInOutput": 30
         }
       },
-      "bytes": 6192
+      "bytes": 6204
     },
-    "target/admin/aap_static.html.css": {
+    "target/admin/noot_static.html.css": {
       "imports": [],
       "inputs": {
-        "src/admin/aap.css": {
-          "bytesInOutput": 87
+        "src/admin/aaps.css": {
+          "bytesInOutput": 88
         }
       },
-      "bytes": 111
+      "bytes": 113
     },
     "target/index.html.js": {
       "imports": [
@@ -641,11 +630,6 @@
           "path": "react-dom/server",
           "kind": "require-call",
           "external": true
-        },
-        {
-          "path": "@kaliber/config",
-          "kind": "require-call",
-          "external": true
         }
       ],
       "exports": [],
@@ -653,7 +637,7 @@
       "cssBundle": "target/index.html.css",
       "inputs": {
         "src/index.html.js": {
-          "bytesInOutput": 932
+          "bytesInOutput": 875
         },
         "injects-server.js": {
           "bytesInOutput": 72
@@ -692,7 +676,7 @@
           "bytesInOutput": 30
         }
       },
-      "bytes": 6949
+      "bytes": 6870
     },
     "target/index.html.css": {
       "imports": [],
@@ -722,6 +706,16 @@
         }
       },
       "bytes": 1694
+    },
+    "target/size.entry.css": {
+      "imports": [],
+      "entryPoint": "src/size.entry.css",
+      "inputs": {
+        "src/size.entry.css": {
+          "bytesInOutput": 107
+        }
+      },
+      "bytes": 132
     }
   }
 }

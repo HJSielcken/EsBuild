@@ -1,16 +1,18 @@
-const { nodeExternalsPlugin } = require('esbuild-node-externals');
 const esbuild = require('esbuild')
 const importFresh = require('import-fresh')
 const fs = require('fs')
 const path = require('path')
 const crypto = require('crypto');
 const walkSync = require('walk-sync');
+const config = require('@kaliber/config')
+
 const pwd = process.cwd()
 const srcDir = path.resolve(pwd, 'src')
 const targetDir = path.resolve(pwd, 'target')
-const config = require('@kaliber/config')
 
-const {templateRenderers} = config
+const { nodeExternalsPlugin } = require('esbuild-node-externals');
+
+const { templateRenderers } = config
 
 build()
 // watch()
@@ -52,6 +54,7 @@ function getClientBuildConfig() {
     loader: {
       '.js': 'jsx',
       '.css': 'local-css',
+      '.entry.css': 'css'
     },
     entryNames: '[dir]/[name]-[hash]',
     inject: ['./injects-browser.js'],
@@ -96,7 +99,7 @@ function getServerBuildConfig() {
       universalServerLoaderPlugin(),
       writeMetaFilePlugin('server-metafile.json'),
       templateRendererPlugin(templateRenderers),
-      nodeExternalsPlugin()
+      nodeExternalsPlugin(),
     ]
   }
 }
@@ -151,7 +154,6 @@ function universalServerLoaderPlugin() {
 
   function serverSnippet({ path }) {
     const md5 = crypto.createHash('md5').update(path).digest('hex')
-
     return `|import Component from '${path}?universal'
             |import { renderToString } from 'react-dom/server'
             |
@@ -228,7 +230,6 @@ function getEntryPoints(templateRenderers) {
 }
 
 function gatherEntries(templateRenderers) {
-  const walkSync = require('walk-sync')
   const extensions = Object.keys(templateRenderers)
   const template = extensions.join('|')
   const globs = [`**/*.@(${template}).js`, '**/*.entry.js', '**/*.entry.css']
