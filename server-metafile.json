@@ -176,7 +176,7 @@
       "format": "esm"
     },
     "/home/harmen/Documents/JavaScript/esbuild/src/aap_static.html.js:@kaliber/build/stylesheet": {
-      "bytes": 348,
+      "bytes": 347,
       "imports": [
         {
           "path": "/home/harmen/Documents/JavaScript/esbuild/injects-server.js",
@@ -202,7 +202,7 @@
       "imports": []
     },
     "src/aap_static.html.js": {
-      "bytes": 569,
+      "bytes": 640,
       "imports": [
         {
           "path": "src/Mies.universal.js",
@@ -243,12 +243,84 @@
           "path": "/home/harmen/Documents/JavaScript/esbuild/injects-server.js",
           "kind": "import-statement",
           "external": true
+        },
+        {
+          "path": "@kaliber/config",
+          "kind": "require-call",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "/home/harmen/Documents/JavaScript/esbuild/src/admin/aap_static.html.js:@kaliber/build/stylesheet": {
+      "bytes": 353,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-server.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "/home/harmen/Documents/JavaScript/esbuild/src/admin/aap_static.html.js:@kaliber/build/javascript": {
+      "bytes": 735,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-server.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "src/admin/aap.css": {
+      "bytes": 78,
+      "imports": []
+    },
+    "src/admin/aap_static.html.js": {
+      "bytes": 497,
+      "imports": [
+        {
+          "path": "src/Query.universal.js",
+          "kind": "import-statement",
+          "original": "../Query.universal"
+        },
+        {
+          "path": "src/Mies.js",
+          "kind": "import-statement",
+          "original": "../Mies"
+        },
+        {
+          "path": "src/Jet.universal.js",
+          "kind": "import-statement",
+          "original": "../Jet.universal"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/src/admin/aap_static.html.js:@kaliber/build/stylesheet",
+          "kind": "import-statement",
+          "original": "@kaliber/build/stylesheet"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/src/admin/aap_static.html.js:@kaliber/build/javascript",
+          "kind": "import-statement",
+          "original": "@kaliber/build/javascript"
+        },
+        {
+          "path": "src/admin/aap.css",
+          "kind": "import-statement",
+          "original": "./aap.css"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-server.js",
+          "kind": "import-statement",
+          "external": true
         }
       ],
       "format": "esm"
     },
     "/home/harmen/Documents/JavaScript/esbuild/src/index.html.js:@kaliber/build/stylesheet": {
-      "bytes": 343,
+      "bytes": 342,
       "imports": [
         {
           "path": "/home/harmen/Documents/JavaScript/esbuild/injects-server.js",
@@ -270,7 +342,7 @@
       "format": "esm"
     },
     "src/index.html.js": {
-      "bytes": 749,
+      "bytes": 786,
       "imports": [
         {
           "path": "src/Mies.universal.js",
@@ -291,6 +363,11 @@
           "path": "src/Mies.js",
           "kind": "import-statement",
           "original": "./Mies"
+        },
+        {
+          "path": "@kaliber/config",
+          "kind": "import-statement",
+          "external": true
         },
         {
           "path": "/home/harmen/Documents/JavaScript/esbuild/src/index.html.js:@kaliber/build/stylesheet",
@@ -384,6 +461,11 @@
           "path": "react-dom/server",
           "kind": "require-call",
           "external": true
+        },
+        {
+          "path": "@kaliber/config",
+          "kind": "require-call",
+          "external": true
         }
       ],
       "exports": [],
@@ -391,7 +473,7 @@
       "cssBundle": "target/aap_static.html.css",
       "inputs": {
         "src/aap_static.html.js": {
-          "bytesInOutput": 788
+          "bytesInOutput": 853
         },
         "injects-server.js": {
           "bytesInOutput": 72
@@ -430,7 +512,7 @@
           "bytesInOutput": 29
         }
       },
-      "bytes": 6812
+      "bytes": 6877
     },
     "target/aap_static.html.css": {
       "imports": [],
@@ -440,6 +522,88 @@
         }
       },
       "bytes": 103
+    },
+    "target/admin/aap_static.html.js": {
+      "imports": [
+        {
+          "path": "react",
+          "kind": "require-call",
+          "external": true
+        },
+        {
+          "path": "fs",
+          "kind": "require-call",
+          "external": true
+        },
+        {
+          "path": "@tanstack/react-query",
+          "kind": "require-call",
+          "external": true
+        },
+        {
+          "path": "@tanstack/react-query",
+          "kind": "require-call",
+          "external": true
+        },
+        {
+          "path": "react-dom/server",
+          "kind": "require-call",
+          "external": true
+        },
+        {
+          "path": "react-dom/server",
+          "kind": "require-call",
+          "external": true
+        }
+      ],
+      "exports": [],
+      "entryPoint": "src/admin/aap_static.html.js",
+      "cssBundle": "target/admin/aap_static.html.css",
+      "inputs": {
+        "src/admin/aap_static.html.js": {
+          "bytesInOutput": 707
+        },
+        "injects-server.js": {
+          "bytesInOutput": 72
+        },
+        "src/Query.universal.js?universal": {
+          "bytesInOutput": 292
+        },
+        "src/Query.js": {
+          "bytesInOutput": 690
+        },
+        "src/Query.universal.js": {
+          "bytesInOutput": 418
+        },
+        "src/Mies.js": {
+          "bytesInOutput": 413
+        },
+        "src/Jet.universal.js?universal": {
+          "bytesInOutput": 99
+        },
+        "src/Jet.universal.js": {
+          "bytesInOutput": 419
+        },
+        "/home/harmen/Documents/JavaScript/esbuild/src/admin/aap_static.html.js:@kaliber/build/stylesheet": {
+          "bytesInOutput": 389
+        },
+        "/home/harmen/Documents/JavaScript/esbuild/src/admin/aap_static.html.js:@kaliber/build/javascript": {
+          "bytesInOutput": 775
+        },
+        "src/admin/aap.css": {
+          "bytesInOutput": 30
+        }
+      },
+      "bytes": 6192
+    },
+    "target/admin/aap_static.html.css": {
+      "imports": [],
+      "inputs": {
+        "src/admin/aap.css": {
+          "bytesInOutput": 87
+        }
+      },
+      "bytes": 111
     },
     "target/index.html.js": {
       "imports": [
@@ -477,6 +641,11 @@
           "path": "react-dom/server",
           "kind": "require-call",
           "external": true
+        },
+        {
+          "path": "@kaliber/config",
+          "kind": "require-call",
+          "external": true
         }
       ],
       "exports": [],
@@ -484,7 +653,7 @@
       "cssBundle": "target/index.html.css",
       "inputs": {
         "src/index.html.js": {
-          "bytesInOutput": 875
+          "bytesInOutput": 932
         },
         "injects-server.js": {
           "bytesInOutput": 72
@@ -523,7 +692,7 @@
           "bytesInOutput": 30
         }
       },
-      "bytes": 6870
+      "bytes": 6949
     },
     "target/index.html.css": {
       "imports": [],

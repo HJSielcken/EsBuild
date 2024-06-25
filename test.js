@@ -1,3 +1,3 @@
-const a = require('./index.html.js')
+const a = require('./target/aap.json')
 
-console.log(a({title: 'aap'}))
+console.log(a({title: 'aasp'}))

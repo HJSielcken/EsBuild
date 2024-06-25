@@ -3,16 +3,14 @@ const esbuild = require('esbuild')
 const importFresh = require('import-fresh')
 const fs = require('fs')
 const path = require('path')
-const crypto = require('crypto')
-
+const crypto = require('crypto');
+const walkSync = require('walk-sync');
 const pwd = process.cwd()
 const srcDir = path.resolve(pwd, 'src')
 const targetDir = path.resolve(pwd, 'target')
+const config = require('@kaliber/config')
 
-const templateRenderers = {
-  json: 'json-renderer.js',
-  html: 'html-react-renderer.js',
-}
+const {templateRenderers} = config
 
 build()
 // watch()
@@ -70,7 +68,7 @@ function writeMetaFilePlugin(filename) {
     name: 'write-metafile-plugin',
     setup({ onEnd }) {
       onEnd(({ metafile, errors }) => {
-        if(errors.length) return
+        if (errors.length) return
         fs.writeFileSync(`./${filename}`, JSON.stringify(metafile, null, 2))
       }
       )
@@ -97,7 +95,7 @@ function getServerBuildConfig() {
       javascriptLoaderPlugin(),
       universalServerLoaderPlugin(),
       writeMetaFilePlugin('server-metafile.json'),
-      templateRendererPlugin(),
+      templateRendererPlugin(templateRenderers),
       nodeExternalsPlugin()
     ]
   }
@@ -152,8 +150,6 @@ function universalServerLoaderPlugin() {
   }
 
   function serverSnippet({ path }) {
-    const [filename] = path.split('/').slice(-1)
-    const scriptname = filename.replace('universal', 'universal-browser')
     const md5 = crypto.createHash('md5').update(path).digest('hex')
 
     return `|import Component from '${path}?universal'
@@ -188,24 +184,26 @@ function cssLoaderPlugin() {
   }
 }
 
-function templateRendererPlugin() {
+function templateRendererPlugin(templateRenderers) {
   return {
     name: 'template-renderer-plugin',
     setup(build) {
       build.onEnd(({ metafile, errors }) => {
-        if(errors.length) return
+        if (errors.length) return
         const { outputs } = metafile
-
-        Object.keys(outputs).filter(x => x.endsWith('html.js') || x.endsWith('json.js')).forEach(filePath => {
+        const extensions = Object.keys(templateRenderers).join('|')
+        Object.keys(outputs).filter(x => new RegExp(`(${extensions})\.js`).test(x)).forEach(filePath => {
+          const extension = filePath.split('.').slice(-2, -1)[0]
           const { rendererFilename, filename } = getFileAndRendererInfo(filePath)
           const module = importFresh(path.resolve(targetDir, filename))
 
           if (typeof module.default === 'function') {
-            const newFilename = filename.replace('.html.js', '.html.template.js')
+            const newFilename = filename.replaceAll(`.${extension}.js`, `.${extension}.template.js`)
             const dynamicTemplate = createDynamicTemplate(newFilename, rendererFilename)
             fs.renameSync(path.resolve(process.cwd(), 'target', filename), path.resolve(process.cwd(), 'target', newFilename))
             fs.writeFileSync(path.resolve(process.cwd(), 'target', filename), dynamicTemplate)
           } else {
+
             const renderer = importFresh(path.resolve(pwd, rendererFilename))
             const content = renderer(module.default)
             fs.writeFileSync(path.resolve(targetDir, filename.replace(/\.js$/, '')), content)
@@ -226,11 +224,7 @@ function getFileAndRendererInfo(filePath) {
 }
 
 function getEntryPoints(templateRenderers) {
-  const entries = fs.readdirSync(srcDir)
-  const extensions = Object.keys(templateRenderers).join('|')
-  const filteredEntries = entries.filter(x => new RegExp(`(${extensions})\.js$`).test(x)).map(x => path.resolve(srcDir, x))
-
-  return filteredEntries
+  return gatherEntries(templateRenderers).map(x => path.resolve(srcDir, x))
 }
 
 function gatherEntries(templateRenderers) {
@@ -248,7 +242,6 @@ function createDynamicTemplate(sourceLocation, rendererLocation) {
   return `
     |const source = require('./${sourceLocation}')
     |const renderer = require('../${rendererLocation}')
-    |const React = require('react')
     |Object.assign(render, source)
     |
     |module.exports = render
@@ -263,7 +256,6 @@ function createStyleSheet(entryPoint) {
   const stylesheet = entryPoint.replace(pwd, '').slice(1)
   return `
   |export const stylesheet = <link rel="stylesheet" href={getCssBundle("${stylesheet}")} />
-  |
   |function getCssBundle(entrypoint) {
   |  const metafile = JSON.parse(fs.readFileSync('./server-metafile.json'))
   |  const output = Object.values(metafile.outputs).find(x => x.entryPoint === entrypoint)

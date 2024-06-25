@@ -2,6 +2,7 @@ import MiesApp from './Mies.universal'
 import QueryApp from './Query.universal'
 import JetApp from './Jet.universal'
 import { Mies } from './Mies'
+import config from '@kaliber/config'
 
 import { stylesheet } from '@kaliber/build/stylesheet'
 import { javascript } from '@kaliber/build/javascript'
