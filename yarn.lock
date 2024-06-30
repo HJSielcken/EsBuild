@@ -129,6 +129,11 @@
   resolved "https://registry.yarnpkg.com/@kaliber/config/-/config-0.0.8.tgz#8ff9c95d0f31c77037d5e4e7b217efa082fba164"
   integrity sha512-6C8e4DqbhbhDWG0PWlVAmJyo1VMwu/8AGrVlrk8NLRgtOYmjOsr92t9MqwvkJ7Jpp1HnXroMKesgIvgfwFP5XQ==
 
+"@kaliber/use-is-mounted-ref@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@kaliber/use-is-mounted-ref/-/use-is-mounted-ref-1.0.2.tgz#1f6b032194141bbf13f28bc8123ae3c3c950e67d"
+  integrity sha512-k4YIufDoiTSQr1qJanYm05Ge4/IhFk9b23hvmKyq7T+bue5CUOKCqdAEzGCeXsZk8zglsGbWEb4WWYFBl/DZzw==
+
 "@nodelib/fs.scandir@3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-3.0.0.tgz#91c0a33e1aeaedcd4bab2bf31be5d1962a55d2a7"

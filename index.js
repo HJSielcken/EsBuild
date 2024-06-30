@@ -18,7 +18,7 @@ build()
 // watch()
 
 async function build() {
-  await buildClient().then(_ => buildServer()).catch(x => console.log('x')).finally(x => { console.log('Finished'); process.exit('1') })
+  await buildClient().then(_ => buildServer()).catch(x => console.log(x)).finally(x => { console.log('Finished'); process.exit('1') })
 
 }
 
@@ -45,6 +45,7 @@ async function watch() {
 function getClientBuildConfig() {
   return {
     entryPoints: getEntryPoints({ universal: null }),
+    preserveSymlinks: true,
     outdir: targetDir,
     metafile: true,
     bundle: true,
@@ -62,7 +63,23 @@ function getClientBuildConfig() {
       kaliberConfigLoaderPlugin(),
       universalClientLoaderPlugin(),
       writeMetaFilePlugin('browser-metafile.json'),
+      srcResolverPlugin()
     ]
+  }
+}
+
+/** 
+ * @returns {import('esbuild').Plugin}
+ */
+function srcResolverPlugin() {
+  return {
+    name: 'src-resolve-plugin',
+    setup(build) {
+      build.onResolve({ filter: /^\// }, async args => {
+        if (args.kind === 'entry-point') return
+        return build.resolve(`.${args.path}`, { kind: args.kind, resolveDir: path.resolve('./src') })
+      })
+    }
   }
 }
 
@@ -82,6 +99,7 @@ function writeMetaFilePlugin(filename) {
 function getServerBuildConfig() {
   return {
     entryPoints: getEntryPoints(templateRenderers),
+    preserveSymlinks: true,
     outdir: targetDir,
     metafile: true,
     bundle: true,
@@ -89,6 +107,8 @@ function getServerBuildConfig() {
     loader: {
       '.js': 'jsx',
       '.css': 'local-css',
+      '.svg': 'text',
+      '.svg.raw': 'text'
     },
     entryNames: '[dir]/[name]',
     format: 'cjs',
@@ -100,6 +120,7 @@ function getServerBuildConfig() {
       writeMetaFilePlugin('server-metafile.json'),
       templateRendererPlugin(templateRenderers),
       nodeExternalsPlugin(),
+      srcResolverPlugin()
     ]
   }
 }
@@ -109,10 +130,9 @@ function universalClientLoaderPlugin() {
     name: 'universal-loader-plugin',
     setup({ onLoad }) {
       onLoad({ filter: /\.universal.js/ }, async (args) => {
-
         if (args.suffix === '?universal') return
         const newFile = clientSnippet({
-          path: args.path,
+          path: args.path.replace(path.resolve(process.cwd(), 'src'), ''),
         })
 
         return {
@@ -124,6 +144,7 @@ function universalClientLoaderPlugin() {
   }
 
   function clientSnippet({ path }) {
+    console.log({ path })
     const md5 = crypto.createHash('md5').update(path).digest('hex')
 
     return `|import ClientComponent from '${path}?universal'; 
@@ -145,7 +166,7 @@ function universalServerLoaderPlugin() {
         if (args.suffix === '?universal') return
 
         return {
-          contents: serverSnippet({ path: args.path, }),
+          contents: serverSnippet({ path: args.path.replace(path.resolve(process.cwd(), 'src'), '') }),
           loader: 'jsx',
         }
       })
