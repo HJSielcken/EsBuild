@@ -32,9 +32,14 @@
       ],
       "format": "esm"
     },
-    "src/Mies.js": {
-      "bytes": 286,
+    "node_modules/@kaliber/use-is-mounted-ref/src/index.js": {
+      "bytes": 267,
       "imports": [
+        {
+          "path": "react",
+          "kind": "import-statement",
+          "external": true
+        },
         {
           "path": "/home/harmen/Documents/JavaScript/esbuild/injects-server.js",
           "kind": "import-statement",
@@ -43,7 +48,23 @@
       ],
       "format": "esm"
     },
-    "src/Mies.universal.js?universal": {
+    "src/Mies.js": {
+      "bytes": 462,
+      "imports": [
+        {
+          "path": "node_modules/@kaliber/use-is-mounted-ref/src/index.js",
+          "kind": "import-statement",
+          "original": "@kaliber/use-is-mounted-ref"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-server.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "src/Mies.universal.js?universal-loaded": {
       "bytes": 109,
       "imports": [
         {
@@ -60,12 +81,12 @@
       "format": "esm"
     },
     "src/Mies.universal.js": {
-      "bytes": 384,
+      "bytes": 391,
       "imports": [
         {
-          "path": "src/Mies.universal.js?universal",
+          "path": "src/Mies.universal.js?universal-loaded",
           "kind": "import-statement",
-          "original": "/Mies.universal.js?universal"
+          "original": "/Mies.universal.js?universal-loaded"
         },
         {
           "path": "react-dom/server",
@@ -96,7 +117,7 @@
       ],
       "format": "esm"
     },
-    "src/Query.universal.js?universal": {
+    "src/Query.universal.js?universal-loaded": {
       "bytes": 279,
       "imports": [
         {
@@ -118,12 +139,12 @@
       "format": "esm"
     },
     "src/Query.universal.js": {
-      "bytes": 385,
+      "bytes": 392,
       "imports": [
         {
-          "path": "src/Query.universal.js?universal",
+          "path": "src/Query.universal.js?universal-loaded",
           "kind": "import-statement",
-          "original": "/Query.universal.js?universal"
+          "original": "/Query.universal.js?universal-loaded"
         },
         {
           "path": "react-dom/server",
@@ -138,7 +159,7 @@
       ],
       "format": "esm"
     },
-    "src/Jet.universal.js?universal": {
+    "src/Jet.universal.js?universal-loaded": {
       "bytes": 108,
       "imports": [
         {
@@ -155,12 +176,12 @@
       "format": "esm"
     },
     "src/Jet.universal.js": {
-      "bytes": 383,
+      "bytes": 390,
       "imports": [
         {
-          "path": "src/Jet.universal.js?universal",
+          "path": "src/Jet.universal.js?universal-loaded",
           "kind": "import-statement",
-          "original": "/Jet.universal.js?universal"
+          "original": "/Jet.universal.js?universal-loaded"
         },
         {
           "path": "react-dom/server",
@@ -428,6 +449,11 @@
           "external": true
         },
         {
+          "path": "react",
+          "kind": "require-call",
+          "external": true
+        },
+        {
           "path": "react-dom/server",
           "kind": "require-call",
           "external": true
@@ -463,16 +489,19 @@
         "injects-server.js": {
           "bytesInOutput": 72
         },
-        "src/Mies.js": {
-          "bytesInOutput": 413
+        "node_modules/@kaliber/use-is-mounted-ref/src/index.js": {
+          "bytesInOutput": 327
         },
-        "src/Mies.universal.js?universal": {
+        "src/Mies.js": {
+          "bytesInOutput": 521
+        },
+        "src/Mies.universal.js?universal-loaded": {
           "bytesInOutput": 100
         },
         "src/Mies.universal.js": {
           "bytesInOutput": 417
         },
-        "src/Query.universal.js?universal": {
+        "src/Query.universal.js?universal-loaded": {
           "bytesInOutput": 292
         },
         "src/Query.js": {
@@ -481,7 +510,7 @@
         "src/Query.universal.js": {
           "bytesInOutput": 421
         },
-        "src/Jet.universal.js?universal": {
+        "src/Jet.universal.js?universal-loaded": {
           "bytesInOutput": 99
         },
         "src/Jet.universal.js": {
@@ -497,7 +526,7 @@
           "bytesInOutput": 29
         }
       },
-      "bytes": 6812
+      "bytes": 7333
     },
     "target/aap_static.html.css": {
       "imports": [],
@@ -536,6 +565,11 @@
           "external": true
         },
         {
+          "path": "react",
+          "kind": "require-call",
+          "external": true
+        },
+        {
           "path": "react-dom/server",
           "kind": "require-call",
           "external": true
@@ -551,7 +585,7 @@
         "injects-server.js": {
           "bytesInOutput": 72
         },
-        "src/Query.universal.js?universal": {
+        "src/Query.universal.js?universal-loaded": {
           "bytesInOutput": 292
         },
         "src/Query.js": {
@@ -560,10 +594,13 @@
         "src/Query.universal.js": {
           "bytesInOutput": 418
         },
-        "src/Mies.js": {
-          "bytesInOutput": 413
+        "node_modules/@kaliber/use-is-mounted-ref/src/index.js": {
+          "bytesInOutput": 327
         },
-        "src/Jet.universal.js?universal": {
+        "src/Mies.js": {
+          "bytesInOutput": 521
+        },
+        "src/Jet.universal.js?universal-loaded": {
           "bytesInOutput": 99
         },
         "src/Jet.universal.js": {
@@ -579,7 +616,7 @@
           "bytesInOutput": 30
         }
       },
-      "bytes": 6204
+      "bytes": 6718
     },
     "target/admin/noot_static.html.css": {
       "imports": [],
@@ -599,6 +636,11 @@
         },
         {
           "path": "fs",
+          "kind": "require-call",
+          "external": true
+        },
+        {
+          "path": "react",
           "kind": "require-call",
           "external": true
         },
@@ -638,16 +680,19 @@
         "injects-server.js": {
           "bytesInOutput": 72
         },
-        "src/Mies.js": {
-          "bytesInOutput": 413
+        "node_modules/@kaliber/use-is-mounted-ref/src/index.js": {
+          "bytesInOutput": 327
         },
-        "src/Mies.universal.js?universal": {
+        "src/Mies.js": {
+          "bytesInOutput": 521
+        },
+        "src/Mies.universal.js?universal-loaded": {
           "bytesInOutput": 100
         },
         "src/Mies.universal.js": {
           "bytesInOutput": 417
         },
-        "src/Query.universal.js?universal": {
+        "src/Query.universal.js?universal-loaded": {
           "bytesInOutput": 292
         },
         "src/Query.js": {
@@ -656,7 +701,7 @@
         "src/Query.universal.js": {
           "bytesInOutput": 421
         },
-        "src/Jet.universal.js?universal": {
+        "src/Jet.universal.js?universal-loaded": {
           "bytesInOutput": 99
         },
         "src/Jet.universal.js": {
@@ -672,7 +717,7 @@
           "bytesInOutput": 30
         }
       },
-      "bytes": 6870
+      "bytes": 7391
     },
     "target/index.html.css": {
       "imports": [],

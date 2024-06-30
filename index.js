@@ -113,15 +113,49 @@ function getServerBuildConfig() {
     entryNames: '[dir]/[name]',
     format: 'cjs',
     inject: ['./injects-server.js'],
+    external: ['react', 'react-dom'],
     plugins: [
       cssLoaderPlugin(),
       javascriptLoaderPlugin(),
       universalServerLoaderPlugin(),
       writeMetaFilePlugin('server-metafile.json'),
       templateRendererPlugin(templateRenderers),
-      nodeExternalsPlugin(),
+      compileForServerPlugin([/\@kaliber\/use-is-mounted-ref/]),
       srcResolverPlugin()
     ]
+  }
+}
+
+/** 
+ * @returns {import('esbuild').Plugin}
+ */
+function compileForServerPlugin(compileWithBabel) {
+  return {
+    name: 'externals-plugin',
+    setup(build) {
+      build.onResolve({ filter: /./ }, args => {
+        const isNodeModule = determineIsNodeModule(args.path)
+
+        if (!isNodeModule) return null
+
+        if (compileWithBabel.find(x => x.test(args.path))) return null
+
+        return {
+          path: args.path, external: true
+        }
+
+      })
+    }
+  }
+}
+
+function determineIsNodeModule(path) {
+  try {
+    const isNodeModule = require.resolve(path).includes(`node_modules`)
+    return isNodeModule
+  }
+  catch (e) {
+    return false
   }
 }
 
@@ -130,7 +164,7 @@ function universalClientLoaderPlugin() {
     name: 'universal-loader-plugin',
     setup({ onLoad }) {
       onLoad({ filter: /\.universal.js/ }, async (args) => {
-        if (args.suffix === '?universal') return
+        if (args.suffix === '?universal-loaded') return
         const newFile = clientSnippet({
           path: args.path.replace(path.resolve(process.cwd(), 'src'), ''),
         })
@@ -144,10 +178,9 @@ function universalClientLoaderPlugin() {
   }
 
   function clientSnippet({ path }) {
-    console.log({ path })
     const md5 = crypto.createHash('md5').update(path).digest('hex')
 
-    return `|import ClientComponent from '${path}?universal'; 
+    return `|import ClientComponent from '${path}?universal-loaded'; 
             |const { hydrateRoot } = ReactDOM; 
             |const nodes = Array.from(document.querySelectorAll('*[data-kaliber-component-id="${md5}"]'));
             |nodes.map(x => {
@@ -163,7 +196,7 @@ function universalServerLoaderPlugin() {
     name: 'universal-loader-plugin',
     setup({ onLoad }) {
       onLoad({ filter: /\.universal.js/ }, async (args) => {
-        if (args.suffix === '?universal') return
+        if (args.suffix === '?universal-loaded') return
 
         return {
           contents: serverSnippet({ path: args.path.replace(path.resolve(process.cwd(), 'src'), '') }),
@@ -175,7 +208,7 @@ function universalServerLoaderPlugin() {
 
   function serverSnippet({ path }) {
     const md5 = crypto.createHash('md5').update(path).digest('hex')
-    return `|import Component from '${path}?universal'
+    return `|import Component from '${path}?universal-loaded'
             |import { renderToString } from 'react-dom/server'
             |
             |export default function ServerComponent(props) {

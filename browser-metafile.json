@@ -1,32 +1,5 @@
 {
   "inputs": {
-    "node_modules/react/cjs/react.development.js": {
-      "bytes": 87593,
-      "imports": [
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
-          "kind": "import-statement",
-          "external": true
-        }
-      ],
-      "format": "cjs"
-    },
-    "node_modules/react/index.js": {
-      "bytes": 190,
-      "imports": [
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
-          "kind": "import-statement",
-          "external": true
-        },
-        {
-          "path": "node_modules/react/cjs/react.development.js",
-          "kind": "require-call",
-          "original": "./cjs/react.development.js"
-        }
-      ],
-      "format": "cjs"
-    },
     "node_modules/scheduler/cjs/scheduler.development.js": {
       "bytes": 17497,
       "imports": [
@@ -123,9 +96,41 @@
       ],
       "format": "esm"
     },
-    "src/Mies.js": {
-      "bytes": 286,
+    "node_modules/react/cjs/react.development.js": {
+      "bytes": 87593,
       "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "cjs"
+    },
+    "node_modules/react/index.js": {
+      "bytes": 190,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node_modules/react/cjs/react.development.js",
+          "kind": "require-call",
+          "original": "./cjs/react.development.js"
+        }
+      ],
+      "format": "cjs"
+    },
+    "node_modules/@kaliber/use-is-mounted-ref/src/index.js": {
+      "bytes": 267,
+      "imports": [
+        {
+          "path": "node_modules/react/index.js",
+          "kind": "import-statement",
+          "original": "react"
+        },
         {
           "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
           "kind": "import-statement",
@@ -134,7 +139,23 @@
       ],
       "format": "esm"
     },
-    "src/Jet.universal.js?universal": {
+    "src/Mies.js": {
+      "bytes": 462,
+      "imports": [
+        {
+          "path": "node_modules/@kaliber/use-is-mounted-ref/src/index.js",
+          "kind": "import-statement",
+          "original": "@kaliber/use-is-mounted-ref"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "src/Jet.universal.js?universal-loaded": {
       "bytes": 108,
       "imports": [
         {
@@ -151,12 +172,12 @@
       "format": "esm"
     },
     "src/Jet.universal.js": {
-      "bytes": 374,
+      "bytes": 381,
       "imports": [
         {
-          "path": "src/Jet.universal.js?universal",
+          "path": "src/Jet.universal.js?universal-loaded",
           "kind": "import-statement",
-          "original": "/Jet.universal.js?universal"
+          "original": "/Jet.universal.js?universal-loaded"
         },
         {
           "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
@@ -166,7 +187,7 @@
       ],
       "format": "esm"
     },
-    "src/Mies.universal.js?universal": {
+    "src/Mies.universal.js?universal-loaded": {
       "bytes": 109,
       "imports": [
         {
@@ -183,12 +204,12 @@
       "format": "esm"
     },
     "src/Mies.universal.js": {
-      "bytes": 375,
+      "bytes": 382,
       "imports": [
         {
-          "path": "src/Mies.universal.js?universal",
+          "path": "src/Mies.universal.js?universal-loaded",
           "kind": "import-statement",
-          "original": "/Mies.universal.js?universal"
+          "original": "/Mies.universal.js?universal-loaded"
         },
         {
           "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
@@ -1322,7 +1343,7 @@
       ],
       "format": "esm"
     },
-    "src/Query.universal.js?universal": {
+    "src/Query.universal.js?universal-loaded": {
       "bytes": 279,
       "imports": [
         {
@@ -1344,12 +1365,12 @@
       "format": "esm"
     },
     "src/Query.universal.js": {
-      "bytes": 376,
+      "bytes": 383,
       "imports": [
         {
-          "path": "src/Query.universal.js?universal",
+          "path": "src/Query.universal.js?universal-loaded",
           "kind": "import-statement",
-          "original": "/Query.universal.js?universal"
+          "original": "/Query.universal.js?universal-loaded"
         },
         {
           "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
@@ -1361,14 +1382,14 @@
     }
   },
   "outputs": {
-    "target/Jet.universal-HLOJJ3A5.js": {
+    "target/Jet.universal-GBOWONZT.js": {
       "imports": [
         {
-          "path": "target/chunk-JQOOZFES.js",
+          "path": "target/chunk-FOMLQNJK.js",
           "kind": "import-statement"
         },
         {
-          "path": "target/chunk-VAHC3BMG.js",
+          "path": "target/chunk-TEDRWSWQ.js",
           "kind": "import-statement"
         }
       ],
@@ -1378,20 +1399,20 @@
         "src/Jet.universal.js": {
           "bytesInOutput": 340
         },
-        "src/Jet.universal.js?universal": {
+        "src/Jet.universal.js?universal-loaded": {
           "bytesInOutput": 123
         }
       },
-      "bytes": 677
+      "bytes": 684
     },
-    "target/Mies.universal-EAZLIQ6Q.js": {
+    "target/Mies.universal-SLWJHT22.js": {
       "imports": [
         {
-          "path": "target/chunk-JQOOZFES.js",
+          "path": "target/chunk-FOMLQNJK.js",
           "kind": "import-statement"
         },
         {
-          "path": "target/chunk-VAHC3BMG.js",
+          "path": "target/chunk-TEDRWSWQ.js",
           "kind": "import-statement"
         }
       ],
@@ -1401,16 +1422,16 @@
         "src/Mies.universal.js": {
           "bytesInOutput": 341
         },
-        "src/Mies.universal.js?universal": {
+        "src/Mies.universal.js?universal-loaded": {
           "bytesInOutput": 124
         }
       },
-      "bytes": 682
+      "bytes": 689
     },
-    "target/chunk-JQOOZFES.js": {
+    "target/chunk-FOMLQNJK.js": {
       "imports": [
         {
-          "path": "target/chunk-VAHC3BMG.js",
+          "path": "target/chunk-TEDRWSWQ.js",
           "kind": "import-statement"
         }
       ],
@@ -1419,15 +1440,18 @@
       ],
       "inputs": {
         "src/Mies.js": {
-          "bytesInOutput": 437
+          "bytesInOutput": 545
+        },
+        "node_modules/@kaliber/use-is-mounted-ref/src/index.js": {
+          "bytesInOutput": 350
         }
       },
-      "bytes": 544
+      "bytes": 1104
     },
-    "target/Query.universal-VZCVWMHQ.js": {
+    "target/Query.universal-TQOBWTV2.js": {
       "imports": [
         {
-          "path": "target/chunk-VAHC3BMG.js",
+          "path": "target/chunk-TEDRWSWQ.js",
           "kind": "import-statement"
         }
       ],
@@ -1443,7 +1467,7 @@
         "src/Query.universal.js": {
           "bytesInOutput": 342
         },
-        "src/Query.universal.js?universal": {
+        "src/Query.universal.js?universal-loaded": {
           "bytesInOutput": 217
         },
         "node_modules/@tanstack/react-query/build/modern/index.js": {
@@ -1522,9 +1546,9 @@
           "bytesInOutput": 632
         }
       },
-      "bytes": 107881
+      "bytes": 107895
     },
-    "target/chunk-VAHC3BMG.js": {
+    "target/chunk-TEDRWSWQ.js": {
       "imports": [],
       "exports": [
         "React",
