@@ -1,10 +1,10 @@
 const esbuild = require('esbuild')
-const importFresh = require('import-fresh')
 const fs = require('fs')
 const path = require('path')
 const crypto = require('crypto');
 const walkSync = require('walk-sync');
 const config = require('@kaliber/config')
+const childProcess = require('child_process')
 
 const pwd = process.cwd()
 const srcDir = path.resolve(pwd, 'src')
@@ -241,40 +241,19 @@ function templateRendererPlugin(templateRenderers) {
   return {
     name: 'template-renderer-plugin',
     setup(build) {
-      build.onEnd(({ metafile, errors }) => {
+      build.onEnd(async ({ metafile, errors }) => {
         if (errors.length) return
         const { outputs } = metafile
         const extensions = Object.keys(templateRenderers).join('|')
-        Object.keys(outputs).filter(x => new RegExp(`(${extensions})\.js`).test(x)).forEach(filePath => {
-          const extension = filePath.split('.').slice(-2, -1)[0]
-          const { rendererFilename, filename } = getFileAndRendererInfo(filePath)
-    
-          const module = importFresh(path.resolve(targetDir, filename))
+        await Promise.all(Object.keys(outputs).filter(x => new RegExp(`(${extensions})\.js`).test(x)).map(async filePath => {
+          const type = await evalInFork(filePath)
 
-          if (typeof module.default === 'function') {
-            const newFilename = filename.replaceAll(`.${extension}.js`, `.${extension}.template.js`)
-            const dynamicTemplate = createDynamicTemplate(newFilename, rendererFilename)
-            fs.renameSync(path.resolve(process.cwd(), 'target', filename), path.resolve(process.cwd(), 'target', newFilename))
-            fs.writeFileSync(path.resolve(process.cwd(), 'target', filename), dynamicTemplate)
-          } else {
-
-            const renderer = importFresh(path.resolve(pwd, rendererFilename))
-            const content = renderer(module.default)
-            fs.writeFileSync(path.resolve(targetDir, filename.replace(/\.js$/, '')), content)
-            fs.unlinkSync(path.resolve(targetDir, filename))
-          }
-        })
+        }))
         console.log('Finished building')
       })
+      
     }
   }
-}
-
-function getFileAndRendererInfo(filePath) {
-  const extension = filePath.split('.').toReversed()[1]
-  const filename = filePath.replace('target/', '')
-  const rendererFilename = templateRenderers[extension]
-  return { rendererFilename, filename }
 }
 
 function getEntryPoints(templateRenderers) {
@@ -289,20 +268,6 @@ function gatherEntries(templateRenderers) {
     (result, entry) => ([...result, entry]),
     []
   )
-}
-
-function createDynamicTemplate(sourceLocation, rendererLocation) {
-  return `
-    |const source = require('./${sourceLocation}')
-    |const renderer = require('../${rendererLocation}')
-    |Object.assign(render, source)
-    |
-    |module.exports = render
-    |
-    |function render(props) {
-    |  return renderer(source.default(props))
-    |}
-    |`.replace(/^[ \t]*\|/gm, '')
 }
 
 function createStyleSheet(entryPoint) {
@@ -366,4 +331,29 @@ function kaliberConfigLoaderPlugin() {
       })
     },
   }
+}
+
+async function evalInFork(filePath) {
+  return new Promise((resolve, reject) => {
+    const js = childProcess.fork(
+      path.join(__dirname, 'eval-in-fork.js'),
+      [],
+      { stdio: ['pipe', 'pipe', 'pipe', 'ipc'] }
+    )
+    const outData = []
+    const errData = []
+    const messageData = []
+    js.on('message', x => messageData.push(x))
+    js.stdout.on('data', x => outData.push(x))
+    js.stderr.on('data', x => errData.push(x))
+    js.on('close', code => {
+      if (outData.length) console.log(outData.join(''))
+      if (code === 0) {
+        if (!messageData.length) reject(new Error('Execution failed, no result from eval'))
+        else resolve(messageData.join(''))
+      } else reject(new Error(errData.join('')))
+    })
+
+    js.send(filePath)
+  })
 }

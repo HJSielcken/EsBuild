@@ -459,7 +459,7 @@
       "format": "esm"
     },
     "src/index.html.js": {
-      "bytes": 1057,
+      "bytes": 998,
       "imports": [
         {
           "path": "src/Mies.universal.js",
@@ -786,7 +786,7 @@
       "cssBundle": "target/index.html.css",
       "inputs": {
         "src/index.html.js": {
-          "bytesInOutput": 1094
+          "bytesInOutput": 1089
         },
         "injects-server.js": {
           "bytesInOutput": 72
@@ -840,7 +840,7 @@
           "bytesInOutput": 30
         }
       },
-      "bytes": 14280
+      "bytes": 14275
     },
     "target/index.html.css": {
       "imports": [],
