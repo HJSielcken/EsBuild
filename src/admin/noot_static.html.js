@@ -6,6 +6,8 @@ import { stylesheet } from '@kaliber/build/stylesheet'
 import { javascript } from '@kaliber/build/javascript'
 
 import { content } from './aaps.css'
+import { ClientConfigProvider } from '/ClientConfig'
+import { ReportErrorProvider } from '/ReportError'
 
 export default (<html>
   <head>
@@ -13,11 +15,16 @@ export default (<html>
     {stylesheet}
     {javascript}
   </head>
-  <body>
-    <div className={content}>mies</div>
-    <Mies text='Jet' />
-    <JetApp text='Jet' />
-    <QueryApp />
-  </body>
+  <ReportErrorProvider reportError={(message) => console.error(`Server: ${message}`)}>
+    <ClientConfigProvider config={{ aap: 'config' }}>
+
+      <body>
+        <div className={content}>mies</div>
+        <Mies text='Jet' />
+        <JetApp text='Jet' />
+        <QueryApp />
+      </body>
+    </ClientConfigProvider>
+  </ReportErrorProvider>
 </html>
 )

@@ -1,7 +1,6 @@
 const esbuild = require('esbuild')
 const childProcess = require('child_process')
 const fs = require('fs')
-const crypto = require('crypto');
 const path = require('path')
 const walkSync = require('walk-sync');
 const config = require('@kaliber/config')
@@ -156,6 +155,8 @@ function determineIsPackage(path) {
   }
 }
 
+const clientSnippet = require('./react-containerless-client-loader')
+
 function universalClientLoaderPlugin() {
   return {
     name: 'universal-loader-plugin',
@@ -174,19 +175,21 @@ function universalClientLoaderPlugin() {
     }
   }
 
-  function clientSnippet({ path }) {
-    const md5 = crypto.createHash('md5').update(path).digest('hex')
+  // function clientSnippet({ path }) {
+  //   const md5 = crypto.createHash('md5').update(path).digest('hex')
 
-    return `|import ClientComponent from '${path}?universal-loaded'; 
-            |const { hydrateRoot } = ReactDOM; 
-            |const nodes = Array.from(document.querySelectorAll('*[data-kaliber-component-id="${md5}"]'));
-            |nodes.map(x => {
-            |const props = JSON.parse(x.dataset.kaliberComponent); 
-            |const newElement = React.createElement(ClientComponent, props);
-            |hydrateRoot(x, newElement);
-            |})`.split(/^[ \t]*\|/m).join('').replace(/\n/g, '');
-  }
+  //   return `|import ClientComponent from '${path}?universal-loaded'; 
+  //           |const { hydrateRoot } = ReactDOM; 
+  //           |const nodes = Array.from(document.querySelectorAll('*[data-kaliber-component-id="${md5}"]'));
+  //           |nodes.map(x => {
+  //           |const props = JSON.parse(x.dataset.kaliberComponent); 
+  //           |const newElement = React.createElement(ClientComponent, props);
+  //           |hydrateRoot(x, newElement);
+  //           |})`.split(/^[ \t]*\|/m).join('').replace(/\n/g, '');
+  // }
 }
+
+const serverSnippet = require('./react-containerless-server-loader')
 
 function universalServerLoaderPlugin() {
   return {
@@ -203,18 +206,19 @@ function universalServerLoaderPlugin() {
     }
   }
 
-  function serverSnippet({ path }) {
-    const md5 = crypto.createHash('md5').update(path).digest('hex')
-    return `|import Component from '${path}?universal-loaded'
-            |import { renderToString } from 'react-dom/server'
-            |
-            |export default function ServerComponent(props) {
-            |const content = renderToString(<Component {...props} />)
-            |return (
-            |<div data-kaliber-component={JSON.stringify(props)} data-kaliber-component-id='${md5}' dangerouslySetInnerHTML={{ __html: content }} />
-            |)
-            |}`.split(/^[ \t]*\|/m).join('')
-  }
+
+  // function serverSnippet({ path }) {
+  //   const md5 = crypto.createHash('md5').update(path).digest('hex')
+  //   return `|import Component from '${path}?universal-loaded'
+  //           |import { renderToString } from 'react-dom/server'
+  //           |
+  //           |export default function ServerComponent(props) {
+  //           |const content = renderToString(<Component {...props} />)
+  //           |return (
+  //           |<div data-kaliber-component={JSON.stringify(props)} data-kaliber-component-id='${md5}' dangerouslySetInnerHTML={{ __html: content }} />
+  //           |)
+  //           |}`.split(/^[ \t]*\|/m).join('')
+  // }
 }
 
 function cssLoaderPlugin() {

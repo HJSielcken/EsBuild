@@ -1,6 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
+import { useReportError } from './ReportError'
 
 export function Query() {
+  const reportError = useReportError()
+
+  reportError('Error test')
   const [item, setItem] = React.useState(1)
   const { data } = useQuery({
     queryKey: [item],

@@ -1,5 +1,9 @@
 import { useIsMountedRef } from '@kaliber/use-is-mounted-ref'
+import { useClientConfig } from './ClientConfig'
 export function Mies({ text }) {
+  const config = useClientConfig()
+  console.log({ config })
+  
   const isMounted = useIsMountedRef()
   const [a, setA] = React.useState(0)
 
@@ -8,10 +12,10 @@ export function Mies({ text }) {
   function useTest() {
     React.useEffect(
       () => {
-        console.log('hallo')  
+        console.log('hallo')
       },
       []
     )
   }
-  
+
 }
