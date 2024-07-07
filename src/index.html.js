@@ -1,16 +1,16 @@
 import { pick } from '@kaliber/routing'
 import { ClientConfigProvider } from './ClientConfig'
-import { Mies } from './Mies'
+import { ReportErrorProvider } from './ReportError'
+import { routeMap } from './routeMap'
 import { stylesheet } from '@kaliber/build/stylesheet'
 import { javascript } from '@kaliber/build/javascript'
 
 import MiesApp from './Mies.universal'
 import QueryApp from './Query.universal'
 import JetApp from './Jet.universal'
-import { routeMap } from './routeMap'
+import { Mies } from './Mies'
 
 import { content } from './aap.css'
-import { ReportErrorProvider } from './ReportError'
 
 Index.routes = {
   match(location) {
@@ -23,7 +23,8 @@ Index.routes = {
 }
 
 export default function Index({ data }) {
-  const { title } = data
+  const { title, status } = data
+  if(status=== 404) return <h1>Not found - {title}</h1>
   return (<html>
     <head>
       <title>{title}</title>

@@ -1,5 +1,32 @@
 {
   "inputs": {
+    "node_modules/react/cjs/react.development.js": {
+      "bytes": 87593,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "cjs"
+    },
+    "node_modules/react/index.js": {
+      "bytes": 190,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node_modules/react/cjs/react.development.js",
+          "kind": "require-call",
+          "original": "./cjs/react.development.js"
+        }
+      ],
+      "format": "cjs"
+    },
     "node_modules/scheduler/cjs/scheduler.development.js": {
       "bytes": 17497,
       "imports": [
@@ -92,245 +119,6 @@
           "path": "node_modules/react-dom/client.js",
           "kind": "import-statement",
           "original": "react-dom/client"
-        }
-      ],
-      "format": "esm"
-    },
-    "node_modules/react/cjs/react.development.js": {
-      "bytes": 87593,
-      "imports": [
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
-          "kind": "import-statement",
-          "external": true
-        }
-      ],
-      "format": "cjs"
-    },
-    "node_modules/react/index.js": {
-      "bytes": 190,
-      "imports": [
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
-          "kind": "import-statement",
-          "external": true
-        },
-        {
-          "path": "node_modules/react/cjs/react.development.js",
-          "kind": "require-call",
-          "original": "./cjs/react.development.js"
-        }
-      ],
-      "format": "cjs"
-    },
-    "node_modules/@kaliber/use-is-mounted-ref/src/index.js": {
-      "bytes": 267,
-      "imports": [
-        {
-          "path": "node_modules/react/index.js",
-          "kind": "import-statement",
-          "original": "react"
-        },
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
-          "kind": "import-statement",
-          "external": true
-        }
-      ],
-      "format": "esm"
-    },
-    "src/ClientConfig.js": {
-      "bytes": 434,
-      "imports": [
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
-          "kind": "import-statement",
-          "external": true
-        }
-      ],
-      "format": "esm"
-    },
-    "src/Mies.js": {
-      "bytes": 505,
-      "imports": [
-        {
-          "path": "node_modules/@kaliber/use-is-mounted-ref/src/index.js",
-          "kind": "import-statement",
-          "original": "@kaliber/use-is-mounted-ref"
-        },
-        {
-          "path": "src/ClientConfig.js",
-          "kind": "import-statement",
-          "original": "./ClientConfig"
-        },
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
-          "kind": "import-statement",
-          "external": true
-        }
-      ],
-      "format": "esm"
-    },
-    "src/Jet.universal.js?universal-loaded": {
-      "bytes": 108,
-      "imports": [
-        {
-          "path": "src/Mies.js",
-          "kind": "import-statement",
-          "original": "./Mies"
-        },
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
-          "kind": "import-statement",
-          "external": true
-        }
-      ],
-      "format": "esm"
-    },
-    "node_modules/@kaliber/safe-json-stringify/lib/index.js": {
-      "bytes": 530,
-      "imports": [
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
-          "kind": "import-statement",
-          "external": true
-        }
-      ],
-      "format": "cjs"
-    },
-    "node_modules/@kaliber/safe-json-stringify/index.js": {
-      "bytes": 168,
-      "imports": [
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
-          "kind": "import-statement",
-          "external": true
-        },
-        {
-          "path": "node_modules/@kaliber/safe-json-stringify/lib/index.js",
-          "kind": "require-call",
-          "original": "./lib/index.js"
-        }
-      ],
-      "format": "cjs"
-    },
-    "src/universalComponent.js": {
-      "bytes": 6282,
-      "imports": [
-        {
-          "path": "node_modules/react-dom/client.js",
-          "kind": "import-statement",
-          "original": "react-dom/client"
-        },
-        {
-          "path": "node_modules/@kaliber/safe-json-stringify/index.js",
-          "kind": "import-statement",
-          "original": "@kaliber/safe-json-stringify"
-        },
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
-          "kind": "import-statement",
-          "external": true
-        }
-      ],
-      "format": "esm"
-    },
-    "src/ReportError.js": {
-      "bytes": 318,
-      "imports": [
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
-          "kind": "import-statement",
-          "external": true
-        }
-      ],
-      "format": "esm"
-    },
-    "src/wrappers/Client.js": {
-      "bytes": 537,
-      "imports": [
-        {
-          "path": "src/ClientConfig.js",
-          "kind": "import-statement",
-          "original": "/ClientConfig"
-        },
-        {
-          "path": "src/ReportError.js",
-          "kind": "import-statement",
-          "original": "/ReportError"
-        },
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
-          "kind": "import-statement",
-          "external": true
-        }
-      ],
-      "format": "esm"
-    },
-    "src/Jet.universal.js": {
-      "bytes": 454,
-      "imports": [
-        {
-          "path": "src/Jet.universal.js?universal-loaded",
-          "kind": "import-statement",
-          "original": "/Jet.universal.js?universal-loaded"
-        },
-        {
-          "path": "src/universalComponent.js",
-          "kind": "import-statement",
-          "original": "/universalComponent.js"
-        },
-        {
-          "path": "src/wrappers/Client.js",
-          "kind": "import-statement",
-          "original": "/wrappers/Client"
-        },
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
-          "kind": "import-statement",
-          "external": true
-        }
-      ],
-      "format": "esm"
-    },
-    "src/Mies.universal.js?universal-loaded": {
-      "bytes": 109,
-      "imports": [
-        {
-          "path": "src/Mies.js",
-          "kind": "import-statement",
-          "original": "./Mies"
-        },
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
-          "kind": "import-statement",
-          "external": true
-        }
-      ],
-      "format": "esm"
-    },
-    "src/Mies.universal.js": {
-      "bytes": 455,
-      "imports": [
-        {
-          "path": "src/Mies.universal.js?universal-loaded",
-          "kind": "import-statement",
-          "original": "/Mies.universal.js?universal-loaded"
-        },
-        {
-          "path": "src/universalComponent.js",
-          "kind": "import-statement",
-          "original": "/universalComponent.js"
-        },
-        {
-          "path": "src/wrappers/Client.js",
-          "kind": "import-statement",
-          "original": "/wrappers/Client"
-        },
-        {
-          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
-          "kind": "import-statement",
-          "external": true
         }
       ],
       "format": "esm"
@@ -1443,6 +1231,17 @@
       ],
       "format": "esm"
     },
+    "src/ReportError.js": {
+      "bytes": 318,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
     "src/Query.js": {
       "bytes": 617,
       "imports": [
@@ -1485,6 +1284,86 @@
       ],
       "format": "esm"
     },
+    "node_modules/@kaliber/safe-json-stringify/lib/index.js": {
+      "bytes": 530,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "cjs"
+    },
+    "node_modules/@kaliber/safe-json-stringify/index.js": {
+      "bytes": 168,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node_modules/@kaliber/safe-json-stringify/lib/index.js",
+          "kind": "require-call",
+          "original": "./lib/index.js"
+        }
+      ],
+      "format": "cjs"
+    },
+    "src/universalComponent.js": {
+      "bytes": 6282,
+      "imports": [
+        {
+          "path": "node_modules/react-dom/client.js",
+          "kind": "import-statement",
+          "original": "react-dom/client"
+        },
+        {
+          "path": "node_modules/@kaliber/safe-json-stringify/index.js",
+          "kind": "import-statement",
+          "original": "@kaliber/safe-json-stringify"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "src/ClientConfig.js": {
+      "bytes": 434,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "src/wrappers/Client.js": {
+      "bytes": 537,
+      "imports": [
+        {
+          "path": "src/ClientConfig.js",
+          "kind": "import-statement",
+          "original": "/ClientConfig"
+        },
+        {
+          "path": "src/ReportError.js",
+          "kind": "import-statement",
+          "original": "/ReportError"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
     "src/Query.universal.js": {
       "bytes": 456,
       "imports": [
@@ -1510,79 +1389,134 @@
         }
       ],
       "format": "esm"
+    },
+    "node_modules/@kaliber/use-is-mounted-ref/src/index.js": {
+      "bytes": 267,
+      "imports": [
+        {
+          "path": "node_modules/react/index.js",
+          "kind": "import-statement",
+          "original": "react"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "src/Mies.js": {
+      "bytes": 505,
+      "imports": [
+        {
+          "path": "node_modules/@kaliber/use-is-mounted-ref/src/index.js",
+          "kind": "import-statement",
+          "original": "@kaliber/use-is-mounted-ref"
+        },
+        {
+          "path": "src/ClientConfig.js",
+          "kind": "import-statement",
+          "original": "./ClientConfig"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "src/Mies.universal.js?universal-loaded": {
+      "bytes": 109,
+      "imports": [
+        {
+          "path": "src/Mies.js",
+          "kind": "import-statement",
+          "original": "./Mies"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "src/Mies.universal.js": {
+      "bytes": 455,
+      "imports": [
+        {
+          "path": "src/Mies.universal.js?universal-loaded",
+          "kind": "import-statement",
+          "original": "/Mies.universal.js?universal-loaded"
+        },
+        {
+          "path": "src/universalComponent.js",
+          "kind": "import-statement",
+          "original": "/universalComponent.js"
+        },
+        {
+          "path": "src/wrappers/Client.js",
+          "kind": "import-statement",
+          "original": "/wrappers/Client"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "src/Jet.universal.js?universal-loaded": {
+      "bytes": 108,
+      "imports": [
+        {
+          "path": "src/Mies.js",
+          "kind": "import-statement",
+          "original": "./Mies"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "src/Jet.universal.js": {
+      "bytes": 454,
+      "imports": [
+        {
+          "path": "src/Jet.universal.js?universal-loaded",
+          "kind": "import-statement",
+          "original": "/Jet.universal.js?universal-loaded"
+        },
+        {
+          "path": "src/universalComponent.js",
+          "kind": "import-statement",
+          "original": "/universalComponent.js"
+        },
+        {
+          "path": "src/wrappers/Client.js",
+          "kind": "import-statement",
+          "original": "/wrappers/Client"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-browser.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
     }
   },
   "outputs": {
-    "target/Jet.universal-LP7M4IGF.js": {
+    "target/Query.universal-K7JD6QPY.js": {
       "imports": [
         {
-          "path": "target/chunk-WJC4LQNT.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "target/chunk-YYMOGDEO.js",
-          "kind": "import-statement"
-        }
-      ],
-      "exports": [],
-      "entryPoint": "src/Jet.universal.js",
-      "inputs": {
-        "src/Jet.universal.js": {
-          "bytesInOutput": 384
-        },
-        "src/Jet.universal.js?universal-loaded": {
-          "bytesInOutput": 123
-        }
-      },
-      "bytes": 762
-    },
-    "target/Mies.universal-35I7PYVW.js": {
-      "imports": [
-        {
-          "path": "target/chunk-WJC4LQNT.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "target/chunk-YYMOGDEO.js",
-          "kind": "import-statement"
-        }
-      ],
-      "exports": [],
-      "entryPoint": "src/Mies.universal.js",
-      "inputs": {
-        "src/Mies.universal.js": {
-          "bytesInOutput": 385
-        },
-        "src/Mies.universal.js?universal-loaded": {
-          "bytesInOutput": 124
-        }
-      },
-      "bytes": 767
-    },
-    "target/chunk-WJC4LQNT.js": {
-      "imports": [
-        {
-          "path": "target/chunk-YYMOGDEO.js",
-          "kind": "import-statement"
-        }
-      ],
-      "exports": [
-        "Mies"
-      ],
-      "inputs": {
-        "src/Mies.js": {
-          "bytesInOutput": 542
-        },
-        "node_modules/@kaliber/use-is-mounted-ref/src/index.js": {
-          "bytesInOutput": 350
-        }
-      },
-      "bytes": 1120
-    },
-    "target/Query.universal-YKPRXBK3.js": {
-      "imports": [
-        {
-          "path": "target/chunk-YYMOGDEO.js",
+          "path": "target/chunk-7CBLOHQ4.js",
           "kind": "import-statement"
         }
       ],
@@ -1679,7 +1613,73 @@
       },
       "bytes": 108060
     },
-    "target/chunk-YYMOGDEO.js": {
+    "target/Mies.universal-QJDR2NR5.js": {
+      "imports": [
+        {
+          "path": "target/chunk-EZEGQMTS.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "target/chunk-7CBLOHQ4.js",
+          "kind": "import-statement"
+        }
+      ],
+      "exports": [],
+      "entryPoint": "src/Mies.universal.js",
+      "inputs": {
+        "src/Mies.universal.js": {
+          "bytesInOutput": 385
+        },
+        "src/Mies.universal.js?universal-loaded": {
+          "bytesInOutput": 124
+        }
+      },
+      "bytes": 767
+    },
+    "target/Jet.universal-Q7C43LDX.js": {
+      "imports": [
+        {
+          "path": "target/chunk-EZEGQMTS.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "target/chunk-7CBLOHQ4.js",
+          "kind": "import-statement"
+        }
+      ],
+      "exports": [],
+      "entryPoint": "src/Jet.universal.js",
+      "inputs": {
+        "src/Jet.universal.js": {
+          "bytesInOutput": 384
+        },
+        "src/Jet.universal.js?universal-loaded": {
+          "bytesInOutput": 123
+        }
+      },
+      "bytes": 762
+    },
+    "target/chunk-EZEGQMTS.js": {
+      "imports": [
+        {
+          "path": "target/chunk-7CBLOHQ4.js",
+          "kind": "import-statement"
+        }
+      ],
+      "exports": [
+        "Mies"
+      ],
+      "inputs": {
+        "src/Mies.js": {
+          "bytesInOutput": 542
+        },
+        "node_modules/@kaliber/use-is-mounted-ref/src/index.js": {
+          "bytesInOutput": 350
+        }
+      },
+      "bytes": 1120
+    },
+    "target/chunk-7CBLOHQ4.js": {
       "imports": [],
       "exports": [
         "ClientWrapper",

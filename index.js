@@ -12,11 +12,12 @@ const targetDir = path.resolve(pwd, 'target')
 const { templateRenderers, compileWithBabel } = config
 
 build()
-// watch()
+
+const universalEntryPoints = []
 
 async function build() {
-  await buildClient().then(_ => buildServer()).catch(x => console.log(x)).finally(x => { console.log('Finished'); process.exit('1') })
-
+  await buildServer().then(_ => buildClient()).catch(x => console.log(x)).finally(x => { console.log('Finished'); process.exit('1') })
+  universalEntryPoints = []
 }
 
 async function buildServer() {
@@ -41,7 +42,7 @@ async function watch() {
 
 function getClientBuildConfig() {
   return {
-    entryPoints: getEntryPoints({ universal: null }),
+    entryPoints: universalEntryPoints,
     preserveSymlinks: true,
     outdir: targetDir,
     metafile: true,
@@ -198,6 +199,7 @@ function universalServerLoaderPlugin() {
       onLoad({ filter: /\.universal.js/ }, async (args) => {
         if (args.suffix === '?universal-loaded') return
 
+        universalEntryPoints.push(args.path)
         return {
           contents: serverSnippet({ path: args.path.replace(path.resolve(process.cwd(), 'src'), '') }),
           loader: 'jsx',
@@ -250,10 +252,8 @@ function templateRendererPlugin(templateRenderers) {
         const { outputs } = metafile
         const extensions = Object.keys(templateRenderers).join('|')
         await Promise.all(Object.keys(outputs).filter(x => new RegExp(`(${extensions})\.js`).test(x)).map(async filePath => {
-          const type = await evalInFork(filePath)
-
+          evalInFork(filePath)
         }))
-        console.log('Finished building')
       })
       
     }

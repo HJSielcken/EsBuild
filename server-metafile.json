@@ -661,7 +661,7 @@
       "format": "esm"
     },
     "src/index.html.js": {
-      "bytes": 1335,
+      "bytes": 1399,
       "imports": [
         {
           "path": "node_modules/@kaliber/routing/index.js",
@@ -1104,7 +1104,7 @@
           "bytesInOutput": 337
         },
         "src/index.html.js": {
-          "bytesInOutput": 1330
+          "bytesInOutput": 1439
         },
         "node_modules/@kaliber/routing/index.js": {
           "bytesInOutput": 23
@@ -1170,7 +1170,7 @@
           "bytesInOutput": 30
         }
       },
-      "bytes": 21141
+      "bytes": 21250
     },
     "target/index.html.css": {
       "imports": [],
