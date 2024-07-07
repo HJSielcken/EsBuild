@@ -1,2 +1,4 @@
 node_modules
 target/**/*
+server-metafile.json
+browser-metafile.json
