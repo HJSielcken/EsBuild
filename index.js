@@ -1,10 +1,10 @@
 const esbuild = require('esbuild')
+const childProcess = require('child_process')
 const fs = require('fs')
-const path = require('path')
 const crypto = require('crypto');
+const path = require('path')
 const walkSync = require('walk-sync');
 const config = require('@kaliber/config')
-const childProcess = require('child_process')
 
 const pwd = process.cwd()
 const srcDir = path.resolve(pwd, 'src')
