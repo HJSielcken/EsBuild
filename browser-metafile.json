@@ -140,7 +140,7 @@
       "format": "esm"
     },
     "src/Mies.js": {
-      "bytes": 462,
+      "bytes": 396,
       "imports": [
         {
           "path": "node_modules/@kaliber/use-is-mounted-ref/src/index.js",
@@ -1382,10 +1382,10 @@
     }
   },
   "outputs": {
-    "target/Jet.universal-GBOWONZT.js": {
+    "target/Jet.universal-NDRXIO5C.js": {
       "imports": [
         {
-          "path": "target/chunk-FOMLQNJK.js",
+          "path": "target/chunk-OLK645ND.js",
           "kind": "import-statement"
         },
         {
@@ -1405,10 +1405,10 @@
       },
       "bytes": 684
     },
-    "target/Mies.universal-SLWJHT22.js": {
+    "target/Mies.universal-M6I42LCQ.js": {
       "imports": [
         {
-          "path": "target/chunk-FOMLQNJK.js",
+          "path": "target/chunk-OLK645ND.js",
           "kind": "import-statement"
         },
         {
@@ -1428,7 +1428,7 @@
       },
       "bytes": 689
     },
-    "target/chunk-FOMLQNJK.js": {
+    "target/chunk-OLK645ND.js": {
       "imports": [
         {
           "path": "target/chunk-TEDRWSWQ.js",
@@ -1440,13 +1440,13 @@
       ],
       "inputs": {
         "src/Mies.js": {
-          "bytesInOutput": 545
+          "bytesInOutput": 479
         },
         "node_modules/@kaliber/use-is-mounted-ref/src/index.js": {
           "bytesInOutput": 350
         }
       },
-      "bytes": 1104
+      "bytes": 1038
     },
     "target/Query.universal-TQOBWTV2.js": {
       "imports": [

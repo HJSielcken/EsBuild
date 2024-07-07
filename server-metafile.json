@@ -49,7 +49,7 @@
       "format": "esm"
     },
     "src/Mies.js": {
-      "bytes": 462,
+      "bytes": 396,
       "imports": [
         {
           "path": "node_modules/@kaliber/use-is-mounted-ref/src/index.js",
@@ -335,6 +335,107 @@
       ],
       "format": "esm"
     },
+    "node_modules/@kaliber/routing/src/utils.js": {
+      "bytes": 556,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-server.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@kaliber/routing/src/routeMap.js": {
+      "bytes": 6945,
+      "imports": [
+        {
+          "path": "node_modules/@kaliber/routing/src/utils.js",
+          "kind": "import-statement",
+          "original": "./utils"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-server.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@kaliber/routing/src/history.js": {
+      "bytes": 1867,
+      "imports": [
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-server.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@kaliber/routing/src/routing.js": {
+      "bytes": 8273,
+      "imports": [
+        {
+          "path": "node_modules/@kaliber/routing/src/history.js",
+          "kind": "import-statement",
+          "original": "./history"
+        },
+        {
+          "path": "node_modules/@kaliber/routing/src/utils.js",
+          "kind": "import-statement",
+          "original": "./utils"
+        },
+        {
+          "path": "node_modules/@kaliber/routing/src/routeMap.js",
+          "kind": "import-statement",
+          "original": "./routeMap"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-server.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@kaliber/routing/index.js": {
+      "bytes": 289,
+      "imports": [
+        {
+          "path": "node_modules/@kaliber/routing/src/routeMap.js",
+          "kind": "import-statement",
+          "original": "./src/routeMap"
+        },
+        {
+          "path": "node_modules/@kaliber/routing/src/routing.js",
+          "kind": "import-statement",
+          "original": "./src/routing"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-server.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "src/routeMap.js": {
+      "bytes": 295,
+      "imports": [
+        {
+          "path": "node_modules/@kaliber/routing/index.js",
+          "kind": "import-statement",
+          "original": "@kaliber/routing"
+        },
+        {
+          "path": "/home/harmen/Documents/JavaScript/esbuild/injects-server.js",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
     "/home/harmen/Documents/JavaScript/esbuild/src/index.html.js:@kaliber/build/stylesheet": {
       "bytes": 342,
       "imports": [
@@ -358,7 +459,7 @@
       "format": "esm"
     },
     "src/index.html.js": {
-      "bytes": 749,
+      "bytes": 1057,
       "imports": [
         {
           "path": "src/Mies.universal.js",
@@ -381,6 +482,11 @@
           "original": "./Mies"
         },
         {
+          "path": "src/routeMap.js",
+          "kind": "import-statement",
+          "original": "./routeMap"
+        },
+        {
           "path": "/home/harmen/Documents/JavaScript/esbuild/src/index.html.js:@kaliber/build/stylesheet",
           "kind": "import-statement",
           "original": "@kaliber/build/stylesheet"
@@ -394,6 +500,11 @@
           "path": "src/aap.css",
           "kind": "import-statement",
           "original": "./aap.css"
+        },
+        {
+          "path": "node_modules/@kaliber/routing/index.js",
+          "kind": "import-statement",
+          "original": "@kaliber/routing"
         },
         {
           "path": "/home/harmen/Documents/JavaScript/esbuild/injects-server.js",
@@ -493,7 +604,7 @@
           "bytesInOutput": 327
         },
         "src/Mies.js": {
-          "bytesInOutput": 521
+          "bytesInOutput": 455
         },
         "src/Mies.universal.js?universal-loaded": {
           "bytesInOutput": 100
@@ -526,7 +637,7 @@
           "bytesInOutput": 29
         }
       },
-      "bytes": 7333
+      "bytes": 7267
     },
     "target/aap_static.html.css": {
       "imports": [],
@@ -598,7 +709,7 @@
           "bytesInOutput": 327
         },
         "src/Mies.js": {
-          "bytesInOutput": 521
+          "bytesInOutput": 455
         },
         "src/Jet.universal.js?universal-loaded": {
           "bytesInOutput": 99
@@ -616,7 +727,7 @@
           "bytesInOutput": 30
         }
       },
-      "bytes": 6718
+      "bytes": 6652
     },
     "target/admin/noot_static.html.css": {
       "imports": [],
@@ -675,7 +786,7 @@
       "cssBundle": "target/index.html.css",
       "inputs": {
         "src/index.html.js": {
-          "bytesInOutput": 875
+          "bytesInOutput": 1094
         },
         "injects-server.js": {
           "bytesInOutput": 72
@@ -684,7 +795,7 @@
           "bytesInOutput": 327
         },
         "src/Mies.js": {
-          "bytesInOutput": 521
+          "bytesInOutput": 455
         },
         "src/Mies.universal.js?universal-loaded": {
           "bytesInOutput": 100
@@ -707,6 +818,18 @@
         "src/Jet.universal.js": {
           "bytesInOutput": 419
         },
+        "node_modules/@kaliber/routing/src/utils.js": {
+          "bytesInOutput": 260
+        },
+        "node_modules/@kaliber/routing/src/routeMap.js": {
+          "bytesInOutput": 6120
+        },
+        "node_modules/@kaliber/routing/index.js": {
+          "bytesInOutput": 0
+        },
+        "src/routeMap.js": {
+          "bytesInOutput": 239
+        },
         "/home/harmen/Documents/JavaScript/esbuild/src/index.html.js:@kaliber/build/stylesheet": {
           "bytesInOutput": 378
         },
@@ -717,7 +840,7 @@
           "bytesInOutput": 30
         }
       },
-      "bytes": 7391
+      "bytes": 14280
     },
     "target/index.html.css": {
       "imports": [],

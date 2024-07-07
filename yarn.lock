@@ -129,6 +129,11 @@
   resolved "https://registry.yarnpkg.com/@kaliber/config/-/config-0.0.8.tgz#8ff9c95d0f31c77037d5e4e7b217efa082fba164"
   integrity sha512-6C8e4DqbhbhDWG0PWlVAmJyo1VMwu/8AGrVlrk8NLRgtOYmjOsr92t9MqwvkJ7Jpp1HnXroMKesgIvgfwFP5XQ==
 
+"@kaliber/routing@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@kaliber/routing/-/routing-2.0.0.tgz#d2424e2216c999dafc8137fead98771aa939782d"
+  integrity sha512-7nYaFUttNr6v9Gl2uPP5Z4JaeYnUHrDTRzQODyup22J12nVKxM4Q0/Dywi/KlOE33fz5Ol/hF0ZnG7l6RITR0Q==
+
 "@kaliber/use-is-mounted-ref@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@kaliber/use-is-mounted-ref/-/use-is-mounted-ref-1.0.2.tgz#1f6b032194141bbf13f28bc8123ae3c3c950e67d"

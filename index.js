@@ -10,9 +10,7 @@ const pwd = process.cwd()
 const srcDir = path.resolve(pwd, 'src')
 const targetDir = path.resolve(pwd, 'target')
 
-const { nodeExternalsPlugin } = require('esbuild-node-externals');
-
-const { templateRenderers } = config
+const { templateRenderers, compileWithBabel } = config
 
 build()
 // watch()
@@ -120,7 +118,7 @@ function getServerBuildConfig() {
       universalServerLoaderPlugin(),
       writeMetaFilePlugin('server-metafile.json'),
       templateRendererPlugin(templateRenderers),
-      compileForServerPlugin([/\@kaliber\/use-is-mounted-ref/]),
+      compileForServerPlugin(),
       srcResolverPlugin()
     ]
   }
@@ -129,27 +127,26 @@ function getServerBuildConfig() {
 /** 
  * @returns {import('esbuild').Plugin}
  */
-function compileForServerPlugin(compileWithBabel) {
+function compileForServerPlugin() {
   return {
     name: 'externals-plugin',
     setup(build) {
       build.onResolve({ filter: /./ }, args => {
-        const isNodeModule = determineIsNodeModule(args.path)
+        const isPackage = determineIsPackage(args.path)
 
-        if (!isNodeModule) return null
+        if (!isPackage) return null
 
         if (compileWithBabel.find(x => x.test(args.path))) return null
 
         return {
           path: args.path, external: true
         }
-
       })
     }
   }
 }
 
-function determineIsNodeModule(path) {
+function determineIsPackage(path) {
   try {
     const isNodeModule = require.resolve(path).includes(`node_modules`)
     return isNodeModule
@@ -251,6 +248,7 @@ function templateRendererPlugin(templateRenderers) {
         Object.keys(outputs).filter(x => new RegExp(`(${extensions})\.js`).test(x)).forEach(filePath => {
           const extension = filePath.split('.').slice(-2, -1)[0]
           const { rendererFilename, filename } = getFileAndRendererInfo(filePath)
+    
           const module = importFresh(path.resolve(targetDir, filename))
 
           if (typeof module.default === 'function') {
