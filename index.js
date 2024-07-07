@@ -61,7 +61,8 @@ function getClientBuildConfig() {
       kaliberConfigLoaderPlugin(),
       universalClientLoaderPlugin(),
       writeMetaFilePlugin('browser-metafile.json'),
-      srcResolverPlugin()
+      srcResolverPlugin(),
+      templateRendererPlugin(templateRenderers),
     ]
   }
 }
@@ -117,7 +118,6 @@ function getServerBuildConfig() {
       javascriptLoaderPlugin(),
       universalServerLoaderPlugin(),
       writeMetaFilePlugin('server-metafile.json'),
-      templateRendererPlugin(templateRenderers),
       compileForServerPlugin(),
       srcResolverPlugin()
     ]
@@ -247,8 +247,9 @@ function templateRendererPlugin(templateRenderers) {
   return {
     name: 'template-renderer-plugin',
     setup(build) {
-      build.onEnd(async ({ metafile, errors }) => {
+      build.onEnd(async ({ errors }) => {
         if (errors.length) return
+        const metafile = JSON.parse(fs.readFileSync('./server-metafile.json'))
         const { outputs } = metafile
         const extensions = Object.keys(templateRenderers).join('|')
         await Promise.all(Object.keys(outputs).filter(x => new RegExp(`(${extensions})\.js`).test(x)).map(async filePath => {

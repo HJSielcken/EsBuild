@@ -35,7 +35,7 @@ const internalServerError = '500.html'
 const port = process.env.PORT || 3000
 const isProduction = process.env.NODE_ENV === 'production'
 
-const notCached = ['html', 'txt', 'json', 'xml']
+const notCached = ['html', 'txt', 'json', 'xml', 'css', 'js']
 
 if (isProduction) app.use(morgan('combined'))
 app.use(helmet(Object.assign(
