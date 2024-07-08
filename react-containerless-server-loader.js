@@ -11,8 +11,8 @@ function ReactContainerlessUniversalClientLoader({ path }) {
 
 
 function createServerCode({ path, md5 }) {
-  const clientWrapperPath = get(require('@kaliber/config'), 'universal.clientWrapper')
-  const serverWrapperPath = get(require('@kaliber/config'), 'universal.serverWrapper')
+  const clientWrapperPath = get(require('@kaliber/config'), 'kaliber.universal.clientWrapper')
+  const serverWrapperPath = get(require('@kaliber/config'), 'kaliber.universal.serverWrapper')
 
   const client = wrap({
     importPath: clientWrapperPath,
@@ -26,10 +26,10 @@ function createServerCode({ path, md5 }) {
     component: '<PropsWrapper serverProps={props} />',
   })
 
-  return `|import Component from './${path}?universal-loaded'
+  return `|import Component from '${path}?universal-loaded'
           |import assignStatics from 'hoist-non-react-statics'
           |import { renderToString } from 'react-dom/server'
-          |import { ComponentServerWrapper } from '/universalComponent'
+          |import { ComponentServerWrapper } from '@kaliber/esbuild/universalComponent'
           |${server.wrapper}
           |${client.wrapper}
           |

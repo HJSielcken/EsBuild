@@ -9,11 +9,17 @@ const pwd = process.cwd()
 const srcDir = path.resolve(pwd, 'src')
 const targetDir = path.resolve(pwd, 'target')
 
-const { templateRenderers, compileWithBabel } = config
+const defaultRenderers = {
+  json: '@kaliber/esbuild/json-renderer.js',
+  html: '@kaliber/esbuild/html-react-renderer.js',
+}
 
-build()
+const { templateRenderers = defaultRenderers, compileWithBabel } = config.kaliber
+
+module.exports = build
 
 const universalEntryPoints = []
+
 
 async function build() {
   await buildServer().then(_ => buildClient()).catch(x => console.log(x)).finally(x => { console.log('Finished'); process.exit('1') })
@@ -41,6 +47,7 @@ async function watch() {
 }
 
 function getClientBuildConfig() {
+  console.log(universalEntryPoints)
   return {
     entryPoints: universalEntryPoints,
     preserveSymlinks: true,
@@ -53,10 +60,13 @@ function getClientBuildConfig() {
     loader: {
       '.js': 'jsx',
       '.css': 'local-css',
-      '.entry.css': 'css'
+      '.entry.css': 'css',
+      '.svg': 'text',
+      '.svg.raw': 'text',
     },
     entryNames: '[dir]/[name]-[hash]',
-    inject: ['./injects-browser.js'],
+    external: ['react', 'react-dom', 'stream'],
+    inject: ['@kaliber/esbuild/injects-browser.js'],
     plugins: [
       kaliberConfigLoaderPlugin(),
       universalClientLoaderPlugin(),
@@ -75,6 +85,8 @@ function srcResolverPlugin() {
     name: 'src-resolve-plugin',
     setup(build) {
       build.onResolve({ filter: /^\// }, async args => {
+        // if (args.kind === 'entry-point') console.log(args.path)
+
         if (args.kind === 'entry-point') return
         return build.resolve(`.${args.path}`, { kind: args.kind, resolveDir: path.resolve('./src') })
       })
@@ -106,13 +118,14 @@ function getServerBuildConfig() {
     loader: {
       '.js': 'jsx',
       '.css': 'local-css',
+      '.entry.css': 'css',
       '.svg': 'text',
-      '.svg.raw': 'text'
+      '.svg.raw': 'text',
     },
     entryNames: '[dir]/[name]',
     format: 'cjs',
-    inject: ['./injects-server.js'],
-    external: ['react', 'react-dom'],
+    inject: ['@kaliber/esbuild/injects-server.js'],
+    external: ['react', 'react-dom', 'stream', 'xml'],
     plugins: [
       cssLoaderPlugin(),
       javascriptLoaderPlugin(),

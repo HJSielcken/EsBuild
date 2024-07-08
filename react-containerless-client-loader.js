@@ -11,7 +11,7 @@ function ReactContainerlessUniversalClientLoader({path}) {
 }
 
 function createClientCode({ path, md5 }) {
-  const wrapperPath = get(require('@kaliber/config'), 'universal.clientWrapper')
+  const wrapperPath = get(require('@kaliber/config'), 'kaliber.universal.clientWrapper')
 
   const component = '<Component {...props} />'
   const { wrapper, wrapped } = {
@@ -20,7 +20,7 @@ function createClientCode({ path, md5 }) {
   }
 
   return `|import Component from '${path}?universal-loaded'
-          |import { findComponents, hydrate } from '/universalComponent.js'
+          |import { findComponents, hydrate } from '@kaliber/esbuild/universalComponent'
           |${wrapper}
           |
           |const components = findComponents({ componentName: '${md5}' })

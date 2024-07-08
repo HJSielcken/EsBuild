@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const { templateRenderers } = require('@kaliber/config')
+const { templateRenderers } = require('@kaliber/config').kaliber
 
 const pwd = process.cwd()
 const targetDir = path.resolve(pwd, 'target')
