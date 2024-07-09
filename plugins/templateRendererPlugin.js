@@ -10,7 +10,8 @@ function templateRendererPlugin(templateRenderers, serverMetaFile) {
     setup(build) {
       build.onEnd(async ({ errors }) => {
         if (errors.length) return
-        const metafile = JSON.parse(fs.readFileSync(serverMetaFile))
+        const content = await fs.promises.readFile(serverMetaFile)
+        const metafile = JSON.parse(content)
         const { outputs } = metafile
         const extensions = Object.keys(templateRenderers).join('|')
         await Promise.all(Object.keys(outputs).filter(x => new RegExp(`(${extensions})\.js`).test(x)).map(async filePath => {

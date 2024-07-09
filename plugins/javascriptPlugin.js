@@ -4,13 +4,13 @@ function javascriptPlugin() {
   return {
     name: 'javascript-plugin',
     setup(build) {
-      build.onResolve({ filter: /^\@kaliber\/build\/javascript$/ }, args => {
+      build.onResolve({ filter: /^\@kaliber\/esbuild\/javascript$/ }, args => {
         return {
           path: args.path,
           namespace: args.importer,
         }
       })
-      build.onLoad({ filter: /^\@kaliber\/build\/javascript$/ }, args => {
+      build.onLoad({ filter: /^\@kaliber\/esbuild\/javascript$/ }, args => {
         return {
           loader: 'jsx',
           contents: createScriptTags(args.namespace)

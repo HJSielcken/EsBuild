@@ -46,8 +46,6 @@ const { javascriptPlugin } = require('./plugins/javascriptPlugin')
 const { kaliberConfigLoaderPlugin } = require('./plugins/kaliberConfigLoaderPlugin')
 const { templateRendererPlugin } = require('./plugins/templateRendererPlugin')
 
-console.log(poLoaderPlugin)
-
 function getServerBuildConfig() {
   return {
     entryPoints: gatherEntries(),
@@ -68,10 +66,10 @@ function getServerBuildConfig() {
     inject: ['@kaliber/esbuild/injects/server.js'],
     external: ['react', 'react-dom'],
     plugins: [
+      srcResolverPlugin(),
       stylesheetPlugin(),
       javascriptPlugin(),
       universalServerPlugin(),
-      srcResolverPlugin(),
       poLoaderPlugin(),
       writeMetaFilePlugin(SERVER_META),
       compileForServerPlugin(compileWithBabel),
@@ -100,10 +98,11 @@ function getClientBuildConfig() {
     entryNames: '[dir]/[name]-[hash]',
     inject: ['@kaliber/esbuild/injects/browser.js'],
     plugins: [
+      srcResolverPlugin(),
       kaliberConfigLoaderPlugin(),
       universalClientPlugin(),
       writeMetaFilePlugin(BROWSER_META),
-      srcResolverPlugin(),
+      poLoaderPlugin(),
       isInternalModulePlugin(),
       templateRendererPlugin(templateRenderers, SERVER_META),
     ]

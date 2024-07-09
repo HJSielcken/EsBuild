@@ -4,13 +4,13 @@ function stylesheetPlugin() {
   return {
     name: 'stylesheet-plugin',
     setup(build) {
-      build.onResolve({ filter: /^\@kaliber\/build\/stylesheet$/ }, args => {
+      build.onResolve({ filter: /^\@kaliber\/esbuild\/stylesheet$/ }, args => {
         return {
           path: args.path,
           namespace: args.importer,
         }
       })
-      build.onLoad({ filter: /^\@kaliber\/build\/stylesheet$/ }, args => {
+      build.onLoad({ filter: /^\@kaliber\/esbuild\/stylesheet$/ }, args => {
         return {
           loader: 'jsx',
           contents: createStyleSheet(args.namespace)
