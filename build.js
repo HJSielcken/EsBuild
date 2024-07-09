@@ -46,8 +46,14 @@ const { javascriptPlugin } = require('./plugins/javascriptPlugin')
 const { kaliberConfigLoaderPlugin } = require('./plugins/kaliberConfigLoaderPlugin')
 const { templateRendererPlugin } = require('./plugins/templateRendererPlugin')
 
+const isProduction = process.env.NODE_ENV === 'production'
+
+/**
+ * @returns {import('esbuild').BuildOptions}
+ */
 function getServerBuildConfig() {
   return {
+    minify: isProduction,
     entryPoints: gatherEntries(),
     preserveSymlinks: true,
     outdir: targetDir,
@@ -78,8 +84,12 @@ function getServerBuildConfig() {
   }
 }
 
+/**
+ * @returns {import('esbuild').BuildOptions}
+ */
 function getClientBuildConfig() {
   return {
+    minify: isProduction,
     entryPoints: universalEntryPointUtils().getUniversalEntryPoints(),
     preserveSymlinks: true,
     outdir: targetDir,
