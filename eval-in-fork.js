@@ -1,6 +1,16 @@
 const fs = require('fs')
 const path = require('path')
-const { templateRenderers } = require('@kaliber/config').kaliber
+
+const defaultRenderers = {
+  json: __dirname+'/json-renderer.js',
+  html: __dirname+'/html-react-renderer.js',
+}
+
+const serverRenderers = {
+  json: `${process.cwd()}/json-renderer.js`,
+  html: `${process.cwd()}/html-react-renderer.js`,
+}
+const { templateRenderers = serverRenderers } = require('@kaliber/config').kaliber
 
 const pwd = process.cwd()
 const targetDir = path.resolve(pwd, 'target')
@@ -18,12 +28,12 @@ attempt(() => {
 
       if (typeof module.default === 'function') {
         const newFilename = filename.replaceAll(`.${extension}.js`, `.${extension}.template.js`)
-        const dynamicTemplate = createDynamicTemplate(newFilename, rendererFilename)
+        const dynamicTemplate = createDynamicTemplate(newFilename, serverRenderers[extension])
         fs.renameSync(path.resolve(process.cwd(), 'target', filename), path.resolve(process.cwd(), 'target', newFilename))
         fs.writeFileSync(path.resolve(process.cwd(), 'target', filename), dynamicTemplate)
         result = `dynamic`
       } else {
-        const renderer = require(path.resolve(pwd, rendererFilename))
+        const renderer = require(serverRenderers[extension])
         const content = renderer(module.default)
         fs.writeFileSync(path.resolve(targetDir, filename.replace(/\.js$/, '')), content)
         fs.unlinkSync(path.resolve(targetDir, filename))
@@ -59,7 +69,7 @@ function getFileAndRendererInfo(filePath) {
 function createDynamicTemplate(sourceLocation, rendererLocation) {
   return `
     |const source = require('./${sourceLocation}')
-    |const renderer = require('../${rendererLocation}')
+    |const renderer = require('${rendererLocation}')
     |Object.assign(render, source)
     |
     |module.exports = render

@@ -5,14 +5,11 @@
   "license": "MIT",
   "dependencies": {
     "@kaliber/config": "^0.0.8",
-    "@kaliber/routing": "^2.0.0",
-    "@kaliber/safe-json-stringify": "^2.0.1",
-    "@kaliber/use-is-mounted-ref": "^1.0.2",
-    "@tanstack/react-query": "^5.45.1",
     "esbuild": "^0.21.4",
-    "esbuild-node-externals": "^1.13.1",
     "hoist-non-react-statics": "^3.3.2",
-    "import-fresh": "^3.3.0",
+    "import-fresh": "^3.3.0"
+  },
+  "peerDependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

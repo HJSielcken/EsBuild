@@ -47,7 +47,6 @@ async function watch() {
 }
 
 function getClientBuildConfig() {
-  console.log(universalEntryPoints)
   return {
     entryPoints: universalEntryPoints,
     preserveSymlinks: true,
@@ -65,7 +64,7 @@ function getClientBuildConfig() {
       '.svg.raw': 'text',
     },
     entryNames: '[dir]/[name]-[hash]',
-    external: ['react', 'react-dom', 'stream'],
+    external: ['stream'],
     inject: ['@kaliber/esbuild/injects-browser.js'],
     plugins: [
       kaliberConfigLoaderPlugin(),
@@ -85,8 +84,6 @@ function srcResolverPlugin() {
     name: 'src-resolve-plugin',
     setup(build) {
       build.onResolve({ filter: /^\// }, async args => {
-        // if (args.kind === 'entry-point') console.log(args.path)
-
         if (args.kind === 'entry-point') return
         return build.resolve(`.${args.path}`, { kind: args.kind, resolveDir: path.resolve('./src') })
       })
@@ -125,7 +122,7 @@ function getServerBuildConfig() {
     entryNames: '[dir]/[name]',
     format: 'cjs',
     inject: ['@kaliber/esbuild/injects-server.js'],
-    external: ['react', 'react-dom', 'stream', 'xml'],
+    external: ['react', 'react-dom'],
     plugins: [
       cssLoaderPlugin(),
       javascriptLoaderPlugin(),
@@ -266,10 +263,11 @@ function templateRendererPlugin(templateRenderers) {
         const { outputs } = metafile
         const extensions = Object.keys(templateRenderers).join('|')
         await Promise.all(Object.keys(outputs).filter(x => new RegExp(`(${extensions})\.js`).test(x)).map(async filePath => {
-          evalInFork(filePath)
+          const type = await evalInFork(filePath)
+          console.log({ type, filePath })
         }))
       })
-      
+
     }
   }
 }
