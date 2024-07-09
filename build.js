@@ -7,7 +7,7 @@ const pwd = process.cwd()
 const srcDir = path.resolve(pwd, 'src')
 const targetDir = path.resolve(pwd, 'target')
 
-const templateRenderers = require('./renderers')
+const templateRenderers = require('./renderers/renderers')
 const { compileWithBabel } = config.kaliber
 
 const BROWSER_META = 'browser-metafile.json'
@@ -22,7 +22,6 @@ async function build() {
     .finally(_ => {
       universalEntryPointUtils().clearUniversalEntryPoints();
       console.log('Finished');
-      process.exit('1')
     })
 }
 
@@ -36,6 +35,7 @@ async function buildClient() {
   await esbuild.build(config)
 }
 
+const { poLoaderPlugin } = require('./plugins/poLoaderPlugin.js')
 const { writeMetaFilePlugin } = require('./plugins/writeMetaFilePlugin')
 const { srcResolverPlugin } = require('./plugins/srcResolvePlugin')
 const { isInternalModulePlugin } = require('./plugins/isInternalModulePlugin')
@@ -45,6 +45,8 @@ const { stylesheetPlugin } = require('./plugins/stylesheetPlugin')
 const { javascriptPlugin } = require('./plugins/javascriptPlugin')
 const { kaliberConfigLoaderPlugin } = require('./plugins/kaliberConfigLoaderPlugin')
 const { templateRendererPlugin } = require('./plugins/templateRendererPlugin')
+
+console.log(poLoaderPlugin)
 
 function getServerBuildConfig() {
   return {
@@ -63,13 +65,14 @@ function getServerBuildConfig() {
     },
     entryNames: '[dir]/[name]',
     format: 'cjs',
-    inject: ['@kaliber/esbuild/injects-server.js'],
+    inject: ['@kaliber/esbuild/injects/server.js'],
     external: ['react', 'react-dom'],
     plugins: [
       stylesheetPlugin(),
       javascriptPlugin(),
       universalServerPlugin(),
       srcResolverPlugin(),
+      poLoaderPlugin(),
       writeMetaFilePlugin(SERVER_META),
       compileForServerPlugin(compileWithBabel),
       isInternalModulePlugin(),
@@ -95,7 +98,7 @@ function getClientBuildConfig() {
       '.svg.raw': 'text',
     },
     entryNames: '[dir]/[name]-[hash]',
-    inject: ['@kaliber/esbuild/injects-browser.js'],
+    inject: ['@kaliber/esbuild/injects/browser.js'],
     plugins: [
       kaliberConfigLoaderPlugin(),
       universalClientPlugin(),

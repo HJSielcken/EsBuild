@@ -1,3 +1,6 @@
-const a = require('./target/aap.json')
-
-console.log(a({title: 'aasp'}))
+try {
+  const {mo} = require('gettext-parser')
+console.log(mo)
+} catch(e) {
+  console.log(e)
+}

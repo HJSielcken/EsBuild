@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const templateRenderers = require('../renderers')
+const templateRenderers = require('../renderers/renderers')
 
 const pwd = process.cwd()
 const targetDir = path.resolve(pwd, 'target')
