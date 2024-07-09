@@ -1,8 +1,7 @@
 import * as React from 'react'
-import * as fs from 'fs'
-import * as path from 'path'
+import * as ReactDOM from 'react-dom/client'
 
-export { React, fs, path, cx }
+export { React, cx, ReactDOM }
 
 function cx(...args) {
   return args.filter(Boolean).join(' ')
