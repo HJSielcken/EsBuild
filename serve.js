@@ -14,10 +14,9 @@ const defaultRenderers = {
   html: '@kaliber/esbuild/html-react-renderer.js',
 }
 
-const { templateRenderers = defaultRenderers } = config.kaliber
+const { templateRenderers = defaultRenderers, serveMiddleware } = config.kaliber
 
 function serve() {
-  const serveMiddleware = null
   const reportError = (x) => console.error(`Error - ${x}`)
   const publicPath = '/'
   const helmetOptions = null

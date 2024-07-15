@@ -1,6 +1,7 @@
 const esbuild = require('esbuild')
 const path = require('path')
 const walkSync = require('walk-sync');
+const fs = require('fs')
 const config = require('@kaliber/config')
 
 const pwd = process.cwd()
@@ -16,13 +17,15 @@ const SERVER_META = 'server-metafile.json'
 module.exports = build
 
 async function build() {
-  await buildServer()
-    .then(_ => buildClient())
-    .catch(x => console.log(x))
-    .finally(_ => {
-      universalEntryPointUtils().clearUniversalEntryPoints();
-      console.log('Finished');
-    })
+  try {
+    await prepareFileSystem()
+    await buildServer()
+    await buildClient()
+  } catch (e) {
+    console.error(e)
+  } finally {
+    universalEntryPointUtils().clearUniversalEntryPoints()
+  }
 }
 
 async function buildServer() {
@@ -35,6 +38,12 @@ async function buildClient() {
   await esbuild.build(config)
 }
 
+async function prepareFileSystem() {
+  await fs.promises.rm(targetDir, { recursive: true, force: true })
+  await fs.promises.rm(cssDirPath, { recursive: true, force: true })
+  await fs.promises.mkdir(cssDirPath)
+}
+
 const { poLoaderPlugin } = require('./plugins/poLoaderPlugin.js')
 const { writeMetaFilePlugin } = require('./plugins/writeMetaFilePlugin')
 const { srcResolverPlugin } = require('./plugins/srcResolvePlugin')
@@ -45,7 +54,7 @@ const { stylesheetPlugin } = require('./plugins/stylesheetPlugin')
 const { javascriptPlugin } = require('./plugins/javascriptPlugin')
 const { kaliberConfigLoaderPlugin } = require('./plugins/kaliberConfigLoaderPlugin')
 const { templateRendererPlugin } = require('./plugins/templateRendererPlugin')
-const { cssServerLoaderPlugin, cssClientLoaderPlugin} = require('./plugins/cssLoaderPlugin.js')
+const { cssServerLoaderPlugin, cssClientLoaderPlugin, cssDirPath } = require('./plugins/cssLoaderPlugin.js')
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -67,6 +76,7 @@ function getServerBuildConfig() {
       '.entry.css': 'css',
       '.svg': 'text',
       '.svg.raw': 'text',
+      '.woff2': 'file'
     },
     entryNames: '[dir]/[name]',
     format: 'cjs',
@@ -99,12 +109,13 @@ function getClientBuildConfig() {
     bundle: true,
     format: 'esm',
     platform: 'browser',
-    external: ['stream'],
+    // external: ['stream'],
     splitting: true,
     loader: {
       '.js': 'jsx',
       '.svg': 'text',
       '.svg.raw': 'text',
+      '.woff2': 'file'
     },
     entryNames: '[dir]/[name]-[hash]',
     inject: ['@kaliber/esbuild/injects/browser.js'],
