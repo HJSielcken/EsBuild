@@ -45,6 +45,7 @@ const { stylesheetPlugin } = require('./plugins/stylesheetPlugin')
 const { javascriptPlugin } = require('./plugins/javascriptPlugin')
 const { kaliberConfigLoaderPlugin } = require('./plugins/kaliberConfigLoaderPlugin')
 const { templateRendererPlugin } = require('./plugins/templateRendererPlugin')
+const { cssServerLoaderPlugin, cssClientLoaderPlugin} = require('./plugins/cssLoaderPlugin.js')
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -62,7 +63,7 @@ function getServerBuildConfig() {
     platform: 'node',
     loader: {
       '.js': 'jsx',
-      '.css': 'local-css',
+      '.css': 'css',
       '.entry.css': 'css',
       '.svg': 'text',
       '.svg.raw': 'text',
@@ -73,6 +74,7 @@ function getServerBuildConfig() {
     external: ['react', 'react-dom'],
     plugins: [
       srcResolverPlugin(),
+      cssServerLoaderPlugin(),
       stylesheetPlugin(),
       javascriptPlugin(),
       universalServerPlugin(),
@@ -97,11 +99,10 @@ function getClientBuildConfig() {
     bundle: true,
     format: 'esm',
     platform: 'browser',
+    external: ['stream'],
     splitting: true,
     loader: {
       '.js': 'jsx',
-      '.css': 'local-css',
-      '.entry.css': 'css',
       '.svg': 'text',
       '.svg.raw': 'text',
     },
@@ -109,11 +110,11 @@ function getClientBuildConfig() {
     inject: ['@kaliber/esbuild/injects/browser.js'],
     plugins: [
       srcResolverPlugin(),
+      cssClientLoaderPlugin(),
       kaliberConfigLoaderPlugin(),
       universalClientPlugin(),
       writeMetaFilePlugin(BROWSER_META),
       poLoaderPlugin(),
-      isInternalModulePlugin(),
       templateRendererPlugin(templateRenderers, SERVER_META),
     ]
   }
