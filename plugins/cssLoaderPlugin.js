@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const esbuild = require('esbuild')
-cssDirName = '.tempCss'
+const cssDirName = '.tempCss'
 const cssDirPath = path.resolve(process.cwd(), cssDirName)
 
 module.exports = { cssServerLoaderPlugin, cssClientLoaderPlugin, cssDirPath }
@@ -13,11 +13,10 @@ const cssClassMapLookup = {}
 function cssServerLoaderPlugin() {
   return {
     name: 'cssServerLoader',
-    setup({ onLoad, onResolve } ) {
+    setup({ onLoad, onResolve }) {
       onResolve({ filter: /\.css/ }, async (args) => {
         if (args.path.startsWith(cssDirName)) {
           const [filename] = path.basename(args.path).split('?')
-
           return {
             path: path.resolve(cssDirPath, filename),
             suffix: '?css-loaded'
@@ -44,7 +43,7 @@ function cssServerLoaderPlugin() {
         const classMap = createClassMap(prefix, modifiedSource)
 
         cssClassMapLookup[prefix] = { classMap, modifiedTimestamp }
-        await fs.promises.writeFile(path.resolve(cssDirPath, `${prefix}.css`), modifiedSource)
+        await fs.promises.writeFile(path.resolve(cssDirPath, `${prefix}.entry.css`), modifiedSource)
 
         return {
           contents: classMapAsJs({ prefix, classMap }),
@@ -57,7 +56,7 @@ function cssServerLoaderPlugin() {
 
 function classMapAsJs({ prefix, classMap }) {
   const classMapAsJs = `
-  import styles from '${cssDirName}/${prefix}?css-loaded'
+  import styles from '${cssDirName}/${prefix}.entry.css?css-loaded'
   export default ${JSON.stringify(classMap)}
   `
   return classMapAsJs
@@ -99,6 +98,7 @@ async function prefixClasses(prefix, source) {
     // https://en.wikipedia.org/wiki/Timeline_of_web_browsers#2020s
     target: ['chrome94', 'opera79', 'edge94', 'firefox92', 'safari15'],
   })
+
   return code
 }
 

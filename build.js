@@ -72,7 +72,6 @@ function getServerBuildConfig() {
     platform: 'node',
     loader: {
       '.js': 'jsx',
-      '.css': 'css',
       '.entry.css': 'css',
       '.svg': 'text',
       '.svg.raw': 'text',
@@ -109,7 +108,7 @@ function getClientBuildConfig() {
     bundle: true,
     format: 'esm',
     platform: 'browser',
-    // external: ['stream'],
+    external: ['stream'], //Tree shaking does not work and import createSitemapEntries from @kaliber/sanity-routing (that uses xml, that uses stream)
     splitting: true,
     loader: {
       '.js': 'jsx',
