@@ -8,11 +8,12 @@ const targetDir = path.resolve(pwd, 'target')
 attempt(() => {
   process.on('message', handleMessage)
 
-  function handleMessage(filePath) {
+  function handleMessage(message) {
+    const { filepath, extension } = JSON.parse(message)
     attempt(() => {
       process.off('message', handleMessage)
 
-      const result = createStaticOrDynamicTemplate(filePath)
+      const result = createStaticTemplate({ filepath, extension })
 
       process.send(result, e =>
         attempt(() => {
@@ -24,25 +25,17 @@ attempt(() => {
   }
 })
 
-function createStaticOrDynamicTemplate(filePath) {
-  const filename = path.basename(filePath)
-  const extension = getExtensionFromTemplate(filePath)
-  const module = require(path.resolve(filePath))
+function createStaticTemplate({ filepath, extension }) {
+  const filename = path.basename(filepath)
+  const module = require(path.resolve(filepath))
 
-  
-  if (typeof module.default === 'function') {
-    const newFilename = filename.replaceAll(`.${extension}.js`, `.${extension}.template.js`)
-    const dynamicTemplate = createDynamicTemplate(newFilename, templateRenderers[extension])
-    fs.renameSync(path.resolve(process.cwd(), 'target', filename), path.resolve(process.cwd(), 'target', newFilename))
-    fs.writeFileSync(path.resolve(process.cwd(), 'target', filename), dynamicTemplate)
-    return `dynamic`
-  } else {
-    const renderer = require(templateRenderers[extension])
-    const content = renderer(module.default)
-    fs.writeFileSync(path.resolve(targetDir, filename.replace(/\.js$/, '')), content)
-    fs.unlinkSync(path.resolve(targetDir, filename))
-    return `static`
-  }
+  const renderer = require(templateRenderers[extension])
+
+  const content = renderer(module.default)
+  fs.writeFileSync(path.resolve(targetDir, filename.replace(/\.js$/, '')), content)
+  fs.unlinkSync(path.resolve(targetDir, filename))
+
+  return `static`
 }
 
 function attempt(f) {
@@ -52,24 +45,4 @@ function attempt(f) {
     console.error(e)
     process.exit(1)
   }
-}
-
-function createDynamicTemplate(sourceLocation, rendererLocation) {
-  return `
-    |const source = require('./${sourceLocation}')
-    |const renderer = require('${rendererLocation}')
-    |Object.assign(render, source)
-    |
-    |module.exports = render
-    |
-    |function render(props) {
-    |  return renderer(source.default(props))
-    |}
-    |`.replace(/^[ \t]*\|/gm, '')
-}
-
-function getExtensionFromTemplate(filePath) {
-  const withoutJs = filePath.replace(/.js$/, '')
-  const extension = path.extname(withoutJs).slice(1)
-  return extension
 }
