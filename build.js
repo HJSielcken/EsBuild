@@ -19,7 +19,8 @@ module.exports = { build, watch }
 async function build() {
   try {
     await prepareFileSystem()
-    await buildServer()
+    const config = getServerBuildConfig()
+    await esbuild.build(config)
   } catch (e) {
     console.error(e)
   }
@@ -28,17 +29,12 @@ async function build() {
 async function watch() {
   try {
     await prepareFileSystem()
-    const context = await esbuild.context(getServerBuildConfig())
+    const context = await esbuild.context(getServerBuildConfig({ watch: true }))
     await context.watch().then(_ => console.log('Watching for changes'))
     await context.serve({ port: 12345 })
   } catch (e) {
     console.log(e)
   }
-}
-
-async function buildServer() {
-  const config = getServerBuildConfig()
-  await esbuild.build(config)
 }
 
 async function prepareFileSystem() {
@@ -62,7 +58,7 @@ const { cssServerLoaderPlugin, cssClientLoaderPlugin, cssDirPath } = require('./
 const isProduction = process.env.NODE_ENV === 'production'
 
 /** @returns {import('esbuild').BuildOptions}*/
-function getServerBuildConfig() {
+function getServerBuildConfig({ watch } = {}) {
   return {
     minify: isProduction,
     entryPoints: gatherEntries(),
@@ -87,7 +83,7 @@ function getServerBuildConfig() {
       cssServerLoaderPlugin(),
       stylesheetPlugin(),
       javascriptPlugin(),
-      universalServerPlugin(getClientBuildConfig),
+      universalServerPlugin((entryPoints) => getClientBuildConfig({ watch, entryPoints })),
       poLoaderPlugin(),
       writeMetaFilePlugin(SERVER_META),
       compileForServerPlugin(compileWithBabel),
@@ -98,9 +94,9 @@ function getServerBuildConfig() {
 }
 
 /** @returns {import('esbuild').BuildOptions}*/
-function getClientBuildConfig(entryPoints) {
+function getClientBuildConfig({ entryPoints, watch }) {
   return {
-    watch: true,
+    watch,
     minify: isProduction,
     entryPoints,
     preserveSymlinks: true,
