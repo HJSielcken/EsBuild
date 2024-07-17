@@ -58,7 +58,8 @@ function getExtensionFromTemplate(filepath) {
 function createDynamicTemplateSnippet(targetFilepath, rendererLocation) {
   return `
     |const path = require('path')
-    |const source = require(path.resolve(process.cwd(), '${targetFilepath}'))
+    |const envRequire = process.env.NODE_ENV==='production' ? require : require('import-fresh')
+    |const source = envRequire(path.resolve(process.cwd(), '${targetFilepath}'))
     |const renderer = require('${rendererLocation}')
     |Object.assign(render, source)
     |

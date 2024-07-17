@@ -34,7 +34,7 @@ function cssServerLoaderPlugin() {
 
         if (cached && cached.modifiedTimestamp === modifiedTimestamp)
           return {
-            contents: classMapAsJs({ prefix, classMap }),
+            contents: classMapAsJs({ prefix, classMap: cached.classMap }),
             loader: 'js'
           }
 

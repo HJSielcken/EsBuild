@@ -42,10 +42,14 @@ function universalServerPlugin(getClientBuildConfig) {
       }),
         onEnd(async _ => {
           console.log('Building client')
-          const config = getClientBuildConfig(universalEntryPoints)
-          await esbuild.build(config)
+          const {watch, ...config} = getClientBuildConfig(universalEntryPoints)
+          if (watch) {
+            context = await esbuild.context(config)
+            await context.rebuild()
+          } else {
+            await esbuild.build(config)
+          }
           console.log('Finished building client')
-          universalEntryPoints = []
         })
     }
   }

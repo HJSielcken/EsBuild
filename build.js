@@ -14,7 +14,7 @@ const { compileWithBabel } = config.kaliber
 const BROWSER_META = 'browser-metafile.json'
 const SERVER_META = 'server-metafile.json'
 
-module.exports = build
+module.exports = { build, watch }
 
 async function build() {
   try {
@@ -22,6 +22,17 @@ async function build() {
     await buildServer()
   } catch (e) {
     console.error(e)
+  }
+}
+
+async function watch() {
+  try {
+    await prepareFileSystem()
+    const context = await esbuild.context(getServerBuildConfig())
+    await context.watch().then(_ => console.log('Watching for changes'))
+    await context.serve({ port: 12345 })
+  } catch (e) {
+    console.log(e)
   }
 }
 
@@ -50,9 +61,7 @@ const { cssServerLoaderPlugin, cssClientLoaderPlugin, cssDirPath } = require('./
 
 const isProduction = process.env.NODE_ENV === 'production'
 
-/**
- * @returns {import('esbuild').BuildOptions}
- */
+/** @returns {import('esbuild').BuildOptions}*/
 function getServerBuildConfig() {
   return {
     minify: isProduction,
@@ -88,11 +97,10 @@ function getServerBuildConfig() {
   }
 }
 
-/**
- * @returns {import('esbuild').BuildOptions}
- */
+/** @returns {import('esbuild').BuildOptions}*/
 function getClientBuildConfig(entryPoints) {
   return {
+    watch: true,
     minify: isProduction,
     entryPoints,
     preserveSymlinks: true,
