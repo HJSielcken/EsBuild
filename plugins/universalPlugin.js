@@ -1,9 +1,10 @@
+const esbuild = require('esbuild')
 const path = require('path')
 const crypto = require('crypto');
 
 let universalEntryPoints = []
 
-module.exports = { universalClientPlugin, universalServerPlugin, universalEntryPointUtils }
+module.exports = { universalClientPlugin, universalServerPlugin }
 
 function universalClientPlugin() {
   return {
@@ -24,10 +25,11 @@ function universalClientPlugin() {
   }
 }
 
-function universalServerPlugin() {
+/** @returns {import('esbuild').Plugin} */
+function universalServerPlugin(getClientBuildConfig) {
   return {
     name: 'universal-server-plugin',
-    setup({ onLoad }) {
+    setup({ onLoad, onEnd }) {
       onLoad({ filter: /\.universal.js/ }, async (args) => {
         if (args.suffix === '?universal-loaded') return
 
@@ -37,24 +39,15 @@ function universalServerPlugin() {
           contents: createServerCode({ path: args.path.replace(path.resolve(process.cwd(), 'src'), '') }),
           loader: 'jsx',
         }
-      })
+      }),
+        onEnd(async _ => {
+          console.log('Building client')
+          const config = getClientBuildConfig(universalEntryPoints)
+          await esbuild.build(config)
+          console.log('Finished building client')
+          universalEntryPoints = []
+        })
     }
-  }
-}
-
-
-function getUniversalEntryPoints() {
-  return universalEntryPoints
-}
-
-function clearUniversalEntryPoints() {
-  universalEntryPoints = []
-}
-
-function universalEntryPointUtils() {
-  return {
-    getUniversalEntryPoints,
-    clearUniversalEntryPoints
   }
 }
 

@@ -20,21 +20,13 @@ async function build() {
   try {
     await prepareFileSystem()
     await buildServer()
-    await buildClient()
   } catch (e) {
     console.error(e)
-  } finally {
-    universalEntryPointUtils().clearUniversalEntryPoints()
   }
 }
 
 async function buildServer() {
   const config = getServerBuildConfig()
-  await esbuild.build(config)
-}
-
-async function buildClient() {
-  const config = getClientBuildConfig()
   await esbuild.build(config)
 }
 
@@ -49,7 +41,7 @@ const { writeMetaFilePlugin } = require('./plugins/writeMetaFilePlugin')
 const { srcResolverPlugin } = require('./plugins/srcResolvePlugin')
 const { isInternalModulePlugin } = require('./plugins/isInternalModulePlugin')
 const { compileForServerPlugin } = require('./plugins/compileForServerPlugin')
-const { universalClientPlugin, universalServerPlugin, universalEntryPointUtils } = require('./plugins/universalPlugin')
+const { universalClientPlugin, universalServerPlugin } = require('./plugins/universalPlugin')
 const { stylesheetPlugin } = require('./plugins/stylesheetPlugin')
 const { javascriptPlugin } = require('./plugins/javascriptPlugin')
 const { kaliberConfigLoaderPlugin } = require('./plugins/kaliberConfigLoaderPlugin')
@@ -86,11 +78,12 @@ function getServerBuildConfig() {
       cssServerLoaderPlugin(),
       stylesheetPlugin(),
       javascriptPlugin(),
-      universalServerPlugin(),
+      universalServerPlugin(getClientBuildConfig),
       poLoaderPlugin(),
       writeMetaFilePlugin(SERVER_META),
       compileForServerPlugin(compileWithBabel),
       isInternalModulePlugin(),
+      templateRendererPlugin(templateRenderers, SERVER_META),
     ]
   }
 }
@@ -98,17 +91,17 @@ function getServerBuildConfig() {
 /**
  * @returns {import('esbuild').BuildOptions}
  */
-function getClientBuildConfig() {
+function getClientBuildConfig(entryPoints) {
   return {
     minify: isProduction,
-    entryPoints: universalEntryPointUtils().getUniversalEntryPoints(),
+    entryPoints,
     preserveSymlinks: true,
     outdir: targetDir,
     metafile: true,
     bundle: true,
     format: 'esm',
     platform: 'browser',
-    external: ['stream'], //Tree shaking does not work and import createSitemapEntries from @kaliber/sanity-routing (that uses xml, that uses stream)
+    external: ['stream'], //Tree shaking does not work very well I think and import createSitemapEntries from @kaliber/sanity-routing (that uses xml, that uses stream)
     splitting: true,
     loader: {
       '.js': 'jsx',
@@ -122,10 +115,9 @@ function getClientBuildConfig() {
       srcResolverPlugin(),
       cssClientLoaderPlugin(),
       kaliberConfigLoaderPlugin(),
-      universalClientPlugin(),
       writeMetaFilePlugin(BROWSER_META),
+      universalClientPlugin(),
       poLoaderPlugin(),
-      templateRendererPlugin(templateRenderers, SERVER_META),
     ]
   }
 }

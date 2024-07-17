@@ -27,6 +27,8 @@ function createScriptTags(entryPoint) {
   |function determineScripts(entryPoint) {
   |  const serverMetafile = JSON.parse(fs.readFileSync('./server-metafile.json'))
   |  const browserMetafile = JSON.parse(fs.readFileSync('./browser-metafile.json'))
+  |  console.log({serverMetafile})
+  |  console.log({browserMetafile})
   |
   |  const { inputs } = Object.values(serverMetafile.outputs).find(x => x.entryPoint === entryPoint)
   |  const universalInputs = Object.keys(inputs).filter(x => x.endsWith('.universal.js'))
