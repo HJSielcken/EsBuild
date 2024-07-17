@@ -5,6 +5,8 @@ const templateRenderers = require('../renderers/renderers')
 
 module.exports = { templateRendererPlugin }
 
+const cache = {}
+
 function templateRendererPlugin(templateRenderers, serverMetaFile) {
   return {
     name: 'template-renderer-plugin',
@@ -20,9 +22,19 @@ function templateRendererPlugin(templateRenderers, serverMetaFile) {
           const extension = getExtensionFromTemplate(filename)
           const filepath = path.resolve(process.cwd(), targetFilepath)
 
+          const size = await getSize(filepath)
+          const cached = cache[filepath] && cache[filepath].size === size
+          
+          if (cached) {
+            console.log(`cached ${filepath}`)
+            return
+          }
+          
+          cache[filepath] = { size }
+
           const isDynamicTemplate = await determineIfTemplateIsDynamic(targetFilepath)
           if (isDynamicTemplate) {
-            await createDynamicTemplate({ targetFilepath, extension})
+            await createDynamicTemplate({ targetFilepath, extension })
             console.log({ type: 'dynamic', filename })
           } else {
             await createStaticTemplate({ filepath, extension })
@@ -32,6 +44,15 @@ function templateRendererPlugin(templateRenderers, serverMetaFile) {
       })
 
     }
+  }
+}
+
+async function getSize(filepath) {
+  try {
+    const { size } = await fs.promises.stat(filepath)
+    return size
+  } catch (e) {
+    return null
   }
 }
 
@@ -58,7 +79,8 @@ function getExtensionFromTemplate(filepath) {
 function createDynamicTemplateSnippet(targetFilepath, rendererLocation) {
   return `
     |const path = require('path')
-    |const source = require(path.resolve(process.cwd(), '${targetFilepath}'))
+    |const envRequire = process.env.NODE_ENV==='production' ? require : require('import-fresh')
+    |const source = envRequire(path.resolve(process.cwd(), '${targetFilepath}'))
     |const renderer = require('${rendererLocation}')
     |Object.assign(render, source)
     |

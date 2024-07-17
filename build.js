@@ -14,28 +14,27 @@ const { compileWithBabel } = config.kaliber
 const BROWSER_META = 'browser-metafile.json'
 const SERVER_META = 'server-metafile.json'
 
-module.exports = build
+module.exports = { build, watch }
 
 async function build() {
   try {
     await prepareFileSystem()
-    await buildServer()
-    await buildClient()
+    const config = getServerBuildConfig()
+    await esbuild.build(config)
   } catch (e) {
     console.error(e)
-  } finally {
-    universalEntryPointUtils().clearUniversalEntryPoints()
   }
 }
 
-async function buildServer() {
-  const config = getServerBuildConfig()
-  await esbuild.build(config)
-}
-
-async function buildClient() {
-  const config = getClientBuildConfig()
-  await esbuild.build(config)
+async function watch() {
+  try {
+    await prepareFileSystem()
+    const context = await esbuild.context(getServerBuildConfig({ watch: true }))
+    await context.watch().then(_ => console.log('Watching for changes'))
+    await context.serve({ port: 12345 })
+  } catch (e) {
+    console.log(e)
+  }
 }
 
 async function prepareFileSystem() {
@@ -49,7 +48,7 @@ const { writeMetaFilePlugin } = require('./plugins/writeMetaFilePlugin')
 const { srcResolverPlugin } = require('./plugins/srcResolvePlugin')
 const { isInternalModulePlugin } = require('./plugins/isInternalModulePlugin')
 const { compileForServerPlugin } = require('./plugins/compileForServerPlugin')
-const { universalClientPlugin, universalServerPlugin, universalEntryPointUtils } = require('./plugins/universalPlugin')
+const { universalClientPlugin, universalServerPlugin } = require('./plugins/universalPlugin')
 const { stylesheetPlugin } = require('./plugins/stylesheetPlugin')
 const { javascriptPlugin } = require('./plugins/javascriptPlugin')
 const { kaliberConfigLoaderPlugin } = require('./plugins/kaliberConfigLoaderPlugin')
@@ -58,10 +57,8 @@ const { cssServerLoaderPlugin, cssClientLoaderPlugin, cssDirPath } = require('./
 
 const isProduction = process.env.NODE_ENV === 'production'
 
-/**
- * @returns {import('esbuild').BuildOptions}
- */
-function getServerBuildConfig() {
+/** @returns {import('esbuild').BuildOptions}*/
+function getServerBuildConfig({ watch } = {}) {
   return {
     minify: isProduction,
     entryPoints: gatherEntries(),
@@ -86,29 +83,29 @@ function getServerBuildConfig() {
       cssServerLoaderPlugin(),
       stylesheetPlugin(),
       javascriptPlugin(),
-      universalServerPlugin(),
+      universalServerPlugin((entryPoints) => getClientBuildConfig({ watch, entryPoints })),
       poLoaderPlugin(),
       writeMetaFilePlugin(SERVER_META),
       compileForServerPlugin(compileWithBabel),
       isInternalModulePlugin(),
+      templateRendererPlugin(templateRenderers, SERVER_META),
     ]
   }
 }
 
-/**
- * @returns {import('esbuild').BuildOptions}
- */
-function getClientBuildConfig() {
+/** @returns {import('esbuild').BuildOptions}*/
+function getClientBuildConfig({ entryPoints, watch }) {
   return {
+    watch,
     minify: isProduction,
-    entryPoints: universalEntryPointUtils().getUniversalEntryPoints(),
+    entryPoints,
     preserveSymlinks: true,
     outdir: targetDir,
     metafile: true,
     bundle: true,
     format: 'esm',
     platform: 'browser',
-    external: ['stream'], //Tree shaking does not work and import createSitemapEntries from @kaliber/sanity-routing (that uses xml, that uses stream)
+    external: ['stream'], //Tree shaking does not work very well I think and import createSitemapEntries from @kaliber/sanity-routing (that uses xml, that uses stream)
     splitting: true,
     loader: {
       '.js': 'jsx',
@@ -122,10 +119,9 @@ function getClientBuildConfig() {
       srcResolverPlugin(),
       cssClientLoaderPlugin(),
       kaliberConfigLoaderPlugin(),
-      universalClientPlugin(),
       writeMetaFilePlugin(BROWSER_META),
+      universalClientPlugin(),
       poLoaderPlugin(),
-      templateRendererPlugin(templateRenderers, SERVER_META),
     ]
   }
 }
