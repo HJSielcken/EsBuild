@@ -24,7 +24,7 @@ function templateRendererPlugin(templateRenderers, serverMetaFile) {
 
           const size = await getSize(filepath)
           const cached = cache[filepath] && cache[filepath].size === size
-          
+
           if (cached) {
             console.log(`cached ${filepath}`)
             return
@@ -95,7 +95,7 @@ function createDynamicTemplateSnippet(targetFilepath, rendererLocation) {
 async function createStaticTemplate({ filepath, extension }) {
   return new Promise((resolve, reject) => {
     const js = childProcess.fork(
-      path.resolve(__dirname, 'eval-in-fork.js'),
+      path.resolve(__dirname, 'create-static-template.js'),
       [],
       { stdio: ['pipe', 'pipe', 'pipe', 'ipc'] }
     )
