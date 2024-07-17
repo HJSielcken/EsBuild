@@ -42,7 +42,7 @@ function universalServerPlugin(getClientBuildConfig) {
       }),
         onEnd(async _ => {
           console.log('Building client')
-          const {watch, ...config} = getClientBuildConfig(universalEntryPoints)
+          const { watch, ...config } = getClientBuildConfig(universalEntryPoints)
           if (watch) {
             context = await esbuild.context(config)
             await context.rebuild()
