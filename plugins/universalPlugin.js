@@ -72,7 +72,6 @@ function universalServerPlugin(getClientBuildConfig) {
   }
 }
 
-
 function createContainerlessClientCode({ path }) {
   const md5 = toMd5(path)
 

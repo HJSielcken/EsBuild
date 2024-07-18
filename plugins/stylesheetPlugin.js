@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = { stylesheetPlugin }
 
 function stylesheetPlugin() {
@@ -20,7 +22,6 @@ function stylesheetPlugin() {
   }
 }
 
-const path = require('path')
 function createStyleSheet(entryPoint) {
   const stylesheet = path.relative(process.cwd(), entryPoint)
   return `
