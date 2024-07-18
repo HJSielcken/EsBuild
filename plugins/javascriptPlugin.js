@@ -21,15 +21,17 @@ function javascriptPlugin() {
 }
 
 function createScriptTags(entryPoint) {
+ const hotReload = process.env.NODE_ENV!== production && "<script dangerouslySetInnerHTML={{__html:`new EventSource('http://localhost:12345/esbuild').addEventListener('change', (x) => console.log(x);location.reload())` }}></script>"
+
   return `
-  |export const javascript = determineScripts('${entryPoint.replace(process.cwd(), '').slice(1)}').map((x,idx)=><script key={idx} src={x} type="module" defer></script>)
+  |export const javascript = determineScripts('${entryPoint.replace(process.cwd(), '').slice(1)}').map((x,idx)=><script key={idx} src={x} type="module" defer></script>).concat(${hotReload}).filter(Boolean)
   |
   |function determineScripts(entryPoint) {
   |  const serverMetafile = JSON.parse(fs.readFileSync('./server-metafile.json'))
   |  const browserMetafile = JSON.parse(fs.readFileSync('./browser-metafile.json'))
   |
-  |  const { inputs } = Object.values(serverMetafile.outputs).find(x => x.entryPoint === entryPoint)
-  |  const universalInputs = Object.keys(inputs).filter(x => x.endsWith('.universal.js'))
+  |  const { inputs } = Object.values(serverMetafile.outputs).find(x => x.entryPoint === entryPoint ||  x.entryPoint === entryPoint+'?universal')
+  |  const universalInputs = Object.keys(inputs).filter(x => x.endsWith('.universal.js') ||  x.endsWith('?universal'))
   |  
   |  const browserEntries = Object.entries(browserMetafile.outputs)
   |  return universalInputs.map(x => {

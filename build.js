@@ -83,7 +83,7 @@ function getServerBuildConfig({ watch } = {}) {
       cssServerLoaderPlugin(),
       stylesheetPlugin(),
       javascriptPlugin(),
-      universalServerPlugin((entryPoints) => getClientBuildConfig({ watch, entryPoints })),
+      universalServerPlugin(entryPoints => getClientBuildConfig({ watch, entryPoints })),
       poLoaderPlugin(),
       writeMetaFilePlugin(SERVER_META),
       compileForServerPlugin(compileWithBabel),
