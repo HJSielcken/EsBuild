@@ -14,7 +14,7 @@ function universalClientPlugin() {
         if (isUniversalEntry(args)) return
         if (args.suffix === '?universal-loaded') return
 
-        const slashRootPath = `/${path.relative('./src/', args.path)}`
+        const slashRootPath = path.relative('./src/', args.path)
 
         if (args.suffix === '?universal')
           return {
@@ -33,10 +33,6 @@ function universalClientPlugin() {
   }
 }
 
-function isUniversalEntry(args) {
-  return (!(/\.universal.js$/.test(args.path) || /\?universal$/.test(args.suffix)))
-}
-
 /** @returns {import('esbuild').Plugin} */
 function universalServerPlugin(getClientBuildConfig) {
   return {
@@ -48,8 +44,7 @@ function universalServerPlugin(getClientBuildConfig) {
 
         universalEntryPoints.push([args.path, args.suffix].filter(Boolean).join(''))
 
-        const slashRootPath = `/${path.relative('./src/', args.path)}`
-
+        const slashRootPath = path.relative('./src/', args.path)
 
         if (args.suffix === '?universal')
           return {
@@ -89,7 +84,7 @@ function createContainerlessClientCode({ path }) {
     wrapped: wrapperPath ? `<Wrapper {...props}>${component}</Wrapper>` : component,
   }
 
-  return `|import Component from '${path}?universal-loaded'
+  return `|import Component from '/${path}?universal-loaded'
           |import { findComponents, hydrate } from '@kaliber/esbuild/plugins/universalComponent'
           |${wrapper}
           |
@@ -120,7 +115,7 @@ function createContainerlessServerCode({ path }) {
     component: '<PropsWrapper serverProps={props} />',
   })
 
-  return `|import Component from '${path}?universal-loaded'
+  return `|import Component from '/${path}?universal-loaded'
           |import assignStatics from 'hoist-non-react-statics'
           |import { renderToString } from 'react-dom/server'
           |import { ComponentServerWrapper } from '@kaliber/esbuild/plugins/universalComponent'
@@ -156,7 +151,7 @@ function get(o, path) {
 function createClientCode({ path }) {
   const md5 = toMd5(path)
 
-  return `|import ClientComponent from '${path}?universal-loaded'; 
+  return `|import ClientComponent from '/${path}?universal-loaded'; 
           |const { hydrateRoot } = ReactDOM; 
           |const nodes = Array.from(document.querySelectorAll('*[data-kaliber-component-id="${md5}"]'));
           |nodes.map(x => {
@@ -168,7 +163,7 @@ function createClientCode({ path }) {
 
 function createServerCode({ path }) {
   const md5 = toMd5(path)
-  return `|import Component from '${path}?universal-loaded'
+  return `|import Component from '/${path}?universal-loaded'
           |import { renderToString } from 'react-dom/server'
           |
           |export default function ServerComponent(props) {
@@ -181,4 +176,8 @@ function createServerCode({ path }) {
 
 function toMd5(payload) {
   return crypto.createHash('md5').update(payload).digest('hex')
+}
+
+function isUniversalEntry(args) {
+  return (!(/\.universal.js$/.test(args.path) || /\?universal$/.test(args.suffix)))
 }

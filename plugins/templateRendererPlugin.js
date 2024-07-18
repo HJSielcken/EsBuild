@@ -7,6 +7,7 @@ module.exports = { templateRendererPlugin }
 
 const cache = {}
 
+/** @returns {import('esbuild').Plugin} */
 function templateRendererPlugin(templateRenderers, serverMetaFile) {
   return {
     name: 'template-renderer-plugin',

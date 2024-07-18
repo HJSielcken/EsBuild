@@ -1,4 +1,6 @@
 const fs = require('fs')
+const path = require('path')
+
 module.exports = { writeMetaFilePlugin }
 
 function writeMetaFilePlugin(filename) {
@@ -7,7 +9,7 @@ function writeMetaFilePlugin(filename) {
     setup({ onEnd }) {
       onEnd(async ({ metafile, errors }) => {
         if (errors.length) return
-        await fs.promises.writeFile(`./${filename}`, JSON.stringify(metafile, null, 2))
+        await fs.promises.writeFile(path.resolve(process.cwd(), filename), JSON.stringify(metafile, null, 2))
       }
       )
     }
