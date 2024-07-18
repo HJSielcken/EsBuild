@@ -11,26 +11,30 @@ function universalClientPlugin() {
     name: 'universal-client-plugin',
     setup({ onLoad }) {
       onLoad({ filter: /\.js/ }, async (args) => {
-        if (!(/\.universal.js$/.test(args.path) || /\?universal$/.test(args.suffix))) return
+        if (isUniversalEntry(args)) return
         if (args.suffix === '?universal-loaded') return
+
+        const slashRootPath = `/${path.relative('./src/', args.path)}`
 
         if (args.suffix === '?universal')
           return {
-            contents: createClientCode({ path: args.path.replace(path.resolve(process.cwd(), 'src'), '') }),
+            contents: createClientCode({ path: slashRootPath }),
             loader: 'jsx',
           }
 
-        const newFile = createContainerlessClientCode({
-          path: args.path.replace(path.resolve(process.cwd(), 'src'), ''),
-        })
-
         return {
-          contents: newFile,
+          contents: createContainerlessClientCode({
+            path: slashRootPath
+          }),
           loader: 'jsx',
         }
       })
     }
   }
+}
+
+function isUniversalEntry(args) {
+  return (!(/\.universal.js$/.test(args.path) || /\?universal$/.test(args.suffix)))
 }
 
 /** @returns {import('esbuild').Plugin} */
@@ -39,19 +43,22 @@ function universalServerPlugin(getClientBuildConfig) {
     name: 'universal-server-plugin',
     setup({ onLoad, onEnd }) {
       onLoad({ filter: /\.js/ }, async (args) => {
-        if (!(/\.universal.js$/.test(args.path) || /\?universal$/.test(args.suffix))) return
+        if (isUniversalEntry(args)) return
         if (args.suffix === '?universal-loaded') return
 
         universalEntryPoints.push([args.path, args.suffix].filter(Boolean).join(''))
 
+        const slashRootPath = `/${path.relative('./src/', args.path)}`
+
+
         if (args.suffix === '?universal')
           return {
-            contents: createServerCode({ path: args.path.replace(path.resolve(process.cwd(), 'src'), '') }),
+            contents: createServerCode({ path: slashRootPath }),
             loader: 'jsx',
           }
 
         return {
-          contents: createContainerlessServerCode({ path: args.path.replace(path.resolve(process.cwd(), 'src'), '') }),
+          contents: createContainerlessServerCode({ path: slashRootPath }),
           loader: 'jsx',
         }
       }),
@@ -72,7 +79,7 @@ function universalServerPlugin(getClientBuildConfig) {
 
 
 function createContainerlessClientCode({ path }) {
-  const md5 = crypto.createHash('md5').update(path).digest('hex')
+  const md5 = toMd5(path)
 
   const wrapperPath = get(require('@kaliber/config'), 'kaliber.universal.clientWrapper')
 
@@ -99,7 +106,7 @@ function createContainerlessServerCode({ path }) {
   const clientWrapperPath = get(require('@kaliber/config'), 'kaliber.universal.clientWrapper')
   const serverWrapperPath = get(require('@kaliber/config'), 'kaliber.universal.serverWrapper')
 
-  const md5 = crypto.createHash('md5').update(path).digest('hex')
+  const md5 = toMd5(path)
 
   const client = wrap({
     importPath: clientWrapperPath,
@@ -147,7 +154,7 @@ function get(o, path) {
 }
 
 function createClientCode({ path }) {
-  const md5 = crypto.createHash('md5').update(path).digest('hex')
+  const md5 = toMd5(path)
 
   return `|import ClientComponent from '${path}?universal-loaded'; 
           |const { hydrateRoot } = ReactDOM; 
@@ -160,7 +167,7 @@ function createClientCode({ path }) {
 }
 
 function createServerCode({ path }) {
-  const md5 = crypto.createHash('md5').update(path).digest('hex')
+  const md5 = toMd5(path)
   return `|import Component from '${path}?universal-loaded'
           |import { renderToString } from 'react-dom/server'
           |
@@ -170,4 +177,8 @@ function createServerCode({ path }) {
           |<div data-kaliber-component={JSON.stringify(props)} data-kaliber-component-id='${md5}' dangerouslySetInnerHTML={{ __html: content }} />
           |)
           |}`.split(/^[ \t]*\|/m).join('')
+}
+
+function toMd5(payload) {
+  return crypto.createHash('md5').update(payload).digest('hex')
 }
