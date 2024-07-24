@@ -53,7 +53,8 @@ const { stylesheetPlugin } = require('./plugins/stylesheetPlugin')
 const { javascriptPlugin } = require('./plugins/javascriptPlugin')
 const { kaliberConfigLoaderPlugin } = require('./plugins/kaliberConfigLoaderPlugin')
 const { templateRendererPlugin } = require('./plugins/templateRendererPlugin')
-const { cssServerLoaderPlugin, cssClientLoaderPlugin, cssDirPath } = require('./plugins/cssLoaderPlugin.js')
+const { cssServerLoaderPlugin, cssClientLoaderPlugin, cssDirPath } = require('./plugins/cssLoaderPlugin.js');
+const { writeMegaEntriesPlugin } = require('./plugins/writeMetaEntriesPlugin.js');
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -88,6 +89,7 @@ function getServerBuildConfig({ watch } = {}) {
       writeMetaFilePlugin(SERVER_META),
       compileForServerPlugin(compileWithBabel),
       isInternalModulePlugin(),
+      writeMegaEntriesPlugin({ serverMetaFile: SERVER_META, browserMetaFile: BROWSER_META }),
       templateRendererPlugin(templateRenderers, SERVER_META),
     ]
   }

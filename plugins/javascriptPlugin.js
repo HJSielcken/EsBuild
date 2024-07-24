@@ -1,5 +1,3 @@
-const path = require('path')
-
 module.exports = { javascriptPlugin }
 
 function javascriptPlugin() {
@@ -24,21 +22,12 @@ function javascriptPlugin() {
 
 function createScriptTags(entryPoint) {
  const hotReload = process.env.NODE_ENV!== 'production' && "<script dangerouslySetInnerHTML={{__html:`new EventSource('http://localhost:12345/esbuild').addEventListener('change', (x) => {console.log(x);location.reload()})` }}></script>"
-  const slashRootPath = path.relative('./', entryPoint)
   return `
-  |export const javascript = determineScripts('${slashRootPath}').map((x,idx)=><script key={idx} src={x} type="module" defer></script>).concat(${hotReload}).filter(Boolean)
+  |export const javascript = determineScripts().map((x,idx)=><script key={idx} src={x} type="module" defer></script>).concat(${hotReload}).filter(Boolean)
   |
-  |function determineScripts(entryPoint) {
-  |  const serverMetafile = JSON.parse(fs.readFileSync(process.cwd()+'/server-metafile.json'))
-  |  const browserMetafile = JSON.parse(fs.readFileSync(process.cwd()+'/browser-metafile.json'))
-  |
-  |  const { inputs } = Object.values(serverMetafile.outputs).find(x => x.entryPoint === entryPoint ||  x.entryPoint === entryPoint+'?universal')
-  |  const universalInputs = Object.keys(inputs).filter(x => x.endsWith('.universal.js') ||  x.endsWith('?universal'))
-  |  
-  |  const browserEntries = Object.entries(browserMetafile.outputs)
-  |  return universalInputs.map(x => {
-  |     return browserEntries.find(([k, v]) => v.entryPoint === x)[0].replace('target', '')
-  |  })
+  |function determineScripts() {
+  |  const javascriptEntries = JSON.parse(fs.readFileSync(process.cwd()+'/target/javascript-entries.json'))
+  |  return javascriptEntries['${entryPoint}'].javascriptChunks
   |}
   `.replace(/^[ \t]*\|/gm, '')
 }

@@ -25,11 +25,10 @@ function stylesheetPlugin() {
 function createStyleSheet(entryPoint) {
   const stylesheet = path.relative(process.cwd(), entryPoint)
   return `
-  |export const stylesheet = <link rel="stylesheet" href={getCssBundle("${stylesheet}")} />
-  |function getCssBundle(entrypoint) {
-  |  const metafile = JSON.parse(fs.readFileSync(process.cwd()+'/server-metafile.json'))
-  |  const output = Object.values(metafile.outputs).find(x => x.entryPoint === entrypoint)
-  |  return output.cssBundle.replace('target','')
+  |export const stylesheet = <link rel="stylesheet" href={getCssBundle()} />
+  |function getCssBundle() {
+  |  const metafile = JSON.parse(fs.readFileSync(process.cwd()+'/target/css-entries.json'))
+  |  return metafile['${entryPoint}'].cssBundle
   |}
   `.replace(/^[ \t]*\|/gm, '')
 }
