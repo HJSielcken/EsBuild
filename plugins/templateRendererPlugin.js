@@ -17,6 +17,7 @@ function templateRendererPlugin(templateRenderers, serverMetaFile) {
         const content = await fs.promises.readFile(serverMetaFile)
         const metafile = JSON.parse(content)
         const { outputs } = metafile
+        
         const extensions = Object.keys(templateRenderers).join('|')
         await Promise.all(Object.keys(outputs).filter(x => new RegExp(`(${extensions})\.js`).test(x)).map(async targetFilepath => {
           const filename = path.basename(targetFilepath)
