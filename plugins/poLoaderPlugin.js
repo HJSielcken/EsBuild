@@ -5,7 +5,7 @@ module.exports = { poLoaderPlugin }
 
 const cache = {}
 
-/** @type {import('esbuild').Plugin} */
+/** @returns {import('esbuild').Plugin} */
 function poLoaderPlugin() {
   return {
     name: 'po-loader-plugin',

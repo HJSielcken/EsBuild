@@ -78,7 +78,7 @@ function cssClientLoaderPlugin() {
   return {
     name: 'css-client-loader',
     setup({ onLoad }) {
-      onLoad({ filter: /.css/ }, async (args) => {
+      onLoad({ filter: /\.css/ }, async (args) => {
         const prefix = determinePrefix(args)
         const classMapAsJs = `export default ${JSON.stringify(cssClassMapLookup[prefix].classMap)}`
 

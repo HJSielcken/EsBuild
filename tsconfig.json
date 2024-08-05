@@ -3,6 +3,7 @@
     "enable": true
   },
   "include": [
+    "./example/**/*",
     "./src/**/*",
     "./types.ts",
     "./types/**/*",
@@ -18,11 +19,12 @@
     "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
     "allowSyntheticDefaultImports": true,
+    "allowUmdGlobalAccess": true,
     "lib": [
       "dom",
       "esnext"
     ],
-    "jsx": "react",
+    "jsx": "react-jsx",
     "baseUrl": ".",
     "allowJs": true,
     "checkJs": true,

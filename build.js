@@ -70,10 +70,12 @@ function getServerBuildConfig({ watch } = {}) {
     platform: 'node',
     loader: {
       '.js': 'jsx',
-      '.entry.css': 'css',
+      '.entry.css': 'global-css',
       '.svg': 'text',
       '.svg.raw': 'text',
-      '.woff2': 'file'
+      '.woff2': 'file',
+      '.woff': 'file',
+      '.ttf': 'file',
     },
     entryNames: '[dir]/[name]',
     format: 'cjs',
@@ -112,8 +114,11 @@ function getClientBuildConfig({ entryPoints, watch }) {
     loader: {
       '.js': 'jsx',
       '.svg': 'text',
+      '.entry.css': 'global-css',
       '.svg.raw': 'text',
-      '.woff2': 'file'
+      '.woff2': 'file',
+      '.woff': 'file',
+      '.ttf': 'file',
     },
     entryNames: '[dir]/[name]-[hash]',
     inject: ['@kaliber/esbuild/injects/browser.js'],
