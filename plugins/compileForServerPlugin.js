@@ -20,9 +20,9 @@ function compileForServerPlugin(compileWithBabel) {
           }
         })
 
-        const isPackage = path.relative(process.cwd(), result.path).startsWith('node_modules')
+        const isPackageModule = path.relative(process.cwd(), result.path).startsWith('node_modules') && result.path.endsWith('js')
 
-        if (!isPackage) return null
+        if (!isPackageModule) return null
 
         if (compileWithBabel.find(x => x.test(result.path))) return null
 
