@@ -77,6 +77,9 @@ function getServerBuildConfig({ watch } = {}) {
       '.woff': 'file',
       '.ttf': 'file',
     },
+    define: {
+      'process.env.CONFIG_ENV': `"${process.env.CONFIG_ENV}"`
+    },
     entryNames: '[dir]/[name]',
     format: 'cjs',
     inject: ['@kaliber/esbuild/injects/server.js'],
@@ -108,6 +111,10 @@ function getClientBuildConfig({ entryPoints, watch }) {
     metafile: true,
     bundle: true,
     format: 'esm',
+    define: {
+      'process.env.CONFIG_ENV': `"${process.env.CONFIG_ENV}"`
+
+    },
     platform: 'browser',
     external: ['stream'], //Tree shaking does not work very well I think and import createSitemapEntries from @kaliber/sanity-routing (that uses xml, that uses stream)
     splitting: true,

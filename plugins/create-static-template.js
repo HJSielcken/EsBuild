@@ -26,14 +26,12 @@ attempt(() => {
 })
 
 function createStaticTemplate({ filepath, extension }) {
-  const filename = path.basename(filepath)
   const module = require(path.resolve(filepath))
-
   const renderer = require(templateRenderers[extension])
 
   const content = renderer(module.default)
-  fs.writeFileSync(path.resolve(targetDir, filename.replace(/\.js$/, '')), content)
-  fs.unlinkSync(path.resolve(targetDir, filename))
+  fs.writeFileSync(path.resolve(process.cwd(), filepath.replace(/\.js$/, '')), content)
+  fs.unlinkSync(path.resolve(process.cwd(), filepath))
 
   return `static`
 }

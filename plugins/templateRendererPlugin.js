@@ -39,7 +39,7 @@ function templateRendererPlugin(templateRenderers, serverMetaFile) {
             await createDynamicTemplate({ targetFilepath, extension })
             console.log({ type: 'dynamic', filename })
           } else {
-            await createStaticTemplate({ filepath, extension })
+            await createStaticTemplate({ filepath: targetFilepath, extension })
             console.log({ type: 'static', filename })
           }
         }))
