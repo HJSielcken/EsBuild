@@ -17,6 +17,7 @@ function cssServerLoaderPlugin() {
       onResolve({ filter: /\.css/ }, async (args) => {
         if (args.path.startsWith(cssDirName)) {
           const [filename] = path.basename(args.path).split('?')
+
           return {
             path: path.resolve(cssDirPath, filename),
             suffix: '?css-loaded'
@@ -26,6 +27,13 @@ function cssServerLoaderPlugin() {
 
       onLoad({ filter: /\.css/ }, async (args) => {
         if (args.suffix === '?css-loaded') return
+
+        if(args.with.type === 'global-css') {
+          return {
+            contents: await fs.promises.readFile(args.path),
+            loader: 'css'
+          }
+        }
 
         const modifiedTimestamp = await getModifiedTimestamp(args)
         const prefix = determinePrefix(args)
