@@ -10,7 +10,7 @@
 - [ ] Optimizing/caching
 - [ ] Fingerprinting css
 
-To use globally-scoped css classes, I use the import attribute `with { type: 'bglobal-css'}`.
+To use globally-scoped css classes, use the import attribute `with { type: 'global-css'}`.
 For instance 
 
 ```js
