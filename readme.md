@@ -17,4 +17,4 @@ import 'keen-slider/keen-slider.min.css' with { type: 'global-css'}
 ```
 To get rid of the errors, we should add the following plugin to the .eslintrc
 - '@babel/plugin-syntax-import-attributes'
-- Update tsconfig `compilerOptions.moduleResolution` to `nodenext`
+- Update tsconfig `compilerOptions.moduleResolution` to `Bundler` and `compilerOptions.module` to `Preserve` (do not knwo if these are the best options)
