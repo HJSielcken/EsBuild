@@ -8,6 +8,7 @@
 - [ ] Progressbar
 - [ ] Refactoring/rewriting
 - [ ] Optimizing/caching
+- [ ] Fingerprinting css
 
 To use globally-scoped css classes, I use the import attribute `with { type: 'bglobal-css'}`.
 For instance 
