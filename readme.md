@@ -9,6 +9,7 @@
 - [ ] Refactoring/rewriting
 - [ ] Optimizing/caching
 - [ ] Fingerprinting css
+- [ ] Copy unused files plugin
 
 To use globally-scoped css classes, use the import attribute `with { type: 'global-css'}`.
 For instance 
