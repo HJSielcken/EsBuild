@@ -1,6 +1,6 @@
 const esbuild = require('esbuild')
 const path = require('path')
-const walkSync = require('walk-sync');
+const walkSync = require('walk-sync')
 const fs = require('fs')
 const config = require('@kaliber/config')
 
@@ -55,6 +55,7 @@ const { kaliberConfigLoaderPlugin } = require('./plugins/kaliberConfigLoaderPlug
 const { templateRendererPlugin } = require('./plugins/templateRendererPlugin')
 const { cssServerLoaderPlugin, cssClientLoaderPlugin, cssDirPath } = require('./plugins/cssLoaderPlugin.js');
 const { writeMegaEntriesPlugin } = require('./plugins/writeMetaEntriesPlugin.js');
+const { copyUnusedFilesPlugin } = require('./plugins/copyUnusedFilesPlugin.js')
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -71,8 +72,8 @@ function getServerBuildConfig({ watch } = {}) {
     loader: {
       '.js': 'jsx',
       '.entry.css': 'global-css',
-      '.svg': 'text',
-      '.svg.raw': 'text',
+      '.raw.svg': 'text',
+      '.svg': 'copy',
       '.woff2': 'file',
       '.woff': 'file',
       '.ttf': 'file',
@@ -85,6 +86,7 @@ function getServerBuildConfig({ watch } = {}) {
     inject: ['@kaliber/esbuild/injects/server.js'],
     external: ['react', 'react-dom'],
     plugins: [
+      copyUnusedFilesPlugin(),
       srcResolverPlugin(),
       cssServerLoaderPlugin(),
       stylesheetPlugin(),
@@ -120,9 +122,9 @@ function getClientBuildConfig({ entryPoints, watch }) {
     splitting: true,
     loader: {
       '.js': 'jsx',
-      '.svg': 'text',
       '.entry.css': 'global-css',
-      '.svg.raw': 'text',
+      '.raw.svg': 'text',
+      '.svg': 'copy',
       '.woff2': 'file',
       '.woff': 'file',
       '.ttf': 'file',
