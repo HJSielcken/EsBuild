@@ -10,6 +10,7 @@
 - [ ] Optimizing/caching
 - [ ] Fingerprinting css
 - [ ] Copy unused files plugin
+- [ ] Sourcemaps
 
 To use globally-scoped css classes, use the import attribute `with { type: 'global-css'}`.
 For instance 
