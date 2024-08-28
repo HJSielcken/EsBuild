@@ -11,6 +11,7 @@
 - [ ] Fingerprinting css
 - [ ] Copy unused files plugin
 - [ ] Sourcemaps
+- [ ] Css in Sanity Studio (Does not work, and has probably to do with dynamic imports)
 
 To use globally-scoped css classes, use the import attribute `with { type: 'global-css'}`.
 For instance 
