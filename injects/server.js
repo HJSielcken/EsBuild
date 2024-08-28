@@ -1,8 +1,4 @@
 import * as React from 'react'
-import * as fs from 'fs'
-
+import cx from 'classnames'
+import fs from 'node:fs'
 export { cx, React, fs }
-
-function cx(...args) {
-  return args.filter(Boolean).join(' ')
-}
