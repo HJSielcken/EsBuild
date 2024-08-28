@@ -1,8 +1,5 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom/client'
+import cx from 'classnames'
 
 export { React, cx, ReactDOM }
-
-function cx(...args) {
-  return args.filter(Boolean).join(' ')
-}
