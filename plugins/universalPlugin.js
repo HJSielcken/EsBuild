@@ -33,6 +33,8 @@ function universalClientPlugin() {
   }
 }
 
+let context
+
 /** @returns {import('esbuild').Plugin} */
 function universalServerPlugin(getClientBuildConfig) {
   return {

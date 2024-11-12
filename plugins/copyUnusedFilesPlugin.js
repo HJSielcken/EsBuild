@@ -8,7 +8,7 @@ const pwd = process.cwd()
 const srcDir = path.resolve(pwd, 'src')
 const targetDir = path.resolve(pwd, 'target')
 
-/** 
+/**
  * @returns {import('esbuild').Plugin}
  */
 function copyUnusedFilesPlugin() {
@@ -18,17 +18,21 @@ function copyUnusedFilesPlugin() {
     setup({ onEnd, onStart, onLoad }) {
       onStart(() => {
         const srcFiles = walkSync(srcDir, { directories: false })
-        srcFiles.forEach(file => files.add(file))
+        srcFiles.forEach((file) => files.add(file))
       })
-      onLoad({ filter: /./ }, args => {
+      onLoad({ filter: /./ }, (args) => {
         const targetFilePath = path.relative(srcDir, args.path)
         files.delete(targetFilePath)
       })
       onEnd(async () => {
         const filesToCopy = files.values()
-        await Promise.all(filesToCopy.map(file => fs.promises.cp(path.join(srcDir, file), path.join(targetDir, file), { preserveTimestamps: true })))
+        await Promise.all(
+          Array.from(filesToCopy).map((file) =>
+            fs.promises.cp(path.join(srcDir, file), path.join(targetDir, file), { preserveTimestamps: true })
+          )
+        )
         files.clear()
       })
-    }
+    },
   }
 }

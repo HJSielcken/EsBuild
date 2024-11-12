@@ -30,7 +30,7 @@ async function watch() {
   try {
     await prepareFileSystem()
     const context = await esbuild.context(getServerBuildConfig({ watch: true }))
-    await context.watch().then(_ => console.log('Watching for changes'))
+    await context.watch().then((_) => console.log('Watching for changes'))
     await context.serve({ port: 12345 })
   } catch (e) {
     console.log(e)
@@ -53,14 +53,14 @@ const { stylesheetPlugin } = require('./plugins/stylesheetPlugin')
 const { javascriptPlugin } = require('./plugins/javascriptPlugin')
 const { kaliberConfigLoaderPlugin } = require('./plugins/kaliberConfigLoaderPlugin')
 const { templateRendererPlugin } = require('./plugins/templateRendererPlugin')
-const { cssServerLoaderPlugin, cssClientLoaderPlugin, cssDirPath } = require('./plugins/cssLoaderPlugin.js');
-const { writeMegaEntriesPlugin } = require('./plugins/writeMetaEntriesPlugin.js');
+const { cssServerLoaderPlugin, cssClientLoaderPlugin, cssDirPath } = require('./plugins/cssLoaderPlugin.js')
+const { writeMegaEntriesPlugin } = require('./plugins/writeMetaEntriesPlugin.js')
 const { copyUnusedFilesPlugin } = require('./plugins/copyUnusedFilesPlugin.js')
 
 const isProduction = process.env.NODE_ENV === 'production'
 
 /** @returns {import('esbuild').BuildOptions}*/
-function getServerBuildConfig({ watch } = {}) {
+function getServerBuildConfig({ watch } = { watch: false }) {
   return {
     minify: isProduction,
     entryPoints: gatherEntries(),
@@ -71,7 +71,7 @@ function getServerBuildConfig({ watch } = {}) {
     platform: 'node',
     loader: {
       '.js': 'jsx',
-      '.entry.css': 'global-css',
+      '.entry.css': 'css',
       '.raw.svg': 'text',
       '.svg': 'copy',
       '.woff2': 'file',
@@ -79,7 +79,7 @@ function getServerBuildConfig({ watch } = {}) {
       '.ttf': 'file',
     },
     define: {
-      'process.env.CONFIG_ENV': `"${process.env.CONFIG_ENV}"`
+      'process.env.CONFIG_ENV': `"${process.env.CONFIG_ENV}"`,
     },
     entryNames: '[dir]/[name]',
     format: 'cjs',
@@ -91,18 +91,21 @@ function getServerBuildConfig({ watch } = {}) {
       cssServerLoaderPlugin(),
       stylesheetPlugin(),
       javascriptPlugin(),
-      universalServerPlugin(entryPoints => getClientBuildConfig({ watch, entryPoints })),
+      universalServerPlugin((entryPoints) => getClientBuildConfig({ watch, entryPoints })),
       poLoaderPlugin(),
       writeMetaFilePlugin(SERVER_META),
       compileForServerPlugin(compileWithBabel),
       isInternalModulePlugin(),
-      writeMegaEntriesPlugin({ serverMetaFile: SERVER_META, browserMetaFile: BROWSER_META }),
+      writeMegaEntriesPlugin({
+        serverMetaFile: SERVER_META,
+        browserMetaFile: BROWSER_META,
+      }),
       templateRendererPlugin(templateRenderers, SERVER_META),
-    ]
+    ],
   }
 }
 
-/** @returns {import('esbuild').BuildOptions}*/
+/** @returns {import('esbuild').BuildOptions & { watch: boolean? }}*/
 function getClientBuildConfig({ entryPoints, watch }) {
   return {
     watch,
@@ -114,15 +117,14 @@ function getClientBuildConfig({ entryPoints, watch }) {
     bundle: true,
     format: 'esm',
     define: {
-      'process.env.CONFIG_ENV': `"${process.env.CONFIG_ENV}"`
-
+      'process.env.CONFIG_ENV': `"${process.env.CONFIG_ENV}"`,
     },
     platform: 'browser',
     external: ['stream'], //Tree shaking does not work very well I think and import createSitemapEntries from @kaliber/sanity-routing (that uses xml, that uses stream)
     splitting: true,
     loader: {
       '.js': 'jsx',
-      '.entry.css': 'global-css',
+      '.entry.css': 'css',
       '.raw.svg': 'text',
       '.svg': 'copy',
       '.woff2': 'file',
@@ -138,7 +140,7 @@ function getClientBuildConfig({ entryPoints, watch }) {
       writeMetaFilePlugin(BROWSER_META),
       universalClientPlugin(),
       poLoaderPlugin(),
-    ]
+    ],
   }
 }
 
@@ -146,8 +148,7 @@ function gatherEntries() {
   const extensions = Object.keys(templateRenderers)
   const template = extensions.join('|')
   const globs = [`**/*.@(${template}).js`, '**/*.entry.js', '**/*.entry.css']
-  return walkSync(srcDir, { globs }).reduce(
-    (result, entry) => ([...result, entry]),
-    []
-  ).map(x => path.resolve(srcDir, x))
+  return walkSync(srcDir, { globs })
+    .reduce((result, entry) => [...result, entry], /**@type {string[]}*/ ([]))
+    .map((x) => path.resolve(srcDir, x))
 }

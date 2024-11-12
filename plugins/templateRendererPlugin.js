@@ -14,7 +14,7 @@ function templateRendererPlugin(templateRenderers, serverMetaFile) {
     setup(build) {
       build.onEnd(async ({ errors }) => {
         if (errors.length) return
-        const content = await fs.promises.readFile(serverMetaFile)
+        const content = await fs.promises.readFile(serverMetaFile, 'utf8')
         const metafile = JSON.parse(content)
         const { outputs } = metafile
         

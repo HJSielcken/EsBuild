@@ -6,7 +6,7 @@ const cssDirPath = path.resolve(process.cwd(), cssDirName)
 
 module.exports = { cssServerLoaderPlugin, cssClientLoaderPlugin, cssDirPath }
 
-/** @type {{[prefix: string]: {modifiedTimeStamp: number, classMap: object}}} */
+/** @type {{[prefix: string]: {modifiedTimestamp: number, classMap: object}}} */
 const cssClassMapLookup = {}
 
 /** @returns {import('esbuild').Plugin} */
@@ -28,7 +28,7 @@ function cssServerLoaderPlugin() {
       onLoad({ filter: /\.css/ }, async (args) => {
         if (args.suffix === '?css-loaded') return
 
-        if(args.with.type === 'global-css') {
+        if (args.with.type === 'global-css') {
           return {
             contents: await fs.promises.readFile(args.path),
             loader: 'css'
@@ -75,7 +75,7 @@ async function getModifiedTimestamp(args) {
     const { mtimeMs } = await fs.promises.stat(args.path)
     return mtimeMs
   } catch (e) {
-    return null
+    return 0
   }
 }
 
@@ -87,7 +87,7 @@ function cssClientLoaderPlugin() {
     name: 'css-client-loader',
     setup({ onLoad }) {
       onLoad({ filter: /\.css/ }, async (args) => {
-        if(args.with.type === 'global-css') {
+        if (args.with.type === 'global-css') {
           return {
             contents: "",
             loader: 'css'

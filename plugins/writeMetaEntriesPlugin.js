@@ -9,11 +9,11 @@ function writeMegaEntriesPlugin({ serverMetaFile, browserMetaFile }) {
     name: 'write-mega-entries-plugin',
     setup({ onEnd }) {
       onEnd(async () => {
-        const { outputs: clientOutputs } = JSON.parse(await fs.readFile(browserMetaFile))
-        const { outputs: serverOutputs } = JSON.parse(await fs.readFile(serverMetaFile))
-      
+        const { outputs: clientOutputs } = JSON.parse(await fs.readFile(browserMetaFile, 'utf8'))
+        const { outputs: serverOutputs } = JSON.parse(await fs.readFile(serverMetaFile, 'utf8'))
+
         await writeCssEntries(serverOutputs)
-        await writeJavascriptEntries({serverOutputs, clientOutputs})
+        await writeJavascriptEntries({ serverOutputs, clientOutputs })
       }
       )
     }
