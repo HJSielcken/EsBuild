@@ -24,15 +24,15 @@ function templateRendererPlugin(templateRenderers, serverMetaFile) {
           const extension = getExtensionFromTemplate(filename)
           const filepath = path.resolve(process.cwd(), targetFilepath)
 
-          const size = await getSize(filepath)
-          const cached = cache[filepath] && cache[filepath].size === size
+          // const size = await getSize(filepath)
+          // const cached = cache[filepath] && cache[filepath].size === size
 
-          if (cached) {
-            console.log(`cached ${filepath}`)
-            return
-          }
+          // if (cached) {
+          //   console.log(`cached ${filepath}`)
+          //   return
+          // }
           
-          cache[filepath] = { size }
+          // cache[filepath] = { size }
 
           const isDynamicTemplate = await determineIfTemplateIsDynamic(targetFilepath)
           if (isDynamicTemplate) {
@@ -99,7 +99,7 @@ async function createStaticTemplate({ filepath, extension }) {
     const js = childProcess.fork(
       path.resolve(__dirname, 'create-static-template.js'),
       [],
-      { stdio: ['pipe', 'pipe', 'pipe', 'ipc'] }
+      { stdio: ['pipe', 'pipe', 'pipe', 'ipc'], }
     )
     const outData = []
     const errData = []

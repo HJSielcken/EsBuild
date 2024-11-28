@@ -11,7 +11,6 @@ function writeMegaEntriesPlugin({ serverMetaFile, browserMetaFile }) {
       onEnd(async () => {
         const { outputs: clientOutputs } = JSON.parse(await fs.readFile(browserMetaFile, 'utf8'))
         const { outputs: serverOutputs } = JSON.parse(await fs.readFile(serverMetaFile, 'utf8'))
-
         await writeCssEntries(serverOutputs)
         await writeJavascriptEntries({ serverOutputs, clientOutputs })
       }
@@ -24,7 +23,7 @@ function writeMegaEntriesPlugin({ serverMetaFile, browserMetaFile }) {
 async function writeCssEntries(serverOutputs) {
   const cssEntries = Object.values(serverOutputs).reduce(
     (result, x) => {
-      if (!x.entryPoint) return result
+      if (!x.entryPoint | !x.cssBundle) return result
       result[path.resolve(process.cwd(), x.entryPoint)] = { cssBundle: `/${path.relative(targetDir, x.cssBundle)}` }
       return result
     }

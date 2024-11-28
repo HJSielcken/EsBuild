@@ -25,10 +25,10 @@ function stylesheetPlugin() {
 function createStyleSheet(entryPoint) {
   const stylesheet = path.relative(process.cwd(), entryPoint)
   return `
-  |export const stylesheet = <link rel="stylesheet" href={getCssBundle()} />
+  |export const stylesheet = getCssBundle() && <link rel="stylesheet" href={getCssBundle()} />
   |function getCssBundle() {
   |  const metafile = JSON.parse(fs.readFileSync(process.cwd()+'/target/css-entries.json'))
-  |  return metafile['${entryPoint}'].cssBundle
+  |  return metafile['${entryPoint}']?.cssBundle
   |}
   `.replace(/^[ \t]*\|/gm, '')
 }

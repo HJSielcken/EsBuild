@@ -9,7 +9,7 @@ const srcDir = path.resolve(pwd, 'src')
 const targetDir = path.resolve(pwd, 'target')
 
 const templateRenderers = require('./renderers/renderers')
-const { compileWithBabel } = config.kaliber
+const { compileWithBabel = [] } = config.kaliber
 
 const BROWSER_META = 'browser-metafile.json'
 const SERVER_META = 'server-metafile.json'
