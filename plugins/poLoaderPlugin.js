@@ -1,9 +1,13 @@
 const fs = require('fs')
-const gettextParser = require('gettext-parser')
 
 module.exports = { poLoaderPlugin }
 
 const cache = {}
+
+async function getPoParser() {
+  const getTextParser = await import('gettext-parser')
+  return getTextParser.po.parse
+}
 
 /** @returns {import('esbuild').Plugin} */
 function poLoaderPlugin() {
@@ -18,8 +22,9 @@ function poLoaderPlugin() {
             loader: 'js',
             contents: cache[args.path].contents
           }
-        
-        const contents = `export default ${JSON.stringify(gettextParser.po.parse(await fs.promises.readFile(args.path)))}`
+
+        const poParser = await getPoParser()
+        const contents = `export default ${JSON.stringify(poParser(await fs.promises.readFile(args.path)))}`
 
         cache[args.path] = {
           modifiedTimestamp,

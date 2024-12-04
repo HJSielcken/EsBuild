@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "yarn watch & yarn serve",
+    "start": "run-p watch serve",
     "build": "CONFIG_ENV=dev sielcken-build",
     "watch": "CONFIG_ENV=dev sielcken-watch",
     "serve": "CONFIG_ENV=dev PORT=8000 sielcken-serve"
