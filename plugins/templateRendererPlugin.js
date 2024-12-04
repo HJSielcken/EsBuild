@@ -62,7 +62,7 @@ function createDynamicTemplateSnippet(targetFilepath, rendererLocation) {
     |const envRequire = process.env.NODE_ENV==='production' ? require : require('import-fresh')
     |const source = envRequire(path.resolve(process.cwd(), '${targetFilepath}'))
     |const renderer = require('${rendererLocation}')
-    |Object.assign(render, source)
+    |Object.assign(render, source.default)
     |
     |module.exports = render
     |

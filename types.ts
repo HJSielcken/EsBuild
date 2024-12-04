@@ -7,8 +7,8 @@ interface Window {
 
 declare module '*.css'
 
-declare module '@harmen/build/stylesheet'
-declare module '@harmen/build/javascript'
+declare module '@harmen/esbuild/stylesheet'
+declare module '@harmen/esbuild/javascript'
 
 declare module '*.po'
 

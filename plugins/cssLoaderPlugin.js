@@ -16,7 +16,7 @@ function cssServerLoaderPlugin({ tempDir }) {
 
   return {
     name: 'css-server-loader-plugin',
-    setup({ onLoad, onResolve, resolve }) {
+    setup({ onLoad, onResolve }) {
       onResolve({ filter: /\.css/ }, async (args) => {
         if (args.pluginData?.localCss) return
 
@@ -26,7 +26,7 @@ function cssServerLoaderPlugin({ tempDir }) {
         }
 
         if (isGlobalImport(args)) return
-        
+
         const result = { path: path.resolve(args.resolveDir || '', args.path) }
 
         return { ...result, pluginData: { localCss: true } }

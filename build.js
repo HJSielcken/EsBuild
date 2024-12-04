@@ -7,6 +7,7 @@ const config = require('@kaliber/config')
 const pwd = process.cwd()
 const srcDir = path.resolve(pwd, 'src')
 const targetDir = path.resolve(pwd, 'target')
+const tempDir = path.resolve(pwd, '.css')
 
 const templateRenderers = require('./renderers/renderers')
 const { compileForServer = [] } = config.harmen
@@ -39,8 +40,8 @@ async function watch() {
 
 async function prepareFileSystem() {
   await fs.promises.rm(targetDir, { recursive: true, force: true })
-  await fs.promises.rm(cssDirPath, { recursive: true, force: true })
-  await fs.promises.mkdir(cssDirPath)
+  await fs.promises.rm(tempDir, { recursive: true, force: true })
+  await fs.promises.mkdir(tempDir)
 }
 
 const { poLoaderPlugin } = require('./plugins/poLoaderPlugin.js')
@@ -53,7 +54,7 @@ const { stylesheetPlugin } = require('./plugins/stylesheetPlugin')
 const { javascriptPlugin } = require('./plugins/javascriptPlugin')
 const { kaliberConfigLoaderPlugin } = require('./plugins/kaliberConfigLoaderPlugin')
 const { templateRendererPlugin } = require('./plugins/templateRendererPlugin')
-const { cssServerLoaderPlugin, cssClientLoaderPlugin, cssDirPath } = require('./plugins/cssLoaderPlugin.js')
+const { cssServerLoaderPlugin, cssClientLoaderPlugin } = require('./plugins/cssLoaderPlugin.js')
 const { writeMegaEntriesPlugin } = require('./plugins/writeMetaEntriesPlugin.js')
 const { copyUnusedFilesPlugin } = require('./plugins/copyUnusedFilesPlugin.js')
 
@@ -88,7 +89,7 @@ function getServerBuildConfig({ watch } = { watch: false }) {
     plugins: [
       copyUnusedFilesPlugin(),
       srcResolverPlugin(),
-      cssServerLoaderPlugin(),
+      cssServerLoaderPlugin({ tempDir }),
       stylesheetPlugin(),
       javascriptPlugin(),
       universalServerPlugin((entryPoints) => getClientBuildConfig({ watch, entryPoints })),
@@ -148,6 +149,6 @@ function gatherEntries() {
   const template = extensions.join('|')
   const globs = [`**/*.@(${template}).js`, '**/*.entry.js', '**/*.entry.css']
   return walkSync(srcDir, { globs })
-    .reduce((result, entry) => [...result, entry], /**@type {string[]}*/ ([]))
+    .reduce((result, entry) => [...result, entry], /**@type {string[]}*/([]))
     .map((x) => path.resolve(srcDir, x))
 }

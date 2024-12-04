@@ -1,5 +1,7 @@
 const mies = 'wim'
-export default ({ title }) => ({
-  aap: 'noost',
-  mies: title
-})
+export default function aap({ title }) {
+  return {
+    aap: 'noost',
+    mies: title
+  }
+}

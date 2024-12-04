@@ -5,6 +5,10 @@ module.exports = {
       clientWrapper: '/wrappers/Client',
     },
     compileForServer: [
+      /@kaliber\/routing/,
+      /@kaliber\/safe-json-stringify/,
+      /@kaliber\/use-is-mounted-ref/
+
     ]
   }
 }
