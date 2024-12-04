@@ -20,9 +20,9 @@
     "react-dom": "^18.3.1"
   },
   "bin": {
-    "harmen-esbuild": "bin/build.js",
-    "harmen-esserve": "bin/serve.js",
-    "harmen-eswatch": "bin/watch.js"
+    "sielcken-build": "bin/build.js",
+    "sielcken-serve": "bin/serve.js",
+    "sielcken-watch": "bin/watch.js"
   },
   "devDependencies": {
     "@nodelib/fs.walk": "^2.0.0",
