@@ -7,14 +7,22 @@ interface Window {
 
 declare module '*.css'
 
-declare module '@sielcken/esbuild/stylesheet'
-declare module '@sielcken/esbuild/javascript'
+declare module '@sielcken/esbuild/javascript' {
+  const javascript
+  export { javascript }
+}
 
+declare module '@sielcken/esbuild/stylesheet' {
+  const stylesheet
+  export { stylesheet }
+}
 declare module '*.po'
 
 declare module '*.jpg'
 declare module '*.jpeg'
 declare module '*.png'
+declare module '*?universal'
+
 
 declare module '*.raw.svg' {
   const x: string
