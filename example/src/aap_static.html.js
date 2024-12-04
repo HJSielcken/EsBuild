@@ -5,12 +5,12 @@ import MiesApp from './Mies.universal'
 import QueryApp from './Query.universal'
 import JetApp from './Jet.universal'
 
-import { Mies } from '/Mies'
+import { Mies } from './Mies'
 
-import { stylesheet } from '@kaliber/build/stylesheet'
-import { javascript } from '@kaliber/build/javascript'
+import { stylesheet } from '@harmen/esbuild/stylesheet'
+import { javascript } from '@harmen/esbuild/javascript'
 
-import { content } from './aap.css'
+import styles from './aap.css'
 
 
 export default (<html>
@@ -22,7 +22,7 @@ export default (<html>
   <ReportErrorProvider reportError={(message) => console.error(`Server: ${message}`)}>
     <ClientConfigProvider config={{ aap: 'config' }}>
       <body>
-        <div className={content}>mies</div>
+        <div className={styles.content}>mies</div>
         <Mies text='Jet' />
         <JetApp text='Jet' />
         <QueryApp />

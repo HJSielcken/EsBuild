@@ -7,9 +7,10 @@ const config = require('@kaliber/config')
 const pwd = process.cwd()
 const srcDir = path.resolve(pwd, 'src')
 const targetDir = path.resolve(pwd, 'target')
+const tempDir = path.resolve(pwd, '.css')
 
 const templateRenderers = require('./renderers/renderers')
-const { compileWithBabel = [] } = config.kaliber
+const { compileForServer = [] } = config.harmen
 
 const BROWSER_META = 'browser-metafile.json'
 const SERVER_META = 'server-metafile.json'
@@ -39,8 +40,8 @@ async function watch() {
 
 async function prepareFileSystem() {
   await fs.promises.rm(targetDir, { recursive: true, force: true })
-  await fs.promises.rm(cssDirPath, { recursive: true, force: true })
-  await fs.promises.mkdir(cssDirPath)
+  await fs.promises.rm(tempDir, { recursive: true, force: true })
+  await fs.promises.mkdir(tempDir)
 }
 
 const { poLoaderPlugin } = require('./plugins/poLoaderPlugin.js')
@@ -53,7 +54,7 @@ const { stylesheetPlugin } = require('./plugins/stylesheetPlugin')
 const { javascriptPlugin } = require('./plugins/javascriptPlugin')
 const { kaliberConfigLoaderPlugin } = require('./plugins/kaliberConfigLoaderPlugin')
 const { templateRendererPlugin } = require('./plugins/templateRendererPlugin')
-const { cssServerLoaderPlugin, cssClientLoaderPlugin, cssDirPath } = require('./plugins/cssLoaderPlugin.js')
+const { cssServerLoaderPlugin, cssClientLoaderPlugin } = require('./plugins/cssLoaderPlugin.js')
 const { writeMegaEntriesPlugin } = require('./plugins/writeMetaEntriesPlugin.js')
 const { copyUnusedFilesPlugin } = require('./plugins/copyUnusedFilesPlugin.js')
 
@@ -83,18 +84,18 @@ function getServerBuildConfig({ watch } = { watch: false }) {
     },
     entryNames: '[dir]/[name]',
     format: 'cjs',
-    inject: ['@kaliber/esbuild/injects/server.js'],
+    inject: ['@harmen/esbuild/injects/server.js'],
     external: ['react', 'react-dom'],
     plugins: [
       copyUnusedFilesPlugin(),
       srcResolverPlugin(),
-      cssServerLoaderPlugin(),
+      cssServerLoaderPlugin({ tempDir }),
       stylesheetPlugin(),
       javascriptPlugin(),
       universalServerPlugin((entryPoints) => getClientBuildConfig({ watch, entryPoints })),
       poLoaderPlugin(),
       writeMetaFilePlugin(SERVER_META),
-      compileForServerPlugin(compileWithBabel),
+      compileForServerPlugin(compileForServer),
       isInternalModulePlugin(),
       writeMegaEntriesPlugin({
         serverMetaFile: SERVER_META,
@@ -120,7 +121,6 @@ function getClientBuildConfig({ entryPoints, watch }) {
       'process.env.CONFIG_ENV': `"${process.env.CONFIG_ENV}"`,
     },
     platform: 'browser',
-    external: ['stream'], //Tree shaking does not work very well I think and import createSitemapEntries from @kaliber/sanity-routing (that uses xml, that uses stream)
     splitting: true,
     loader: {
       '.js': 'jsx',
@@ -132,7 +132,7 @@ function getClientBuildConfig({ entryPoints, watch }) {
       '.ttf': 'file',
     },
     entryNames: '[dir]/[name]-[hash]',
-    inject: ['@kaliber/esbuild/injects/browser.js'],
+    inject: ['@harmen/esbuild/injects/browser.js'],
     plugins: [
       srcResolverPlugin(),
       cssClientLoaderPlugin(),
@@ -149,6 +149,6 @@ function gatherEntries() {
   const template = extensions.join('|')
   const globs = [`**/*.@(${template}).js`, '**/*.entry.js', '**/*.entry.css']
   return walkSync(srcDir, { globs })
-    .reduce((result, entry) => [...result, entry], /**@type {string[]}*/ ([]))
+    .reduce((result, entry) => [...result, entry], /**@type {string[]}*/([]))
     .map((x) => path.resolve(srcDir, x))
 }

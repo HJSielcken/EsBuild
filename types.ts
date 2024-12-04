@@ -2,29 +2,13 @@ declare const React: typeof import('react')
 declare const cx: typeof import('classnames')
 
 interface Window {
-  'Rollbar': import('rollbar'),
   dataLayer: Array<Object>
 }
 
 declare module '*.css'
 
-declare module '@kaliber/build/stylesheet'
-declare module '@kaliber/build/javascript'
-
-declare module React {
-  interface CSSProperties {
-    '--index'?: string | number
-    '--aspect-ratio'?: string | number
-    '--offset-submenu'?: string | number
-    '--submenu-background-scaleY'?: string | number
-    '--z-index'?: string | number
-    '--delay'?: string | number
-    '--total-delay'?: string | number
-    '--container-width'?: string | number
-    '--container-height'?: string | number
-    '--min-height-card'?: string | number
-  }
-}
+declare module '@harmen/esbuild/stylesheet'
+declare module '@harmen/esbuild/javascript'
 
 declare module '*.po'
 

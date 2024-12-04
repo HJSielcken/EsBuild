@@ -1,4 +1,7 @@
 node_modules
 target/**/*
+example/target/**/*
+example/yarn.lock
+example/.css/**/*
 server-metafile.json
 browser-metafile.json
