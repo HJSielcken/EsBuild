@@ -7,13 +7,19 @@
     "@kaliber/config": "^0.0.8",
     "@kaliber/safe-json-stringify": "2.0.1",
     "classnames": "^2.5.1",
-    "esbuild": "^0.21.4",
+    "compression": "^1.7.5",
+    "esbuild": "^0.24.0",
+    "express": "^4.21.1",
     "gettext-parser": "^6.0.0",
+    "helmet": "^8.0.0",
+    "history": "^5.3.0",
     "hoist-non-react-statics": "^3.3.2",
     "import-fresh": "^3.3.0",
+    "morgan": "^1.10.0",
     "react": "18.3.1",
     "react-dom": "^18.3.1",
-    "react-is": "^18.3.1"
+    "react-is": "^18.3.1",
+    "walk-sync": "^3.0.0"
   },
   "peerDependencies": {
     "react": "^18.3.1",
@@ -23,15 +29,6 @@
     "sielcken-build": "bin/build.js",
     "sielcken-serve": "bin/serve.js",
     "sielcken-watch": "bin/watch.js"
-  },
-  "devDependencies": {
-    "@nodelib/fs.walk": "^2.0.0",
-    "compression": "^1.7.4",
-    "express": "^4.19.2",
-    "helmet": "^7.1.0",
-    "history": "^5.3.0",
-    "morgan": "^1.10.0",
-    "walk-sync": "^3.0.0"
   },
   "repository": "git@github.com:HJSielcken/EsBuild.git",
   "author": "Harmen Sielcken <harmen.sielcken@gmail.com>",
