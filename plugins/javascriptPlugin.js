@@ -5,7 +5,7 @@ function javascriptPlugin() {
   return {
     name: 'javascript-plugin',
     setup(build) {
-      build.onResolve({ filter: /^\@kaliber\/esbuild\/javascript$/ }, args => {
+      build.onResolve({ filter: /^\@harmen\/esbuild\/javascript$/ }, args => {
         return {
           path: args.path,
           pluginData: {
@@ -14,7 +14,7 @@ function javascriptPlugin() {
           namespace: args.importer,
         }
       })
-      build.onLoad({ filter: /^\@kaliber\/esbuild\/javascript$/ }, args => {
+      build.onLoad({ filter: /^\@harmen\/esbuild\/javascript$/ }, args => {
         return {
           loader: 'jsx',
           contents: createScriptTags(args.pluginData.importer)

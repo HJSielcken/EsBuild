@@ -1,5 +1,5 @@
 {
-  "name": "@kaliber/esbuild",
+  "name": "@harmen/esbuild",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -17,8 +17,8 @@
     "react-dom": "^18.3.1"
   },
   "bin": {
-    "kaliber-esbuild": "bin/build.js",
-    "kaliber-esserve": "bin/serve.js"
+    "harmen-esbuild": "bin/build.js",
+    "harmen-esserve": "bin/serve.js"
   },
   "devDependencies": {
     "@nodelib/fs.walk": "^2.0.0",

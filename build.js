@@ -9,7 +9,7 @@ const srcDir = path.resolve(pwd, 'src')
 const targetDir = path.resolve(pwd, 'target')
 
 const templateRenderers = require('./renderers/renderers')
-const { compileWithBabel = [] } = config.kaliber
+const { compileForServer = [] } = config.harmen
 
 const BROWSER_META = 'browser-metafile.json'
 const SERVER_META = 'server-metafile.json'
@@ -83,7 +83,7 @@ function getServerBuildConfig({ watch } = { watch: false }) {
     },
     entryNames: '[dir]/[name]',
     format: 'cjs',
-    inject: ['@kaliber/esbuild/injects/server.js'],
+    inject: ['@harmen/esbuild/injects/server.js'],
     external: ['react', 'react-dom'],
     plugins: [
       copyUnusedFilesPlugin(),
@@ -94,7 +94,7 @@ function getServerBuildConfig({ watch } = { watch: false }) {
       universalServerPlugin((entryPoints) => getClientBuildConfig({ watch, entryPoints })),
       poLoaderPlugin(),
       writeMetaFilePlugin(SERVER_META),
-      compileForServerPlugin(compileWithBabel),
+      compileForServerPlugin(compileForServer),
       isInternalModulePlugin(),
       writeMegaEntriesPlugin({
         serverMetaFile: SERVER_META,
@@ -120,7 +120,6 @@ function getClientBuildConfig({ entryPoints, watch }) {
       'process.env.CONFIG_ENV': `"${process.env.CONFIG_ENV}"`,
     },
     platform: 'browser',
-    external: ['stream'], //Tree shaking does not work very well I think and import createSitemapEntries from @kaliber/sanity-routing (that uses xml, that uses stream)
     splitting: true,
     loader: {
       '.js': 'jsx',
@@ -132,7 +131,7 @@ function getClientBuildConfig({ entryPoints, watch }) {
       '.ttf': 'file',
     },
     entryNames: '[dir]/[name]-[hash]',
-    inject: ['@kaliber/esbuild/injects/browser.js'],
+    inject: ['@harmen/esbuild/injects/browser.js'],
     plugins: [
       srcResolverPlugin(),
       cssClientLoaderPlugin(),

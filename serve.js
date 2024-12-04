@@ -9,12 +9,9 @@ const morgan = require('morgan')
 
 module.exports = serve
 
-const defaultRenderers = {
-  json: '@kaliber/esbuild/json-renderer.js',
-  html: '@kaliber/esbuild/html-react-renderer.js',
-}
+const defaultRenderers = require('./renderers/renderers')
 
-const { templateRenderers = defaultRenderers, serveMiddleware } = config.kaliber
+const { templateRenderers = defaultRenderers, serveMiddleware } = config.harmen
 
 function serve() {
   const reportError = (x) => console.error(`Error - ${x}`)

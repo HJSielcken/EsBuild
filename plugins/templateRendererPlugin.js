@@ -5,8 +5,6 @@ const templateRenderers = require('../renderers/renderers')
 
 module.exports = { templateRendererPlugin }
 
-const cache = {}
-
 /** @returns {import('esbuild').Plugin} */
 function templateRendererPlugin(templateRenderers, serverMetaFile) {
   return {
@@ -22,17 +20,6 @@ function templateRendererPlugin(templateRenderers, serverMetaFile) {
         await Promise.all(Object.keys(outputs).filter(x => new RegExp(`(${extensions})\.js`).test(x)).map(async targetFilepath => {
           const filename = path.basename(targetFilepath)
           const extension = getExtensionFromTemplate(filename)
-          const filepath = path.resolve(process.cwd(), targetFilepath)
-
-          // const size = await getSize(filepath)
-          // const cached = cache[filepath] && cache[filepath].size === size
-
-          // if (cached) {
-          //   console.log(`cached ${filepath}`)
-          //   return
-          // }
-          
-          // cache[filepath] = { size }
 
           const isDynamicTemplate = await determineIfTemplateIsDynamic(targetFilepath)
           if (isDynamicTemplate) {
@@ -46,15 +33,6 @@ function templateRendererPlugin(templateRenderers, serverMetaFile) {
       })
 
     }
-  }
-}
-
-async function getSize(filepath) {
-  try {
-    const { size } = await fs.promises.stat(filepath)
-    return size
-  } catch (e) {
-    return null
   }
 }
 

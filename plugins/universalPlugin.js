@@ -77,7 +77,7 @@ function universalServerPlugin(getClientBuildConfig) {
 function createContainerlessClientCode({ path }) {
   const md5 = toMd5(path)
 
-  const wrapperPath = get(require('@kaliber/config'), 'kaliber.universal.clientWrapper')
+  const wrapperPath = get(require('@kaliber/config'), 'harmen.universal.clientWrapper')
 
   const component = '<Component {...props} />'
   const { wrapper, wrapped } = {
@@ -86,7 +86,7 @@ function createContainerlessClientCode({ path }) {
   }
 
   return `|import Component from '/${path}?universal-loaded'
-          |import { findComponents, hydrate } from '@kaliber/esbuild/plugins/universalComponent'
+          |import { findComponents, hydrate } from '@harmen/esbuild/plugins/universalComponent'
           |${wrapper}
           |
           |const components = findComponents({ componentName: '${md5}' })
@@ -99,8 +99,8 @@ function createContainerlessClientCode({ path }) {
 }
 
 function createContainerlessServerCode({ path }) {
-  const clientWrapperPath = get(require('@kaliber/config'), 'kaliber.universal.clientWrapper')
-  const serverWrapperPath = get(require('@kaliber/config'), 'kaliber.universal.serverWrapper')
+  const clientWrapperPath = get(require('@kaliber/config'), 'harmen.universal.clientWrapper')
+  const serverWrapperPath = get(require('@kaliber/config'), 'harmen.universal.serverWrapper')
 
   const md5 = toMd5(path)
 
@@ -119,7 +119,7 @@ function createContainerlessServerCode({ path }) {
   return `|import Component from '/${path}?universal-loaded'
           |import assignStatics from 'hoist-non-react-statics'
           |import { renderToString } from 'react-dom/server'
-          |import { ComponentServerWrapper } from '@kaliber/esbuild/plugins/universalComponent'
+          |import { ComponentServerWrapper } from '@harmen/esbuild/plugins/universalComponent'
           |${server.wrapper}
           |${client.wrapper}
           |
