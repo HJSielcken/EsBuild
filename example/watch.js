@@ -1,3 +1,3 @@
-const { watch } = require('@harmen/esbuild/build.js')
+const { watch } = require('@sielcken/esbuild/build.js')
 
 watch()

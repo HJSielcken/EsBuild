@@ -4,8 +4,8 @@ import JetApp from '/Jet.universal'
 import { ClientConfigProvider } from '/ClientConfig'
 import { ReportErrorProvider } from '/ReportError'
 
-import { stylesheet } from '@harmen/esbuild/stylesheet'
-import { javascript } from '@harmen/esbuild/javascript'
+import { stylesheet } from '@sielcken/esbuild/stylesheet'
+import { javascript } from '@sielcken/esbuild/javascript'
 
 import styles from './aaps.css'
 

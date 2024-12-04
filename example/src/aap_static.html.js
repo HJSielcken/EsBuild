@@ -7,8 +7,8 @@ import JetApp from './Jet.universal'
 
 import { Mies } from './Mies'
 
-import { stylesheet } from '@harmen/esbuild/stylesheet'
-import { javascript } from '@harmen/esbuild/javascript'
+import { stylesheet } from '@sielcken/esbuild/stylesheet'
+import { javascript } from '@sielcken/esbuild/javascript'
 
 import styles from './aap.css'
 

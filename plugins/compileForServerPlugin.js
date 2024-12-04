@@ -9,7 +9,7 @@ function compileForServerPlugin(compileWithBabel) {
     setup(build) {
       build.onResolve({ filter: /./ }, async args => {
         if (args.pluginData?.resolvedByCompileForServerPlugin) return null
-        if (args.path.includes('@harmen/esbuild')) return null
+        if (args.path.includes('@sielcken/esbuild')) return null
 
         const result = await build.resolve(args.path, {
           resolveDir: args.resolveDir,

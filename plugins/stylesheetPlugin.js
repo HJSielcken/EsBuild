@@ -6,13 +6,13 @@ function stylesheetPlugin() {
   return {
     name: 'stylesheet-plugin',
     setup(build) {
-      build.onResolve({ filter: /^\@harmen\/esbuild\/stylesheet$/ }, args => {
+      build.onResolve({ filter: /^\@sielcken\/esbuild\/stylesheet$/ }, args => {
         return {
           path: args.path,
           namespace: args.importer,
         }
       })
-      build.onLoad({ filter: /^\@harmen\/esbuild\/stylesheet$/ }, args => {
+      build.onLoad({ filter: /^\@sielcken\/esbuild\/stylesheet$/ }, args => {
         return {
           loader: 'jsx',
           contents: createStyleSheet(args.namespace)

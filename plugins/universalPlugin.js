@@ -86,7 +86,7 @@ function createContainerlessClientCode({ path }) {
   }
 
   return `|import Component from '/${path}?universal-loaded'
-          |import { findComponents, hydrate } from '@harmen/esbuild/plugins/universalComponent'
+          |import { findComponents, hydrate } from '@sielcken/esbuild/plugins/universalComponent'
           |${wrapper}
           |
           |const components = findComponents({ componentName: '${md5}' })
@@ -119,7 +119,7 @@ function createContainerlessServerCode({ path }) {
   return `|import Component from '/${path}?universal-loaded'
           |import assignStatics from 'hoist-non-react-statics'
           |import { renderToString } from 'react-dom/server'
-          |import { ComponentServerWrapper } from '@harmen/esbuild/plugins/universalComponent'
+          |import { ComponentServerWrapper } from '@sielcken/esbuild/plugins/universalComponent'
           |${server.wrapper}
           |${client.wrapper}
           |

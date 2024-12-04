@@ -84,7 +84,7 @@ function getServerBuildConfig({ watch } = { watch: false }) {
     },
     entryNames: '[dir]/[name]',
     format: 'cjs',
-    inject: ['@harmen/esbuild/injects/server.js'],
+    inject: ['@sielcken/esbuild/injects/server.js'],
     external: ['react', 'react-dom'],
     plugins: [
       copyUnusedFilesPlugin(),
@@ -132,7 +132,7 @@ function getClientBuildConfig({ entryPoints, watch }) {
       '.ttf': 'file',
     },
     entryNames: '[dir]/[name]-[hash]',
-    inject: ['@harmen/esbuild/injects/browser.js'],
+    inject: ['@sielcken/esbuild/injects/browser.js'],
     plugins: [
       srcResolverPlugin(),
       cssClientLoaderPlugin(),
