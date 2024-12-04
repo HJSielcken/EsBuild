@@ -9,8 +9,9 @@ const srcDir = path.resolve(pwd, 'src')
 const targetDir = path.resolve(pwd, 'target')
 const tempDir = path.resolve(pwd, '.css')
 
-const templateRenderers = require('./renderers/renderers')
-const { compileForServer = [] } = config.harmen
+const { compileForServer = [], templateRenderers: userDefinedTemplateRenderers = {}} = config.harmen
+
+const templateRenderers = Object.assign(userDefinedTemplateRenderers, require('./renderers/renderers'))
 
 const BROWSER_META = 'browser-metafile.json'
 const SERVER_META = 'server-metafile.json'
