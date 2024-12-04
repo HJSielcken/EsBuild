@@ -14,7 +14,6 @@ import styles from './aap.css'
 
 Index.routes = {
   match(location) {
-    console.log({ location })
     return pick(
       location.pathname,
       [routeMap, (_, route) => ({ status: 200, data: {title: 'asdasd'} })],
