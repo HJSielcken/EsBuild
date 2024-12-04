@@ -34,5 +34,6 @@
     "walk-sync": "^3.0.0"
   },
   "repository": "git@github.com:HJSielcken/EsBuild.git",
-  "author": "Harmen Sielcken <harmen.sielcken@gmail.com>"
+  "author": "Harmen Sielcken <harmen.sielcken@gmail.com>",
+  "private": false
 }

@@ -9,9 +9,9 @@
     "serve": "CONFIG_ENV=dev PORT=8000 harmen-esserve"
   },
   "dependencies": {
-    "@sielcken/esbuild": "link:../",
     "@kaliber/routing": "^2.0.0",
     "@kaliber/use-is-mounted-ref": "^1.0.2",
+    "@sielcken/esbuild": "^0.0.1",
     "@tanstack/react-query": "^5.62.2",
     "esbuild": "^0.24.0",
     "walk-sync": "^3.0.0"

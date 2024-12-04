@@ -143,7 +143,6 @@ function serveIndexWithRouting(file, req, res, next) {
   if (dataOrPromise.then)
     dataOrPromise
       .then(({ status, headers, data }) => {
-        console.log({ data })
         const html = template({ location, data })
         res.status(status).set(headers).send(html)
       })
@@ -154,10 +153,7 @@ function serveIndexWithRouting(file, req, res, next) {
   else {
     try {
       const { data, status, headers } = dataOrPromise
-      console.log({ dataOrPromise })
       const html = template({ location, data })
-      console.log(template)
-      console.log(html)
       res.status(status).set(headers).send(html)
     } catch (error) {
       reportServerError(error, req)
